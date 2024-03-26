@@ -16,6 +16,7 @@ This file lists each platform known to Fauxhai and the available versions for ea
 
 - 2
 - 2018.03 (deprecated)
+- 2023
 
 ### arch
 

@@ -27,6 +27,10 @@
     "2018.03": {
       "deprecated": true,
       "path": "lib/fauxhai/platforms/amazon/2018.03.json"
+    },
+    "2023": {
+      "deprecated": false,
+      "path": "lib/fauxhai/platforms/amazon/2023.json"
     }
   },
   "arch": {
