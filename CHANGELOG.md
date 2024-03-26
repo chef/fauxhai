@@ -1,14 +1,15 @@
-<!-- latest_release 9.3.14 -->
-## [v9.3.14](https://github.com/chef/fauxhai/tree/v9.3.14) (2024-03-26)
+<!-- latest_release 9.3.15 -->
+## [v9.3.15](https://github.com/chef/fauxhai/tree/v9.3.15) (2024-03-26)
 
 #### Merged Pull Requests
-- Add code owners for reviews [#28](https://github.com/chef/fauxhai/pull/28) ([tpowell-progress](https://github.com/tpowell-progress))
+- add_amazon_2023 [#26](https://github.com/chef/fauxhai/pull/26) ([jjperry](https://github.com/jjperry))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.8 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- add_amazon_2023 [#26](https://github.com/chef/fauxhai/pull/26) ([jjperry](https://github.com/jjperry)) <!-- 9.3.15 -->
 - Add code owners for reviews [#28](https://github.com/chef/fauxhai/pull/28) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 9.3.14 -->
 - Added WIndows 2022 and Updated CONTRIBUTING.md [#24](https://github.com/chef/fauxhai/pull/24) ([jjperry](https://github.com/jjperry)) <!-- 9.3.13 -->
 - Added RedHat 9 [#21](https://github.com/chef/fauxhai/pull/21) ([jjperry](https://github.com/jjperry)) <!-- 9.3.12 -->
