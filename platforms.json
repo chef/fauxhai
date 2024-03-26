@@ -281,6 +281,10 @@
     "22.04": {
       "deprecated": false,
       "path": "lib/fauxhai/platforms/ubuntu/22.04.json"
+    },
+    "24.04": {
+      "deprecated": false,
+      "path": "lib/fauxhai/platforms/ubuntu/24.04.json"
     }
   },
   "windows": {
