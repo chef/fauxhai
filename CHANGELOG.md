@@ -1,32 +1,29 @@
-<!-- latest_release 9.3.16 -->
-## [v9.3.16](https://github.com/chef/fauxhai/tree/v9.3.16) (2024-03-26)
-
-#### Merged Pull Requests
-- Add Ubuntu 24.04 [#27](https://github.com/chef/fauxhai/pull/27) ([nickpegg](https://github.com/nickpegg))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=9.3.8 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Add Ubuntu 24.04 [#27](https://github.com/chef/fauxhai/pull/27) ([nickpegg](https://github.com/nickpegg)) <!-- 9.3.16 -->
-- add_amazon_2023 [#26](https://github.com/chef/fauxhai/pull/26) ([jjperry](https://github.com/jjperry)) <!-- 9.3.15 -->
-- Add code owners for reviews [#28](https://github.com/chef/fauxhai/pull/28) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 9.3.14 -->
-- Added WIndows 2022 and Updated CONTRIBUTING.md [#24](https://github.com/chef/fauxhai/pull/24) ([jjperry](https://github.com/jjperry)) <!-- 9.3.13 -->
-- Added RedHat 9 [#21](https://github.com/chef/fauxhai/pull/21) ([jjperry](https://github.com/jjperry)) <!-- 9.3.12 -->
-- Add Ubuntu 22.04 (jammy) support [#16](https://github.com/chef/fauxhai/pull/16) ([dtseiler](https://github.com/dtseiler)) <!-- 9.3.11 -->
-- Add .buildkite folder to make pipeline_protection happy [#18](https://github.com/chef/fauxhai/pull/18) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 9.3.10 -->
-- Add Debian 12 support [#17](https://github.com/chef/fauxhai/pull/17) ([Justin-Fernbaugh](https://github.com/Justin-Fernbaugh)) <!-- 9.3.9 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v9.3.16](https://github.com/chef/fauxhai/tree/v9.3.16) (2024-03-27)
+
+#### Merged Pull Requests
+- Add Debian 12 support [#17](https://github.com/chef/fauxhai/pull/17) ([Justin-Fernbaugh](https://github.com/Justin-Fernbaugh))
+- Add .buildkite folder to make pipeline_protection happy [#18](https://github.com/chef/fauxhai/pull/18) ([tpowell-progress](https://github.com/tpowell-progress))
+- Add Ubuntu 22.04 (jammy) support [#16](https://github.com/chef/fauxhai/pull/16) ([dtseiler](https://github.com/dtseiler))
+- Added RedHat 9 [#21](https://github.com/chef/fauxhai/pull/21) ([jjperry](https://github.com/jjperry))
+- Added WIndows 2022 and Updated CONTRIBUTING.md [#24](https://github.com/chef/fauxhai/pull/24) ([jjperry](https://github.com/jjperry))
+- Add code owners for reviews [#28](https://github.com/chef/fauxhai/pull/28) ([tpowell-progress](https://github.com/tpowell-progress))
+- add_amazon_2023 [#26](https://github.com/chef/fauxhai/pull/26) ([jjperry](https://github.com/jjperry))
+- Add Ubuntu 24.04 [#27](https://github.com/chef/fauxhai/pull/27) ([nickpegg](https://github.com/nickpegg))
+<!-- latest_stable_release -->
+
 ## [v9.3.8](https://github.com/chef/fauxhai/tree/v9.3.8) (2023-05-05)
 
 #### Merged Pull Requests
 - Add Rocky Linux 9 data [#9](https://github.com/chef/fauxhai/pull/9) ([vkarve-chef](https://github.com/vkarve-chef))
 - Added the SonarQube configuration [#13](https://github.com/chef/fauxhai/pull/13) ([nikhil2611](https://github.com/nikhil2611))
 - Update fetcher to pull from correct repository [#14](https://github.com/chef/fauxhai/pull/14) ([ramereth](https://github.com/ramereth))
-<!-- latest_stable_release -->
 
 ## [v9.3.5](https://github.com/chef/fauxhai/tree/v9.3.5) (2023-02-03)
 
