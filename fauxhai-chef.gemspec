@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/chef/fauxhai"
   spec.license       = "MIT"
 
-  spec.required_ruby_version = ">= 2.7"
+  spec.required_ruby_version = ">= 3.3"
 
   spec.files         = %w{LICENSE Gemfile fauxhai-chef.gemspec} + Dir.glob("{lib,bin}/**/*", File::FNM_DOTMATCH).reject { |f| File.directory?(f) }
   spec.executables   = "fauxhai"
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "net-ssh"
 
-  spec.add_development_dependency "chef", ">= 13.0"
-  spec.add_development_dependency "ohai", ">= 13.0"
+  spec.add_development_dependency "chef", "~> 18.0"
+  spec.add_development_dependency "ohai", "~> 18.0"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.7"
   spec.add_development_dependency "rspec-its", "~> 1.2"
