@@ -1,6 +1,5 @@
 pkg_name=fauxhai
 pkg_origin=core
-pkg_version="9.3.16"
 pkg_description="Easily mock full ohai data"
 pkg_license=('Apache-2.0')
 pkg_deps=(
@@ -12,6 +11,14 @@ pkg_build_deps=(
   core/make
 )
 pkg_bin_dirs=(bin)
+
+pkg_version() {
+  cat "$SRC_PATH/VERSION"
+}
+
+do_before() {
+  update_pkg_version
+}
 
 # Setup environment variables for Ruby Gems
 do_setup_environment() {
