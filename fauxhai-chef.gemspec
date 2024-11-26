@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "net-ssh"
+  spec.add_runtime_dependency "ohai", ">= 13.0"
 
   spec.add_development_dependency "chef", ">= 13.0"
-  spec.add_development_dependency "ohai", ">= 13.0"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.7"
   spec.add_development_dependency "rspec-its", "~> 1.2"
