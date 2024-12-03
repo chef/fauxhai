@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $PSDefaultParameterValues['*:ErrorAction']='Stop'
 
 $pkg_name="fauxhai"
-$pkg_origin="core"
+$pkg_origin="chef"
 $pkg_version=$(Get-Content "$PLAN_CONTEXT/../VERSION")
 $pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 
@@ -21,12 +21,6 @@ function pkg_version {
 function Invoke-Before {
     Set-PkgVersion
 }
-
-# Invoke-Before hook to set package version early
-function Invoke-Before {
-    Set-PkgVersion
-}
-
 function Invoke-SetupEnvironment {
     Push-RuntimeEnv -IsPath GEM_PATH "$pkg_prefix/vendor"
 
@@ -51,8 +45,8 @@ function Invoke-Build {
         bundle install
 
         gem build fauxhai-chef.gemspec
-	Write-BuildLine " ** Using gem to  install"
-	gem install fauxhai-chef-*.gem --no-document
+        Write-BuildLine " ** Using gem to  install"
+        gem install fauxhai-*.gem --no-document
 
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
@@ -70,11 +64,11 @@ function Invoke-Install {
     try {
         Push-Location $pkg_prefix
         bundle config --local gemfile $project_root/Gemfile
-         Write-BuildLine "** generating binstubs for fauxhai-chef with precise version pins"
-	 Write-BuildLine "** generating binstubs for fauxhai-chef with precise version pins $project_root $pkg_prefix/bin "
-            Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin fauxhai-chef"
+         Write-BuildLine "** generating binstubs for fauxhai- with precise version pins"
+	 Write-BuildLine "** generating binstubs for fauxhai with precise version pins $project_root $pkg_prefix/bin "
+            Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin fauxhai"
             If ($lastexitcode -ne 0) { Exit $lastexitcode }
-	Write-BuildLine " ** Running the fauxhai-chef project's 'rake install' to install the path-based gems so they look like any other installed gem."
+	Write-BuildLine " ** Running the fauxhaii project's 'rake install' to install the path-based gems so they look like any other installed gem."
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
     } finally {
@@ -90,7 +84,7 @@ function Invoke-After {
     # We don't need to ship the test suites for every gem dependency,
     # only inspec's for package verification.
     Get-ChildItem $pkg_prefix/vendor/gems -Filter "spec" -Directory -Recurse -Depth 1 `
-        | Where-Object -FilterScript { $_.FullName -notlike "*fauxhai-chef*" }             `
+        | Where-Object -FilterScript { $_.FullName -notlike "*fauxhai*" }             `
         | Remove-Item -Recurse -Force
     # Remove the byproducts of compiling gems with extensions
     Get-ChildItem $pkg_prefix/vendor/gems -Include @("gem_make.out", "mkmf.log", "Makefile") -File -Recurse `

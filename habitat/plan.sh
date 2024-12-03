@@ -1,6 +1,6 @@
 export HAB_BLDR_CHANNEL="LTS-2024"
 pkg_name=fauxhai
-pkg_origin=sanjain
+pkg_origin=chef
 ruby_pkg="core/ruby3_1"
 pkg_deps=(${ruby_pkg} core/coreutils)
 pkg_build_deps=(
