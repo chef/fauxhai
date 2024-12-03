@@ -52,7 +52,7 @@ do_install() {
 }
 wrap_ruby_bin() {
   local bin="$pkg_prefix/bin/$pkg_name"
-  local real_bin="$GEM_HOME/gems/fauxhai-${pkg_version}/bin/fauxhai"
+  local real_bin="$GEM_HOME/gems/fauxhai-chef-${pkg_version}/bin/fauxhai"
   build_line "Adding wrapper $bin to $real_bin"
   cat <<EOF > "$bin"
 #!$(pkg_path_for core/bash)/bin/bash
