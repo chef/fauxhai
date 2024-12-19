@@ -2,6 +2,7 @@
 
 set -eou pipefail
 
+echo "--> Running the promote-hab-pkg.sh script"
 HAB_AUTH_TOKEN=$(vault kv get -field auth_token account/static/habitat/chef-ci)
 export HAB_AUTH_TOKEN
 
