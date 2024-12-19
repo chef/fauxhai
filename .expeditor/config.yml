@@ -70,6 +70,12 @@ subscriptions:
       - bash:.expeditor/promote-hab-pkg.sh
       - built_in:promote_habitat_packages
 
+  - workload: hab_package_published:*
+    actions:
+      - bash:.expeditor/promote-hab-pkg.sh
+
+
+
 pipelines:
   - verify:
       description: Pull Request validation tests
