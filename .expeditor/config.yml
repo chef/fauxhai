@@ -9,6 +9,9 @@ slack:
 rubygems:
   - fauxhai-chef
   
+artifact_channels:
+  - workstation-build
+  - stable
 
 release_branches:
   - workstation-LTS:
