@@ -1,5 +1,5 @@
-<!-- latest_release 9.3.19 -->
-## [v9.3.19](https://github.com/chef/fauxhai/tree/v9.3.19) (2024-12-23)
+<!-- latest_release 9.3.20 -->
+## [v9.3.20](https://github.com/chef/fauxhai/tree/v9.3.20) (2024-12-23)
 
 #### Merged Pull Requests
 - added the channel variable [#42](https://github.com/chef/fauxhai/pull/42) ([nikhil2611](https://github.com/nikhil2611))
