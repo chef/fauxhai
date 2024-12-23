@@ -1,14 +1,15 @@
-<!-- latest_release 9.3.18 -->
-## [v9.3.18](https://github.com/chef/fauxhai/tree/v9.3.18) (2024-11-26)
+<!-- latest_release 9.3.19 -->
+## [v9.3.19](https://github.com/chef/fauxhai/tree/v9.3.19) (2024-12-23)
 
 #### Merged Pull Requests
-- Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress))
+- added the channel variable [#42](https://github.com/chef/fauxhai/pull/42) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- added the channel variable [#42](https://github.com/chef/fauxhai/pull/42) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.19 -->
 - Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.3.18 -->
 - [CI] Drop EOL rubies [#33](https://github.com/chef/fauxhai/pull/33) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 9.3.17 -->
 <!-- release_rollup -->
