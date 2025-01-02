@@ -23,9 +23,6 @@ pkg_version() {
   cat "$SRC_PATH/VERSION"
 }
 do_before() {
-  # hab bldr channel create -o chef workstation-build
-  # hab bldr channel create -o chef stable
-  # hab bldr channel create -o chef workstation-LTS
   update_pkg_version
 }
 do_unpack() {
