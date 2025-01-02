@@ -26,7 +26,7 @@ pipelines:
 
 release_branches:
   - workstation-LTS:
-      version_constraint: 10.*
+      version_constraint: 9.*
   - main:
       version_constraint: 9.*
 
