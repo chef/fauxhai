@@ -67,17 +67,23 @@ subscriptions:
       - built_in:build_gem:
           only_if: built_in:bump_version
  
-# this is the only way currently to promote built-in rubygems publish
+  # Automatically promote the Habitat packages from unstable to dev upon successful build
+  - workload: buildkite_hab_build_group_published:{{agent_id}}:*
+    actions:
+      - built_in:promote_habitat_packages  
+
+
+  # this is the only way currently to promote built-in rubygems publish
   - workload: project_promoted:{{agent_id}}:*
     actions:
       - built_in:promote_habitat_packages
 
   # subscription to fire off any other promotions that you may need for an additional channnel like LTS or something. 
-  - workload: staged_workload_released:{{agent_id}}:hab_unstable_promote:*
+  - workload: staged_workload_released:{{agent_id}}:workstation_build_promote:*
     actions:
     - bash:.expeditor/scripts/promote-hab-pkgs.sh:
         post_commit: true
 
 staging_areas:
-  - hab_unstable_promote:
+  - workstation_build_promote:
       workload: hab_package_published:stable:chef/fauxhai/{{version_constraint}}  
