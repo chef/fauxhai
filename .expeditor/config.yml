@@ -12,7 +12,7 @@ rubygems:
 artifact_channels:
   - workstation-build
   - stable
-  - workstation-LTS
+  - LTS-2024
 
 pipelines:
   - verify:

@@ -28,7 +28,7 @@ if [[ "${EXPEDITOR_CHANNEL}" == "unstable" ]]; then
   echo "This file does not support actions for artifacts promoted to unstable, that should happen in the /expeditor promote AGENT VERSION command from slack"
   exit 1
 elif [[ "${EXPEDITOR_CHANNEL}" == "stable" ]]; then
-  export EXPEDITOR_TARGET_CHANNEL="workstation-LTS"
+  export EXPEDITOR_TARGET_CHANNEL="LTS-2024"
   echo "My current package is in channel: ${EXPEDITOR_CHANNEL}. I am promoting to ${EXPEDITOR_TARGET_CHANNEL}"
 # elif [[ "${EXPEDITOR_CHANNEL}" == "acceptance" ]]; then
 #   export EXPEDITOR_TARGET_CHANNEL="current"
