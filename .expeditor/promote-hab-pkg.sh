@@ -12,6 +12,8 @@
 #
 set -eou pipefail
 
+printenv | grep EXPEDITOR
+
 # Export the HAB_AUTH_TOKEN for use of promoting habitat packages to {{EXPEDITOR_TARGET_CHANNEL}}
 HAB_AUTH_TOKEN=$(vault kv get -field auth_token account/static/habitat/chef-ci)
 export HAB_AUTH_TOKEN
