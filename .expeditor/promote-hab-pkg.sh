@@ -10,7 +10,7 @@
 # HAB_AUTH_TOKEN - GitHub Auth token used to communicate with the
 #                  Habitat depot and private repos in Chef's GitHub org
 #
-set -eou pipefail
+set -eoux pipefail
 
 printenv | grep EXPEDITOR
 
@@ -33,8 +33,7 @@ else
 fi
 
 # Promote the artifacts in Habitat Depot
-if [[ "${EXPEDITOR_PKG_ORIGIN}" == "core" ]];
-then
+if [[ "${EXPEDITOR_PKG_ORIGIN}" == "core" ]]; then
   echo "Skipping promotion of core origin package ${EXPEDITOR_PKG_ORIGIN}"
 else
   echo "Promoting ${EXPEDITOR_PKG_IDENT} to the ${EXPEDITOR_TARGET_CHANNEL} channel"
