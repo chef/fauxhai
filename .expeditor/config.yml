@@ -18,11 +18,11 @@ pipelines:
   - verify:
       description: Pull Request validation tests
       public: true
-  - habitat/build:
-      description: Build the Habitat packages for faixhai
-  - habitat/test:
-      definition: .expeditor/habitat-test.pipeline.yml
-      trigger: default
+  # - habitat/build:
+  #     description: Build the Habitat packages for faixhai
+  # - habitat/test:
+  #     definition: .expeditor/habitat-test.pipeline.yml
+  #     trigger: default
 
 release_branches:
   - workstation-LTS:
@@ -59,10 +59,10 @@ subscriptions:
           ignore_labels:
             - "Expeditor: Skip Changelog"
             - "Expeditor: Skip All"
-      - trigger_pipeline:habitat/build:
-          ignore_labels:
-            - "Expeditor: Skip Habitat"
-            - "Expeditor: Skip All"
+      # - trigger_pipeline:habitat/build:
+      #     ignore_labels:
+      #       - "Expeditor: Skip Habitat"
+      #       - "Expeditor: Skip All"
           only_if: built_in:bump_version
       - built_in:build_gem:
           only_if: built_in:bump_version
