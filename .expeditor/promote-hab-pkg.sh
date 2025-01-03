@@ -12,7 +12,7 @@
 #
 set -eou pipefail
 
-printenv | grep EXPEDITOR
+# printenv | grep EXPEDITOR
 
 # Export the HAB_AUTH_TOKEN for use of promoting habitat packages to {{EXPEDITOR_TARGET_CHANNEL}}
 HAB_AUTH_TOKEN=$(vault kv get -field auth_token account/static/habitat/chef-ci)
@@ -33,8 +33,7 @@ else
 fi
 
 # Promote the artifacts in Habitat Depot
-if [[ "${EXPEDITOR_PKG_ORIGIN}" == "core" ]];
-then
+if [[ "${EXPEDITOR_PKG_ORIGIN}" == "core" ]]; then
   echo "Skipping promotion of core origin package ${EXPEDITOR_PKG_ORIGIN}"
 else
   echo "Promoting ${EXPEDITOR_PKG_IDENT} to the ${EXPEDITOR_TARGET_CHANNEL} channel"

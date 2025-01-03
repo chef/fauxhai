@@ -81,7 +81,7 @@ subscriptions:
   # subscription to fire off any other promotions that you may need for an additional channnel like LTS or something. 
   - workload: staged_workload_released:{{agent_id}}:workstation_build_promote:*
     actions:
-    - bash:.expeditor/scripts/promote-hab-pkgs.sh:
+    - bash:.expeditor/scripts/promote-hab-pkg.sh:
         post_commit: true
 
 staging_areas:
