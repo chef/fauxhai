@@ -1,5 +1,5 @@
-<!-- latest_release 0.1.1 -->
-## [v0.1.1](https://github.com/chef/fauxhai/tree/v0.1.1) (2025-01-03)
+<!-- latest_release 0.1.2 -->
+## [v0.1.2](https://github.com/chef/fauxhai/tree/v0.1.2) (2025-01-03)
 
 #### Merged Pull Requests
 - Updating the promote-hab script to grab the correct values out of run… [#45](https://github.com/chef/fauxhai/pull/45) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
