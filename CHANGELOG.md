@@ -1,7 +1,15 @@
-<!-- latest_release -->
+<!-- latest_release 0.1.1 -->
+## [v0.1.1](https://github.com/chef/fauxhai/tree/v0.1.1) (2025-01-03)
+
+#### Merged Pull Requests
+- Updating the promote-hab script to grab the correct values out of run… [#45](https://github.com/chef/fauxhai/pull/45) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=9.3.16 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Updating the promote-hab script to grab the correct values out of run… [#45](https://github.com/chef/fauxhai/pull/45) ([sean-simmons-progress](https://github.com/sean-simmons-progress)) <!-- 0.1.1 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
