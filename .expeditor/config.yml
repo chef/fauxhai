@@ -10,8 +10,8 @@ rubygems:
   - fauxhai-chef
   
 artifact_channels:
+  - dev
   - workstation-build
-  - stable
   - LTS-2024
 
 pipelines:
@@ -20,9 +20,18 @@ pipelines:
       public: true
   - habitat/build:
       description: Build the Habitat packages for faixhai
+      env:
+        - HAB_NONINTERACTIVE: "true"
+        - HAB_NOCOLORING: "true"
+        - HAB_STUDIO_SECRET_HAB_NONINTERACTIVE: "true"
   - habitat/test:
+      description: Execute tests against the habitat artifact
       definition: .expeditor/habitat-test.pipeline.yml
-      trigger: default
+      trigger: pull_request
+      env:
+        - HAB_NONINTERACTIVE: "true"
+        - HAB_NOCOLORING: "true"
+        - HAB_STUDIO_SECRET_HAB_NONINTERACTIVE: "true"
 
 release_branches:
   - workstation-LTS:
@@ -72,18 +81,11 @@ subscriptions:
     actions:
       - built_in:promote_habitat_packages  
 
-
-  # this is the only way currently to promote built-in rubygems publish
-  - workload: project_promoted:{{agent_id}}:*
+   # Subscribe to the promotion of the dev channel to acceptance
+  - workload: project_promoted:{{agent_id}}:dev:*
     actions:
       - built_in:promote_habitat_packages
 
-  # subscription to fire off any other promotions that you may need for an additional channnel like LTS or something. 
-  - workload: staged_workload_released:{{agent_id}}:workstation_build_promote:*
+  - workload: project_promoted:{{agent_id}}:workstation-build:*
     actions:
-    - bash:.expeditor/promote-hab-pkg.sh:
-        post_commit: true
-
-staging_areas:
-  - workstation_build_promote:
-      workload: hab_package_published:stable:chef/fauxhai/{{version_constraint}}  
+      - built_in:promote_habitat_packages
