@@ -22,7 +22,7 @@ pipelines:
       description: Build the Habitat packages for faixhai
   - habitat/test:
       definition: .expeditor/habitat-test.pipeline.yml
-      trigger: default
+      trigger: pull_request
 
 release_branches:
   - workstation-LTS:
