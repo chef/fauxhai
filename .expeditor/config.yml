@@ -27,6 +27,7 @@ pipelines:
   - habitat/test:
       description: Execute tests against the habitat artifact
       definition: .expeditor/habitat-test.pipeline.yml
+      trigger: default
       env:
         - HAB_NONINTERACTIVE: "true"
         - HAB_NOCOLORING: "true"
