@@ -265,7 +265,7 @@ To automatically migrate ChefSpec tests to use newer platforms you use the [Chef
 
 ## v8.0.0 (2020-03-09)
 
-### New Platforms ###
+### New Platforms ######
 
 - Raspbian 10
 - Fedora 31
