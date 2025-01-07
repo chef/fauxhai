@@ -73,8 +73,6 @@ subscriptions:
             - "Expeditor: Skip Habitat"
             - "Expeditor: Skip All"
           only_if: built_in:bump_version
-      - built_in:build_gem:
-          only_if: built_in:bump_version
  
   # Automatically promote the Habitat packages from unstable to dev upon successful build
   - workload: buildkite_hab_build_group_published:{{agent_id}}:*
