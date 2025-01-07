@@ -1,14 +1,15 @@
-<!-- latest_release 0.1.3 -->
-## [v0.1.3](https://github.com/chef/fauxhai/tree/v0.1.3) (2025-01-03)
+<!-- latest_release 0.1.4 -->
+## [v0.1.4](https://github.com/chef/fauxhai/tree/v0.1.4) (2025-01-07)
 
 #### Merged Pull Requests
-- empty commit [#49](https://github.com/chef/fauxhai/pull/49) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
+- Testing pipeline with empty commit [#55](https://github.com/chef/fauxhai/pull/55) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Testing pipeline with empty commit [#55](https://github.com/chef/fauxhai/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.4 -->
 - empty commit [#49](https://github.com/chef/fauxhai/pull/49) ([sean-simmons-progress](https://github.com/sean-simmons-progress)) <!-- 0.1.3 -->
 - Updating the promote-hab script to grab the correct values out of run… [#45](https://github.com/chef/fauxhai/pull/45) ([sean-simmons-progress](https://github.com/sean-simmons-progress)) <!-- 0.1.1 -->
 <!-- release_rollup -->
