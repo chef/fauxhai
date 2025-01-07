@@ -14,7 +14,6 @@ artifact_channels:
   - workstation-build
   - LTS-2024
 
-
 pipelines:
   - verify:
       description: Pull Request validation tests
