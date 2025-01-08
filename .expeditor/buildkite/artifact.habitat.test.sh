@@ -23,7 +23,7 @@ git config --global --add safe.directory /workdir
 echo "--- git status for this workdir"
 git status
 
-echo "--- ruby version"
+echo "--- checking ruby version"
 ruby -v
 
 export project_root="$(git rev-parse --show-toplevel)"
