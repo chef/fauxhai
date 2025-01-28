@@ -1,4 +1,5 @@
 <!-- latest_release -->
+<!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
