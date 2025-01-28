@@ -1,4 +1,3 @@
-export HAB_REFRESH_CHANNEL="LTS-2024"
 pkg_name=fauxhai
 pkg_origin=chef
 ruby_pkg="core/ruby3_1"
