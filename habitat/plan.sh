@@ -1,4 +1,3 @@
-export HAB_BLDR_CHANNEL="LTS-2024"
 pkg_name=fauxhai
 pkg_origin=chef
 ruby_pkg="core/ruby3_1"
@@ -11,6 +10,7 @@ pkg_build_deps=(
     core/libarchive
     )
 pkg_bin_dirs=(bin)
+
 do_setup_environment() {
   build_line 'Setting GEM_HOME="$pkg_prefix/vendor"'
   export GEM_HOME="$pkg_prefix/vendor"
