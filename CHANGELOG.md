@@ -1,19 +1,13 @@
-<!-- latest_release 0.1.6 -->
-## [v0.1.6](https://github.com/chef/fauxhai/tree/v0.1.6) (2025-01-08)
-
-#### Merged Pull Requests
-- Testing the pipelines are working fine or not [#57](https://github.com/chef/fauxhai/pull/57) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
-- Testing the pipelines are working fine or not [#57](https://github.com/chef/fauxhai/pull/57) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.6 -->
-- Remove the building of gem from config  in hab package of Fauxhai [#56](https://github.com/chef/fauxhai/pull/56) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.5 -->
-- Testing pipeline with empty commit [#55](https://github.com/chef/fauxhai/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.4 -->
-- empty commit [#49](https://github.com/chef/fauxhai/pull/49) ([sean-simmons-progress](https://github.com/sean-simmons-progress)) <!-- 0.1.3 -->
-- Updating the promote-hab script to grab the correct values out of run… [#45](https://github.com/chef/fauxhai/pull/45) ([sean-simmons-progress](https://github.com/sean-simmons-progress)) <!-- 0.1.1 -->
+- Added the  release branch [#40](https://github.com/chef/fauxhai/pull/40) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.19 -->
+- Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.3.18 -->
+- [CI] Drop EOL rubies [#33](https://github.com/chef/fauxhai/pull/33) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 9.3.17 -->
+
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
