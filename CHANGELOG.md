@@ -11,16 +11,6 @@
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
-## [v9.3.21](https://github.com/chef/fauxhai/tree/v9.3.21) (2025-01-03)
-
-#### Merged Pull Requests
-- [CI] Drop EOL rubies [#33](https://github.com/chef/fauxhai/pull/33) ([dafyddcrosby](https://github.com/dafyddcrosby))
-- Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress))
-- added the channel variable [#42](https://github.com/chef/fauxhai/pull/42) ([nikhil2611](https://github.com/nikhil2611))
-- Sean Simmons progress/chef 18267 workstation team [#43](https://github.com/chef/fauxhai/pull/43) ([sean-simmons-progress](https://github.com/sean-simmons-progress))
-- Updated the version to 0.1 [#44](https://github.com/chef/fauxhai/pull/44) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
-
 ## [v9.3.16](https://github.com/chef/fauxhai/tree/v9.3.16) (2024-03-27)
 
 #### Merged Pull Requests
@@ -32,6 +22,7 @@
 - Add code owners for reviews [#28](https://github.com/chef/fauxhai/pull/28) ([tpowell-progress](https://github.com/tpowell-progress))
 - add_amazon_2023 [#26](https://github.com/chef/fauxhai/pull/26) ([jjperry](https://github.com/jjperry))
 - Add Ubuntu 24.04 [#27](https://github.com/chef/fauxhai/pull/27) ([nickpegg](https://github.com/nickpegg))
+<!-- latest_stable_release -->
 
 ## [v9.3.8](https://github.com/chef/fauxhai/tree/v9.3.8) (2023-05-05)
 
