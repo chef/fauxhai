@@ -22,11 +22,6 @@ function Invoke-Before {
     Set-PkgVersion
 }
 
-# Invoke-Before hook to set package version early
-function Invoke-Before {
-    Set-PkgVersion
-}
-
 function Invoke-SetupEnvironment {
     Push-RuntimeEnv -IsPath GEM_PATH "$pkg_prefix/vendor"
 
