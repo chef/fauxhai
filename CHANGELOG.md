@@ -1,14 +1,18 @@
-<!-- latest_release -->
+<!-- latest_release 9.3.20 -->
+## [v9.3.20](https://github.com/chef/fauxhai/tree/v9.3.20) (2025-02-04)
+
+#### Merged Pull Requests
+- Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.20 -->
 - Added the  release branch [#40](https://github.com/chef/fauxhai/pull/40) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.19 -->
 - Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.3.18 -->
 - [CI] Drop EOL rubies [#33](https://github.com/chef/fauxhai/pull/33) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 9.3.17 -->
-
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
