@@ -73,12 +73,9 @@ subscriptions:
             - "Expeditor: Skip All"
           only_if: built_in:bump_version
  
+  # this works for symantec version promote
   - workload: project_promoted:{{agent_id}}:*
     actions:
       - built_in:rollover_changelog
-
-   # Subscribe to the promotion of the unstable channel to stable(chef-dke-lts2024)
-  - workload: project_promoted:{{agent_id}}:unstable:*
-    actions:
       - built_in:promote_habitat_packages
       - built_in:publish_rubygems
