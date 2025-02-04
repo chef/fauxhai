@@ -1,5 +1,5 @@
-<!-- latest_release 9.3.20 -->
-## [v9.3.20](https://github.com/chef/fauxhai/tree/v9.3.20) (2025-02-04)
+<!-- latest_release 9.3.21 -->
+## [v9.3.21](https://github.com/chef/fauxhai/tree/v9.3.21) (2025-02-04)
 
 #### Merged Pull Requests
 - Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611))
