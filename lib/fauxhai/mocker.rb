@@ -45,15 +45,16 @@ module Fauxhai
         elsif @options[:github_fetching]
           # Try loading from github (in case someone submitted a PR with a new file, but we haven't
           # yet updated the gem version). Cache the response locally so it's faster next time.
-          require "open-uri" unless defined?(OpenURI)
+          require "net/http" unless defined?(Net::HTTP)
           begin
-            response = URI.open("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
-          rescue OpenURI::HTTPError
+            uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
+            response = Net::HTTP.get_response(uri)
+          rescue StandardError
             raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
           end
 
-          if response.status.first.to_i == 200
-            response_body = response.read
+          if response.code.to_i == 200
+            response_body = response.body
             path = Pathname.new(filepath)
             FileUtils.mkdir_p(path.dirname)
 
