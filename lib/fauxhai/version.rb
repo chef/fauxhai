@@ -1,3 +1,3 @@
 module Fauxhai
-  VERSION = "9.3.22".freeze
+  VERSION = "9.3.23".freeze
 end

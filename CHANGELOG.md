@@ -1,14 +1,15 @@
-<!-- latest_release 9.3.22 -->
-## [v9.3.22](https://github.com/chef/fauxhai/tree/v9.3.22) (2025-02-04)
+<!-- latest_release 9.3.23 -->
+## [v9.3.23](https://github.com/chef/fauxhai/tree/v9.3.23) (2025-04-15)
 
 #### Merged Pull Requests
-- Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611))
+- make pipelines public: habitat/test [#61](https://github.com/chef/fauxhai/pull/61) ([jaymzh](https://github.com/jaymzh))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- make pipelines public: habitat/test [#61](https://github.com/chef/fauxhai/pull/61) ([jaymzh](https://github.com/jaymzh)) <!-- 9.3.23 -->
 - Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.20 -->
 - Added the  release branch [#40](https://github.com/chef/fauxhai/pull/40) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.19 -->
 - Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.3.18 -->
