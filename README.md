@@ -172,7 +172,7 @@ end
 
 ## Testing Multiple Versions
 
-It's a common use case to test multiple version of the same operating system. Here's a simple example to get your started. This is more rspec-related that Fauxhai related, but here ya go:
+It's a common use case to test multiple version of the same operating system. Here's a simple example to get you started. This is more rspec-related that Fauxhai related, but here ya go:
 
 ```ruby
 require 'chefspec'
