@@ -1,14 +1,15 @@
-<!-- latest_release 9.3.23 -->
-## [v9.3.23](https://github.com/chef/fauxhai/tree/v9.3.23) (2025-04-15)
+<!-- latest_release 9.3.24 -->
+## [v9.3.24](https://github.com/chef/fauxhai/tree/v9.3.24) (2025-05-08)
 
 #### Merged Pull Requests
-- make pipelines public: habitat/test [#61](https://github.com/chef/fauxhai/pull/61) ([jaymzh](https://github.com/jaymzh))
+- Potential fix for code scanning alert no. 1: Use of `Kernel.open` or `IO.read` or similar sinks with a non-constant value [#64](https://github.com/chef/fauxhai/pull/64) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Potential fix for code scanning alert no. 1: Use of `Kernel.open` or `IO.read` or similar sinks with a non-constant value [#64](https://github.com/chef/fauxhai/pull/64) ([ashiqueps](https://github.com/ashiqueps)) <!-- 9.3.24 -->
 - make pipelines public: habitat/test [#61](https://github.com/chef/fauxhai/pull/61) ([jaymzh](https://github.com/jaymzh)) <!-- 9.3.23 -->
 - Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.20 -->
 - Added the  release branch [#40](https://github.com/chef/fauxhai/pull/40) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.19 -->
