@@ -1,14 +1,15 @@
-<!-- latest_release 9.3.25 -->
-## [v9.3.25](https://github.com/chef/fauxhai/tree/v9.3.25) (2025-05-09)
+<!-- latest_release 9.3.26 -->
+## [v9.3.26](https://github.com/chef/fauxhai/tree/v9.3.26) (2025-05-14)
 
 #### Merged Pull Requests
-- Updated the codeowners and fixed the security issue with the workflows [#65](https://github.com/chef/fauxhai/pull/65) ([ashiqueps](https://github.com/ashiqueps))
+- Commenting out Habitat package promotion to publish fauxhai gem first [#66](https://github.com/chef/fauxhai/pull/66) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Commenting out Habitat package promotion to publish fauxhai gem first [#66](https://github.com/chef/fauxhai/pull/66) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.26 -->
 - Updated the codeowners and fixed the security issue with the workflows [#65](https://github.com/chef/fauxhai/pull/65) ([ashiqueps](https://github.com/ashiqueps)) <!-- 9.3.25 -->
 - Potential fix for code scanning alert no. 1: Use of `Kernel.open` or `IO.read` or similar sinks with a non-constant value [#64](https://github.com/chef/fauxhai/pull/64) ([ashiqueps](https://github.com/ashiqueps)) <!-- 9.3.24 -->
 - make pipelines public: habitat/test [#61](https://github.com/chef/fauxhai/pull/61) ([jaymzh](https://github.com/jaymzh)) <!-- 9.3.23 -->
