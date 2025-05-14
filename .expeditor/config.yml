@@ -9,9 +9,9 @@ slack:
 rubygems:
   - fauxhai-chef
   
-artifact_channels:
-  - unstable
-  - chef-dke-lts2024
+# artifact_channels:
+#   - unstable
+#   - chef-dke-lts2024
 
 pipelines:
   - verify:
@@ -78,5 +78,5 @@ subscriptions:
   - workload: project_promoted:{{agent_id}}:*
     actions:
       - built_in:rollover_changelog
-      - built_in:promote_habitat_packages
+      # - built_in:promote_habitat_packages
       - built_in:publish_rubygems
