@@ -1,25 +1,23 @@
-<!-- latest_release 9.3.26 -->
-## [v9.3.26](https://github.com/chef/fauxhai/tree/v9.3.26) (2025-05-14)
-
-#### Merged Pull Requests
-- Commenting out Habitat package promotion to publish fauxhai gem first [#66](https://github.com/chef/fauxhai/pull/66) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=9.3.16 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Commenting out Habitat package promotion to publish fauxhai gem first [#66](https://github.com/chef/fauxhai/pull/66) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.26 -->
-- Updated the codeowners and fixed the security issue with the workflows [#65](https://github.com/chef/fauxhai/pull/65) ([ashiqueps](https://github.com/ashiqueps)) <!-- 9.3.25 -->
-- Potential fix for code scanning alert no. 1: Use of `Kernel.open` or `IO.read` or similar sinks with a non-constant value [#64](https://github.com/chef/fauxhai/pull/64) ([ashiqueps](https://github.com/ashiqueps)) <!-- 9.3.24 -->
-- make pipelines public: habitat/test [#61](https://github.com/chef/fauxhai/pull/61) ([jaymzh](https://github.com/jaymzh)) <!-- 9.3.23 -->
-- Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.20 -->
-- Added the  release branch [#40](https://github.com/chef/fauxhai/pull/40) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.3.19 -->
-- Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.3.18 -->
-- [CI] Drop EOL rubies [#33](https://github.com/chef/fauxhai/pull/33) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 9.3.17 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v9.3.26](https://github.com/chef/fauxhai/tree/v9.3.26) (2025-05-14)
+
+#### Merged Pull Requests
+- [CI] Drop EOL rubies [#33](https://github.com/chef/fauxhai/pull/33) ([dafyddcrosby](https://github.com/dafyddcrosby))
+- Package fauxhai as a hab package [#31](https://github.com/chef/fauxhai/pull/31) ([sanjain-progress](https://github.com/sanjain-progress))
+- Added the  release branch [#40](https://github.com/chef/fauxhai/pull/40) ([nikhil2611](https://github.com/nikhil2611))
+- Updating configuration for a symantec version promote and publish [#60](https://github.com/chef/fauxhai/pull/60) ([nikhil2611](https://github.com/nikhil2611))
+- make pipelines public: habitat/test [#61](https://github.com/chef/fauxhai/pull/61) ([jaymzh](https://github.com/jaymzh))
+- Potential fix for code scanning alert no. 1: Use of `Kernel.open` or `IO.read` or similar sinks with a non-constant value [#64](https://github.com/chef/fauxhai/pull/64) ([ashiqueps](https://github.com/ashiqueps))
+- Updated the codeowners and fixed the security issue with the workflows [#65](https://github.com/chef/fauxhai/pull/65) ([ashiqueps](https://github.com/ashiqueps))
+- Commenting out Habitat package promotion to publish fauxhai gem first [#66](https://github.com/chef/fauxhai/pull/66) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_stable_release -->
+
 ## [v9.3.16](https://github.com/chef/fauxhai/tree/v9.3.16) (2024-03-27)
 
 #### Merged Pull Requests
@@ -31,7 +29,6 @@
 - Add code owners for reviews [#28](https://github.com/chef/fauxhai/pull/28) ([tpowell-progress](https://github.com/tpowell-progress))
 - add_amazon_2023 [#26](https://github.com/chef/fauxhai/pull/26) ([jjperry](https://github.com/jjperry))
 - Add Ubuntu 24.04 [#27](https://github.com/chef/fauxhai/pull/27) ([nickpegg](https://github.com/nickpegg))
-<!-- latest_stable_release -->
 
 ## [v9.3.8](https://github.com/chef/fauxhai/tree/v9.3.8) (2023-05-05)
 
