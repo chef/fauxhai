@@ -1,7 +1,15 @@
-<!-- latest_release -->
+<!-- latest_release 9.4.0 -->
+## [v9.4.0](https://github.com/chef/fauxhai/tree/v9.4.0) (2025-05-20)
+
+#### Merged Pull Requests
+- CHEF-19102 - support for ruby 3.4 [#63](https://github.com/chef/fauxhai/pull/63) ([sanjain-progress](https://github.com/sanjain-progress))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=9.3.26 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- CHEF-19102 - support for ruby 3.4 [#63](https://github.com/chef/fauxhai/pull/63) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.4.0 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
