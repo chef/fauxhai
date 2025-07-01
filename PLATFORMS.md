@@ -84,6 +84,7 @@ This file lists each platform known to Fauxhai and the available versions for ea
 ### opensuse
 
 - 15.2
+- 15.6
 
 ### oracle
 
@@ -132,6 +133,7 @@ This file lists each platform known to Fauxhai and the available versions for ea
 - 18.04
 - 20.04
 - 22.04
+- 24.04
 
 ### windows
 
