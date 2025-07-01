@@ -17,6 +17,10 @@
     "9": {
       "deprecated": false,
       "path": "lib/fauxhai/platforms/almalinux/9.json"
+    },
+    "10": {
+      "deprecated": false,
+      "path": "lib/fauxhai/platforms/almalinux/10.json"
     }
   },
   "amazon": {
