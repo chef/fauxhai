@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.2 -->
-## [v9.4.2](https://github.com/chef/fauxhai/tree/v9.4.2) (2025-06-30)
+<!-- latest_release 9.4.3 -->
+## [v9.4.3](https://github.com/chef/fauxhai/tree/v9.4.3) (2025-07-01)
 
 #### Merged Pull Requests
-- Habitat authentication token [#68](https://github.com/chef/fauxhai/pull/68) ([borisicbs](https://github.com/borisicbs))
+- Add AlmaLinux 10 [#70](https://github.com/chef/fauxhai/pull/70) ([ramereth](https://github.com/ramereth))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add AlmaLinux 10 [#70](https://github.com/chef/fauxhai/pull/70) ([ramereth](https://github.com/ramereth)) <!-- 9.4.3 -->
 - Habitat authentication token [#68](https://github.com/chef/fauxhai/pull/68) ([borisicbs](https://github.com/borisicbs)) <!-- 9.4.2 -->
 - Adding myself to CODEOWNERS [#67](https://github.com/chef/fauxhai/pull/67) ([jaymzh](https://github.com/jaymzh)) <!-- 9.4.1 -->
 - CHEF-19102 - support for ruby 3.4 [#63](https://github.com/chef/fauxhai/pull/63) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.4.0 -->
