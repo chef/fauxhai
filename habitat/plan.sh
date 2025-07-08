@@ -1,8 +1,8 @@
-export HAB_BLDR_CHANNEL="LTS-2024"
-export HAB_REFRESH_CHANNEL="LTS-2024"
+export HAB_BLDR_CHANNEL="base-2025"
+export HAB_REFRESH_CHANNEL="base-2025"
 pkg_name=fauxhai
 pkg_origin=chef
-ruby_pkg="core/ruby3_1"
+ruby_pkg="core/ruby3_4"
 pkg_description="Easily mock full ohai data"
 pkg_deps=(${ruby_pkg} core/coreutils)
 pkg_build_deps=(
