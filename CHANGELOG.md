@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.4 -->
-## [v9.4.4](https://github.com/chef/fauxhai/tree/v9.4.4) (2025-07-08)
+<!-- latest_release 9.4.5 -->
+## [v9.4.5](https://github.com/chef/fauxhai/tree/v9.4.5) (2025-07-14)
 
 #### Merged Pull Requests
-- CHEF-21185 - Ruby 3.4 update in Fauxhai Hab package [#72](https://github.com/chef/fauxhai/pull/72) ([nikhil2611](https://github.com/nikhil2611))
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#73](https://github.com/chef/fauxhai/pull/73) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#73](https://github.com/chef/fauxhai/pull/73) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.5 -->
 - CHEF-21185 - Ruby 3.4 update in Fauxhai Hab package [#72](https://github.com/chef/fauxhai/pull/72) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.4 -->
 - Add AlmaLinux 10 [#70](https://github.com/chef/fauxhai/pull/70) ([ramereth](https://github.com/ramereth)) <!-- 9.4.3 -->
 - Habitat authentication token [#68](https://github.com/chef/fauxhai/pull/68) ([borisicbs](https://github.com/borisicbs)) <!-- 9.4.2 -->
