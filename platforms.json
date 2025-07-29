@@ -173,6 +173,10 @@
     "15.2": {
       "deprecated": false,
       "path": "lib/fauxhai/platforms/opensuse/15.2.json"
+    },
+    "15.6": {
+      "deprecated": false,
+      "path": "lib/fauxhai/platforms/opensuse/15.6.json"
     }
   },
   "oracle": {
