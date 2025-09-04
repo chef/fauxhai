@@ -193,7 +193,7 @@ describe 'awesome_cookbook::default' do
 end
 ```
 
-## Contributing to Fauxhai
+## Developing for Fauxhai
 
 Fauxhai is community-maintained and updated. Aside from the initial files, all of the ohai system mocks have been created by the community. If you have a system that you think would benefit the community, here's how you get it into [fauxhai](https://github.com/chef/fauxhai):
 
