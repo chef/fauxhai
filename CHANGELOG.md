@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.7 -->
-## [v9.4.7](https://github.com/chef/fauxhai/tree/v9.4.7) (2025-07-29)
+<!-- latest_release 9.4.8 -->
+## [v9.4.8](https://github.com/chef/fauxhai/tree/v9.4.8) (2025-09-11)
 
 #### Merged Pull Requests
-- Add OpenSUSE Leap 15.6 data [#71](https://github.com/chef/fauxhai/pull/71) ([beckcl](https://github.com/beckcl))
+- adding new github checks [#79](https://github.com/chef/fauxhai/pull/79) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- adding new github checks [#79](https://github.com/chef/fauxhai/pull/79) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.4.8 -->
 - Add OpenSUSE Leap 15.6 data [#71](https://github.com/chef/fauxhai/pull/71) ([beckcl](https://github.com/beckcl)) <!-- 9.4.7 -->
 - update windows hab plans to build on hab base-2025 [#74](https://github.com/chef/fauxhai/pull/74) ([muthuja](https://github.com/muthuja)) <!-- 9.4.6 -->
 - Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#73](https://github.com/chef/fauxhai/pull/73) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.5 -->
