@@ -81,7 +81,7 @@ jobs:
 
       # report to central developer dashboard
       report-to-atlassian-dashboard: false
-      quality-product-name: 'Chef-360'   # product name for quality reporting, like Chef360, Courier, Inspec
+      quality-product-name: 'Chef'   # product name for quality reporting, like Chef360, Courier, Inspec
       # quality-product-name: ${{ github.event.repository.name }}   # like 'Chef-360' - the product name for quality reporting, like Chef360, Courier, Inspec
       # quality-sonar-app-name: 'YourSonarAppName'
       # quality-testing-type: 'Integration' like Unit, Integration, e2e, api, Performance, Security
@@ -97,7 +97,7 @@ jobs:
       generate-sbom: true
       export-github-sbom: true      # SPDX JSON artifact on job instance  
       perform-blackduck-sca-scan: true # combined with generate sbom & generate github-sbom, also needs version above
-      blackduck-project-group-name: 'Chef-Chef360' # typically one of (Chef), Chef-Agents, Chef-Automate, Chef-Chef360, Chef-Habitat, Chef-Infrastructure-Server, Chef-Shared-Services, Chef-Non-Product'
+      blackduck-project-group-name: 'Chef' # typically one of (Chef), Chef-Agents, Chef-Automate, Chef-Chef360, Chef-Habitat, Chef-Infrastructure-Server, Chef-Shared-Services, Chef-Non-Product'
       blackduck-project-name: ${{ github.event.repository.name }} # BlackDuck project name, typically the repository name
       generate-blackduck-sbom: false # obsolete, use perform-blackduck-sca-scan instead
         
