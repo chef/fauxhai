@@ -1,4 +1,5 @@
 require "spec_helper"
+require "net/http"
 
 describe Fauxhai::Mocker do
   describe "#data" do
@@ -13,6 +14,26 @@ describe Fauxhai::Mocker do
     context "with a Windows platform and version" do
       let(:options) { { platform: "windows", version: "10" } }
       its(["hostname"]) { is_expected.to eq "Fauxhai" }
+    end
+
+    context "GitHub fetching fails" do
+      let(:options) {
+        {
+          github_fetching: true,
+          platform: "doesntexist",
+          version: "1"
+        }
+      }
+
+      before do
+        allow(Net::HTTP)
+          .to receive(:get_response)
+          .and_return(Net::HTTPNotFound.new('1.1', '404', 'Not Found'))
+      end
+
+      it 'yields a InvalidPlatform exception' do
+        expect { subject }.to raise_error(Fauxhai::Exception::InvalidPlatform, /http error code 404/)
+      end
     end
   end
 
