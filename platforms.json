@@ -101,6 +101,10 @@
     "12": {
       "deprecated": false,
       "path": "lib/fauxhai/platforms/debian/12.json"
+    },
+    "13": {
+      "deprecated": false,
+      "path": "lib/fauxhai/platforms/debian/13.json"
     }
   },
   "dragonfly4": {
