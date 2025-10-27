@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.10 -->
-## [v9.4.10](https://github.com/chef/fauxhai/tree/v9.4.10) (2025-09-17)
+<!-- latest_release 9.4.11 -->
+## [v9.4.11](https://github.com/chef/fauxhai/tree/v9.4.11) (2025-10-27)
 
 #### Merged Pull Requests
-- fix GitHub fetching [#69](https://github.com/chef/fauxhai/pull/69) ([beckcl](https://github.com/beckcl))
+- Add Debian 13 [#83](https://github.com/chef/fauxhai/pull/83) ([ramereth](https://github.com/ramereth))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add Debian 13 [#83](https://github.com/chef/fauxhai/pull/83) ([ramereth](https://github.com/ramereth)) <!-- 9.4.11 -->
 - fix GitHub fetching [#69](https://github.com/chef/fauxhai/pull/69) ([beckcl](https://github.com/beckcl)) <!-- 9.4.10 -->
 - disabling sonar until we can figure out the auth keys [#82](https://github.com/chef/fauxhai/pull/82) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.4.9 -->
 - adding new github checks [#79](https://github.com/chef/fauxhai/pull/79) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.4.8 -->
