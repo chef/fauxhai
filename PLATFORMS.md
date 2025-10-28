@@ -87,6 +87,7 @@ This file lists each platform known to Fauxhai and the available versions for ea
 
 - 15.2
 - 15.6
+- 16.0
 
 ### oracle
 
