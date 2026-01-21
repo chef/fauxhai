@@ -196,3 +196,7 @@ end
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/chef/fauxhai/blob/master/CONTRIBUTING.md).
+
+# Copyright
+
+See [COPYRIGHT.md](./COPYRIGHT.md).
