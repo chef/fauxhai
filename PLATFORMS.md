@@ -97,6 +97,7 @@ This file lists each platform known to Fauxhai and the available versions for ea
 - 7.6
 - 8
 - 9
+- 10
 
 ### raspbian
 
