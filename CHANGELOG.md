@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.12 -->
-## [v9.4.12](https://github.com/chef/fauxhai/tree/v9.4.12) (2026-01-27)
+<!-- latest_release 9.4.13 -->
+## [v9.4.13](https://github.com/chef/fauxhai/tree/v9.4.13) (2026-01-27)
 
 #### Merged Pull Requests
-- Update codeowners [#89](https://github.com/chef/fauxhai/pull/89) ([jaymzh](https://github.com/jaymzh))
+- Add OpenSUSE Leap 16.0 data [#84](https://github.com/chef/fauxhai/pull/84) ([beckcl](https://github.com/beckcl))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add OpenSUSE Leap 16.0 data [#84](https://github.com/chef/fauxhai/pull/84) ([beckcl](https://github.com/beckcl)) <!-- 9.4.13 -->
 - Update codeowners [#89](https://github.com/chef/fauxhai/pull/89) ([jaymzh](https://github.com/jaymzh)) <!-- 9.4.12 -->
 - Add Debian 13 [#83](https://github.com/chef/fauxhai/pull/83) ([ramereth](https://github.com/ramereth)) <!-- 9.4.11 -->
 - fix GitHub fetching [#69](https://github.com/chef/fauxhai/pull/69) ([beckcl](https://github.com/beckcl)) <!-- 9.4.10 -->
