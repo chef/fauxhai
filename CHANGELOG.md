@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.14 -->
-## [v9.4.14](https://github.com/chef/fauxhai/tree/v9.4.14) (2026-01-27)
+<!-- latest_release 9.4.15 -->
+## [v9.4.15](https://github.com/chef/fauxhai/tree/v9.4.15) (2026-01-27)
 
 #### Merged Pull Requests
-- Update actions/checkout to v6 [#87](https://github.com/chef/fauxhai/pull/87) ([dafyddcrosby](https://github.com/dafyddcrosby))
+- Adding platform information for Oracle Linux 10 [#85](https://github.com/chef/fauxhai/pull/85) ([justintsteele](https://github.com/justintsteele))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Adding platform information for Oracle Linux 10 [#85](https://github.com/chef/fauxhai/pull/85) ([justintsteele](https://github.com/justintsteele)) <!-- 9.4.15 -->
 - Update actions/checkout to v6 [#87](https://github.com/chef/fauxhai/pull/87) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 9.4.14 -->
 - Add OpenSUSE Leap 16.0 data [#84](https://github.com/chef/fauxhai/pull/84) ([beckcl](https://github.com/beckcl)) <!-- 9.4.13 -->
 - Update codeowners [#89](https://github.com/chef/fauxhai/pull/89) ([jaymzh](https://github.com/jaymzh)) <!-- 9.4.12 -->
