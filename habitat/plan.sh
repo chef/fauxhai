@@ -43,6 +43,8 @@ do_build() {
     bundle config --local silence_root_warning 1
     bundle install
     gem build fauxhai-chef.gemspec
+    ruby ./cleanup_lint_roller.rb
+
 }
 do_install() {
    export GEM_HOME="$pkg_prefix/vendor"

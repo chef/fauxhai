@@ -48,10 +48,11 @@ function Invoke-Build {
         bundle install
 
         gem build fauxhai-chef.gemspec
-	Write-BuildLine " ** Using gem to  install"
-	gem install fauxhai-chef-*.gem --no-document
+	    Write-BuildLine " ** Using gem to  install"
+	    gem install fauxhai-chef-*.gem --no-document
 
-
+        Write-BuildLine " ** Cleaning up lint_roller Gemfile.lock"
+        ruby ./cleanup_lint_roller.rb
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
     } finally {
         Pop-Location
