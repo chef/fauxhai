@@ -9,9 +9,9 @@ slack:
 rubygems:
   - fauxhai-chef
   
-# artifact_channels:
-#   - unstable
-#   - chef-dke-lts2024
+artifact_channels:
+  - current
+  - base-2025
 
 pipelines:
   - verify:
@@ -73,10 +73,16 @@ subscriptions:
             - "Expeditor: Skip Habitat"
             - "Expeditor: Skip All"
           only_if: built_in:bump_version
- 
-  # this works for symantec version promote
+  
+  # Creates current package from unstable package once hab build is complete
+  - workload: artifact_published:unstable:fauxhai:{{version_constraint}}
+    action:
+     - build_in_promote_habitat_packages
+
+  # Promoting current to base-2025 channel
   - workload: project_promoted:{{agent_id}}:*
     actions:
       - built_in:rollover_changelog
-      # - built_in:promote_habitat_packages
+      - built_in:promote_habitat_packages
       - built_in:publish_rubygems
+      - built_in:notify_chefio_slack_channels
