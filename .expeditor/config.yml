@@ -9,9 +9,10 @@ slack:
 rubygems:
   - fauxhai-chef
   
-# artifact_channels:
-#   - unstable
-#   - chef-dke-lts2024
+artifact_channels:
+  - stable
+  - base-2025-current
+  - base-2025
 
 pipelines:
   - verify:
@@ -78,5 +79,16 @@ subscriptions:
   - workload: project_promoted:{{agent_id}}:*
     actions:
       - built_in:rollover_changelog
-      # - built_in:promote_habitat_packages
+      - built_in:promote_habitat_packages
+  
+  # Promote to 'current' on successful Habitat testing
+  - workload: buildkite_build_passed:{{agent_id}}:habitat/test:*
+    actions:
+      - built_in:promote_habitat_packages:
+          channel: current
       - built_in:publish_rubygems
+
+  # Promote to 'base-2025' after promoting to 'stable'
+  - workload: hab_package_published:stable:fauxhai/9.*
+    actions:
+      - bash:.expeditor/scripts/base-2025-promote.sh
