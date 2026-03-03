@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.17 -->
-## [v9.4.17](https://github.com/chef/fauxhai/tree/v9.4.17) (2026-02-19)
+<!-- latest_release 9.4.18 -->
+## [v9.4.18](https://github.com/chef/fauxhai/tree/v9.4.18) (2026-03-03)
 
 #### Merged Pull Requests
-- Remove git from run time deps to build deps [#93](https://github.com/chef/fauxhai/pull/93) ([sanghinitin](https://github.com/sanghinitin))
+- Expeditor Configuration for promote workflow [#92](https://github.com/chef/fauxhai/pull/92) ([poorndm](https://github.com/poorndm))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Expeditor Configuration for promote workflow [#92](https://github.com/chef/fauxhai/pull/92) ([poorndm](https://github.com/poorndm)) <!-- 9.4.18 -->
 - Remove git from run time deps to build deps [#93](https://github.com/chef/fauxhai/pull/93) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.17 -->
 - Fixed lint roller grype issue [#90](https://github.com/chef/fauxhai/pull/90) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.16 -->
 - Adding platform information for Oracle Linux 10 [#85](https://github.com/chef/fauxhai/pull/85) ([justintsteele](https://github.com/justintsteele)) <!-- 9.4.15 -->
