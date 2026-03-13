@@ -256,7 +256,7 @@ Fauxhai is community-maintained and updated. Aside from the initial files, all o
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 # Copyright
 
