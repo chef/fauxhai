@@ -1,4 +1,4 @@
-Progress Chef fauxhai 9.4
+Progress Chef Fauxhai 9.4
 
 Portions of the Products include certain open source and commercial third-party
 components listed below ("Third-Party Components"). The authors of the
@@ -312,7 +312,7 @@ distribution. Licensee may also obtain the source code for these third-party
 technologies through http://iue.progress.com/3dpartysoftwares/Pages/default.aspx
 by following the instructions set forth therein.
 
-The Product containsHabitat core_acl 2.3.2 , Habitat core_attr 2.5.2, Habitat
+The Product contains Habitat core_acl 2.3.2 , Habitat core_attr 2.5.2, Habitat
 core_glibc 2.41, Habitat core_nss-myhostname 0.3, and Habitat core_gmp v6.3.0.
 This technology is subject to the terms of the GNU Library General Public License 
 Version 2 (“LGPL v2”), GNU Lesser General Public License Version 2.1 (“LGPL v2.1”) or 
@@ -328,7 +328,7 @@ conditions:
 
 (1) Apache License 2.0:
 
-Progress Chef fauxhai 9.4 incorporates AWS SDK for Ruby 1.12.1, AWS SDK for
+Progress Chef Fauxhai 9.4 incorporates AWS SDK for Ruby 1.12.1, AWS SDK for
 Ruby 1.122.0, AWS SDK for Ruby 1.1221.0, AWS SDK for Ruby 1.128.0, AWS SDK for
 Ruby 1.213.0, AWS SDK for Ruby 1.4.0, Addressable URI parser 2.8.9, Chef
 19.1.164, aws-sdk-core-ruby 3.242.0, chef-licensing 1.4.0, chef-vault 4.2.5,
@@ -543,7 +543,7 @@ Contents of NOTICE text file for AWS SDK for Ruby 1.128.0:
 
 (2) BSD 2-Clause "Simplified" License:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_ruby3_4 3.4.8, Habitat
+Progress Chef Fauxhai 9.4 incorporates Habitat core_ruby3_4 3.4.8, Habitat
 core_ruby3_4-plus-devkit 3.4.8, JSON for Ruby 2.18.1, Ruby-SOCKSify 1.8.1,
 RubyZip 2.4.1, base64 0.3.0, bigdecimal 4.0.1, date 3.5.1, io-console 0.8.2,
 mutex_m 0.3.0, nahi's httpclient 2.9.0, net-ftp 0.3.9, net-http 0.9.1,
@@ -578,7 +578,7 @@ ruby/logger 1.7.0, ruby/rexml 3.4.4, timeout 0.6.0, timingfuction 0.4.2, uri
 
 (3) BSD 3-Clause "New" or "Revised" License:
 
-Progress Chef fauxhai 9.4 incorporates unicode_utils 1.4.0.
+Progress Chef Fauxhai 9.4 incorporates unicode_utils 1.4.0.
 
   Copyright (c) , Stefan Lang All rights reserved.
 
@@ -612,7 +612,7 @@ Progress Chef fauxhai 9.4 incorporates unicode_utils 1.4.0.
 
 (4) BSD 3-Clause "New" or "Revised" License:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_libcap 2.73.
+Progress Chef Fauxhai 9.4 incorporates Habitat core_libcap 2.73.
 
   Copyright (c) , The Habitat Maintainers <humans@habitat.sh> All rights
   reserved.
@@ -647,7 +647,7 @@ Progress Chef fauxhai 9.4 incorporates Habitat core_libcap 2.73.
 
 (5) BSD 3-Clause "New" or "Revised" License:
 
-Progress Chef fauxhai 9.4 incorporates ffi 1.17.3.
+Progress Chef Fauxhai 9.4 incorporates ffi 1.17.3.
 
   Copyright (c) , Wayne Meissner All rights reserved.
 
@@ -681,7 +681,7 @@ Progress Chef fauxhai 9.4 incorporates ffi 1.17.3.
 
 (6) Expat License:
 
-Progress Chef fauxhai 9.4 incorporates netrc 0.11.0.
+Progress Chef Fauxhai 9.4 incorporates netrc 0.11.0.
 
   Expat License
   =============
@@ -710,7 +710,7 @@ Progress Chef fauxhai 9.4 incorporates netrc 0.11.0.
 
 (7) GNU General Public License v2.0 with Linux Syscall Note:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_linux-headers 5.19.8.
+Progress Chef Fauxhai 9.4 incorporates Habitat core_linux-headers 5.19.8.
 
   The GNU General Public License v2.0 w/Linux-syscall-note
   ========================================================
@@ -998,7 +998,7 @@ Progress Chef fauxhai 9.4 incorporates Habitat core_linux-headers 5.19.8.
 
 (8) GNU General Public License v3.0 only:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_bash 5.2.37, Habitat
+Progress Chef Fauxhai 9.4 incorporates Habitat core_bash 5.2.37, Habitat
 core_coreutils 9.7, and Habitat core_readline 8.2.13.
 
   "This program is free software: you can redistribute it and/or modify it
@@ -1662,7 +1662,7 @@ core_coreutils 9.7, and Habitat core_readline 8.2.13.
 
 (9) GNU General Public License v3.0 w/GCC Runtime Library exception:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_gcc-libs 14.3.0.
+Progress Chef Fauxhai 9.4 incorporates Habitat core_gcc-libs 14.3.0.
 
   GCC RUNTIME LIBRARY EXCEPTION
   =============================
@@ -2341,7 +2341,7 @@ Progress Chef fauxhai 9.4 incorporates Habitat core_gcc-libs 14.3.0.
 
 (10) GNU Lesser General Public License v2.1 only:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_acl 2.3.2, Habitat
+Progress Chef Fauxhai 9.4 incorporates Habitat core_acl 2.3.2, Habitat
 core_attr 2.5.2, Habitat core_glibc 2.41, and Habitat core_nss-myhostname 0.3.
 
   GNU Lesser General Public License Version 2.1 Only
@@ -2861,7 +2861,7 @@ core_attr 2.5.2, Habitat core_glibc 2.41, and Habitat core_nss-myhostname 0.3.
 
 (11) GNU Lesser General Public License v3.0 only:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_gmp 6.3.0.
+Progress Chef Fauxhai 9.4 incorporates Habitat core_gmp 6.3.0.
 
   GNU Lesser General Public License Version 3.0 Only
   --------------------------------------------------
@@ -3696,7 +3696,7 @@ Progress Chef fauxhai 9.4 incorporates Habitat core_gmp 6.3.0.
 
 (12) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates Rake 13.3.1.
+Progress Chef Fauxhai 9.4 incorporates Rake 13.3.1.
 
   The MIT License
   ===============
@@ -3722,7 +3722,7 @@ Progress Chef fauxhai 9.4 incorporates Rake 13.3.1.
 
 (13) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates rspec-support 3.13.7.
+Progress Chef Fauxhai 9.4 incorporates rspec-support 3.13.7.
 
   The MIT License
   ===============
@@ -3749,7 +3749,7 @@ Progress Chef fauxhai 9.4 incorporates rspec-support 3.13.7.
 
 (14) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates savonrb/nori 2.7.1.
+Progress Chef Fauxhai 9.4 incorporates savonrb/nori 2.7.1.
 
   The MIT License
   ===============
@@ -3775,7 +3775,7 @@ Progress Chef fauxhai 9.4 incorporates savonrb/nori 2.7.1.
 
 (15) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates regexp_parser 2.11.3.
+Progress Chef Fauxhai 9.4 incorporates regexp_parser 2.11.3.
 
   The MIT License
   ===============
@@ -3801,7 +3801,7 @@ Progress Chef fauxhai 9.4 incorporates regexp_parser 2.11.3.
 
 (16) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates yajl 0.3.4.
+Progress Chef Fauxhai 9.4 incorporates yajl 0.3.4.
 
   The MIT License
   ===============
@@ -3827,7 +3827,7 @@ Progress Chef fauxhai 9.4 incorporates yajl 0.3.4.
 
 (17) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates pastel 0.8.0, strings 0.2.1,
+Progress Chef Fauxhai 9.4 incorporates pastel 0.8.0, strings 0.2.1,
 strings-ansi 0.2.0, tty 0.23.1, tty 0.6.0, tty-command 0.7.0, tty-command
 0.9.0, tty-cursor 0.7.1, tty-screen 0.8.2, tty-spinner 0.9.3, and tty-table
 0.12.0.
@@ -3856,7 +3856,7 @@ strings-ansi 0.2.0, tty 0.23.1, tty 0.6.0, tty-command 0.7.0, tty-command
 
 (18) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates halostatue/diff-lcs 1.6.2,
+Progress Chef Fauxhai 9.4 incorporates halostatue/diff-lcs 1.6.2,
 mime-types-data 3.2026.0303, and ruby-mime-types 3.7.0.
 
   The MIT License
@@ -3883,7 +3883,7 @@ mime-types-data 3.2026.0303, and ruby-mime-types 3.7.0.
 
 (19) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates bleything's plist 3.7.2.
+Progress Chef Fauxhai 9.4 incorporates bleything's plist 3.7.2.
 
   The MIT License
   ===============
@@ -3909,7 +3909,7 @@ Progress Chef fauxhai 9.4 incorporates bleything's plist 3.7.2.
 
 (20) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates Ruby Public Suffix 7.0.5.
+Progress Chef Fauxhai 9.4 incorporates Ruby Public Suffix 7.0.5.
 
   The MIT License
   ===============
@@ -3935,7 +3935,7 @@ Progress Chef fauxhai 9.4 incorporates Ruby Public Suffix 7.0.5.
 
 (21) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates ast 2.4.3 and parser 3.3.10.2.
+Progress Chef Fauxhai 9.4 incorporates ast 2.4.3 and parser 3.3.10.2.
 
   The MIT License
   ===============
@@ -3961,7 +3961,7 @@ Progress Chef fauxhai 9.4 incorporates ast 2.4.3 and parser 3.3.10.2.
 
 (22) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates erubi 1.13.1.
+Progress Chef Fauxhai 9.4 incorporates erubi 1.13.1.
 
   The MIT License
   ===============
@@ -3987,7 +3987,7 @@ Progress Chef fauxhai 9.4 incorporates erubi 1.13.1.
 
 (23) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates jfelchner/ruby-progressbar 1.13.0.
+Progress Chef Fauxhai 9.4 incorporates jfelchner/ruby-progressbar 1.13.0.
 
   The MIT License
   ===============
@@ -4013,7 +4013,7 @@ Progress Chef fauxhai 9.4 incorporates jfelchner/ruby-progressbar 1.13.0.
 
 (24) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates ipaddress-gem/ipaddress 0.8.3.
+Progress Chef Fauxhai 9.4 incorporates ipaddress-gem/ipaddress 0.8.3.
 
   The MIT License
   ===============
@@ -4039,7 +4039,7 @@ Progress Chef fauxhai 9.4 incorporates ipaddress-gem/ipaddress 0.8.3.
 
 (25) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates unicode-display_width 2.6.0.
+Progress Chef Fauxhai 9.4 incorporates unicode-display_width 2.6.0.
 
   The MIT License
   ===============
@@ -4065,7 +4065,7 @@ Progress Chef fauxhai 9.4 incorporates unicode-display_width 2.6.0.
 
 (26) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates rubychan's coderay 1.1.3.
+Progress Chef Fauxhai 9.4 incorporates rubychan's coderay 1.1.3.
 
   The MIT License
   ===============
@@ -4091,7 +4091,7 @@ Progress Chef fauxhai 9.4 incorporates rubychan's coderay 1.1.3.
 
 (27) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates lint_roller 1.1.0.
+Progress Chef Fauxhai 9.4 incorporates lint_roller 1.1.0.
 
   The MIT License
   ===============
@@ -4117,7 +4117,7 @@ Progress Chef fauxhai 9.4 incorporates lint_roller 1.1.0.
 
 (28) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates erubis 2.7.0.
+Progress Chef Fauxhai 9.4 incorporates erubis 2.7.0.
 
   The MIT License
   ===============
@@ -4143,7 +4143,7 @@ Progress Chef fauxhai 9.4 incorporates erubis 2.7.0.
 
 (29) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_libffi 3.4.7, Habitat
+Progress Chef Fauxhai 9.4 incorporates Habitat core_libffi 3.4.7, Habitat
 core_libyaml 0.2.5, and Habitat core_ncurses 6.5.
 
   The MIT License
@@ -4170,7 +4170,7 @@ core_libyaml 0.2.5, and Habitat core_ncurses 6.5.
 
 (30) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates sickill's rainbow 3.1.1.
+Progress Chef Fauxhai 9.4 incorporates sickill's rainbow 3.1.1.
 
   The MIT License
   ===============
@@ -4196,7 +4196,7 @@ Progress Chef fauxhai 9.4 incorporates sickill's rainbow 3.1.1.
 
 (31) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates method_source 1.1.0.
+Progress Chef Fauxhai 9.4 incorporates method_source 1.1.0.
 
   The MIT License
   ===============
@@ -4222,7 +4222,7 @@ Progress Chef fauxhai 9.4 incorporates method_source 1.1.0.
 
 (32) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates bcrypt_pbkdf-ruby 1.1.2.
+Progress Chef Fauxhai 9.4 incorporates bcrypt_pbkdf-ruby 1.1.2.
 
   The MIT License
   ===============
@@ -4248,7 +4248,7 @@ Progress Chef fauxhai 9.4 incorporates bcrypt_pbkdf-ruby 1.1.2.
 
 (33) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates corefoundation 0.3.13.
+Progress Chef Fauxhai 9.4 incorporates corefoundation 0.3.13.
 
   The MIT License
   ===============
@@ -4274,7 +4274,7 @@ Progress Chef fauxhai 9.4 incorporates corefoundation 0.3.13.
 
 (34) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates TwP's logging 2.4.0 and little-plugger
+Progress Chef Fauxhai 9.4 incorporates TwP's logging 2.4.0 and little-plugger
 1.1.4.
 
   The MIT License
@@ -4301,7 +4301,7 @@ Progress Chef fauxhai 9.4 incorporates TwP's logging 2.4.0 and little-plugger
 
 (35) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates concurrent-ruby 1.3.6.
+Progress Chef Fauxhai 9.4 incorporates concurrent-ruby 1.3.6.
 
   The MIT License
   ===============
@@ -4327,7 +4327,7 @@ Progress Chef fauxhai 9.4 incorporates concurrent-ruby 1.3.6.
 
 (36) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates adamwiggins's rest-client 2.1.0.
+Progress Chef Fauxhai 9.4 incorporates adamwiggins's rest-client 2.1.0.
 
   The MIT License
   ===============
@@ -4353,7 +4353,7 @@ Progress Chef fauxhai 9.4 incorporates adamwiggins's rest-client 2.1.0.
 
 (37) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates tomlrb 1.3.0.
+Progress Chef Fauxhai 9.4 incorporates tomlrb 1.3.0.
 
   The MIT License
   ===============
@@ -4379,7 +4379,7 @@ Progress Chef fauxhai 9.4 incorporates tomlrb 1.3.0.
 
 (38) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates http-accept 1.7.0.
+Progress Chef Fauxhai 9.4 incorporates http-accept 1.7.0.
 
   The MIT License
   ===============
@@ -4405,7 +4405,7 @@ Progress Chef fauxhai 9.4 incorporates http-accept 1.7.0.
 
 (39) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates unf_ext 0.0.9.1.
+Progress Chef Fauxhai 9.4 incorporates unf_ext 0.0.9.1.
 
   The MIT License
   ===============
@@ -4431,7 +4431,7 @@ Progress Chef fauxhai 9.4 incorporates unf_ext 0.0.9.1.
 
 (40) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates language_server-protocol 3.17.0.5.
+Progress Chef Fauxhai 9.4 incorporates language_server-protocol 3.17.0.5.
 
   The MIT License
   ===============
@@ -4457,7 +4457,7 @@ Progress Chef fauxhai 9.4 incorporates language_server-protocol 3.17.0.5.
 
 (41) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates syslog-logger 1.6.8.
+Progress Chef Fauxhai 9.4 incorporates syslog-logger 1.6.8.
 
   The MIT License
   ===============
@@ -4485,7 +4485,7 @@ Progress Chef fauxhai 9.4 incorporates syslog-logger 1.6.8.
 
 (42) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates Rack 3.2.5.
+Progress Chef Fauxhai 9.4 incorporates Rack 3.2.5.
 
   The MIT License
   ===============
@@ -4511,7 +4511,7 @@ Progress Chef fauxhai 9.4 incorporates Rack 3.2.5.
 
 (43) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates Parslet 2.0.0.
+Progress Chef Fauxhai 9.4 incorporates Parslet 2.0.0.
 
   The MIT License
   ===============
@@ -4537,7 +4537,7 @@ Progress Chef fauxhai 9.4 incorporates Parslet 2.0.0.
 
 (44) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates ed25519 1.4.0.
+Progress Chef Fauxhai 9.4 incorporates ed25519 1.4.0.
 
   The MIT License
   ===============
@@ -4563,7 +4563,7 @@ Progress Chef fauxhai 9.4 incorporates ed25519 1.4.0.
 
 (45) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates gssapi 1.3.1.
+Progress Chef Fauxhai 9.4 incorporates gssapi 1.3.1.
 
   The MIT License
   ===============
@@ -4589,7 +4589,7 @@ Progress Chef fauxhai 9.4 incorporates gssapi 1.3.1.
 
 (46) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates faraday-net_http 3.4.2.
+Progress Chef Fauxhai 9.4 incorporates faraday-net_http 3.4.2.
 
   The MIT License
   ===============
@@ -4615,7 +4615,7 @@ Progress Chef fauxhai 9.4 incorporates faraday-net_http 3.4.2.
 
 (47) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates rubyntlm 0.6.5.
+Progress Chef Fauxhai 9.4 incorporates rubyntlm 0.6.5.
 
   The MIT License
   ===============
@@ -4641,7 +4641,7 @@ Progress Chef fauxhai 9.4 incorporates rubyntlm 0.6.5.
 
 (48) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates grosser's parallel 1.27.0.
+Progress Chef Fauxhai 9.4 incorporates grosser's parallel 1.27.0.
 
   The MIT License
   ===============
@@ -4667,7 +4667,7 @@ Progress Chef fauxhai 9.4 incorporates grosser's parallel 1.27.0.
 
 (49) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates hashie 5.1.0.
+Progress Chef Fauxhai 9.4 incorporates hashie 5.1.0.
 
   The MIT License
   ===============
@@ -4693,7 +4693,7 @@ Progress Chef fauxhai 9.4 incorporates hashie 5.1.0.
 
 (50) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates mwunsch's prism 1.9.0.
+Progress Chef Fauxhai 9.4 incorporates mwunsch's prism 1.9.0.
 
   The MIT License
   ===============
@@ -4719,7 +4719,7 @@ Progress Chef fauxhai 9.4 incorporates mwunsch's prism 1.9.0.
 
 (51) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates nicksieger's multipart-post 2.4.1.
+Progress Chef Fauxhai 9.4 incorporates nicksieger's multipart-post 2.4.1.
 
   The MIT License
   ===============
@@ -4752,7 +4752,7 @@ Progress Chef fauxhai 9.4 incorporates nicksieger's multipart-post 2.4.1.
 
 (52) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates RSpec 3.13.2, RSpec 3.13.5, and RSpec
+Progress Chef Fauxhai 9.4 incorporates RSpec 3.13.2, RSpec 3.13.5, and RSpec
 3.13.8.
 
   The MIT License
@@ -4779,7 +4779,7 @@ Progress Chef fauxhai 9.4 incorporates RSpec 3.13.2, RSpec 3.13.5, and RSpec
 
 (53) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates Pry REPL 0.16.0.
+Progress Chef Fauxhai 9.4 incorporates Pry REPL 0.16.0.
 
   The MIT License
   ===============
@@ -4806,7 +4806,7 @@ Progress Chef fauxhai 9.4 incorporates Pry REPL 0.16.0.
 
 (54) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates antw's iniparse 1.5.0.
+Progress Chef Fauxhai 9.4 incorporates antw's iniparse 1.5.0.
 
   The MIT License
   ===============
@@ -4832,7 +4832,7 @@ Progress Chef fauxhai 9.4 incorporates antw's iniparse 1.5.0.
 
 (55) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates net-scp 4.1.0, net-sftp 4.0.0, and
+Progress Chef Fauxhai 9.4 incorporates net-scp 4.1.0, net-sftp 4.0.0, and
 ruby-net-ssh 7.3.0.
 
   The MIT License
@@ -4859,7 +4859,7 @@ ruby-net-ssh 7.3.0.
 
 (56) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates proxifier2 1.1.0.
+Progress Chef Fauxhai 9.4 incorporates proxifier2 1.1.0.
 
   The MIT License
   ===============
@@ -4885,7 +4885,7 @@ Progress Chef fauxhai 9.4 incorporates proxifier2 1.1.0.
 
 (57) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates chefspec/fauxhai 9.3.0 and fauxhai-chef
+Progress Chef Fauxhai 9.4 incorporates chefspec/fauxhai 9.3.0 and fauxhai-chef
 9.3.16.
 
   The MIT License
@@ -4912,7 +4912,7 @@ Progress Chef fauxhai 9.4 incorporates chefspec/fauxhai 9.3.0 and fauxhai-chef
 
 (58) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates jimweirich's builder 3.3.0.
+Progress Chef Fauxhai 9.4 incorporates jimweirich's builder 3.3.0.
 
   The MIT License
   ===============
@@ -4938,7 +4938,7 @@ Progress Chef fauxhai 9.4 incorporates jimweirich's builder 3.3.0.
 
 (59) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates chef-gyoku 1.5.0.
+Progress Chef Fauxhai 9.4 incorporates chef-gyoku 1.5.0.
 
   The MIT License
   ===============
@@ -4964,7 +4964,7 @@ Progress Chef fauxhai 9.4 incorporates chef-gyoku 1.5.0.
 
 (60) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates rspec-its 1.3.1.
+Progress Chef Fauxhai 9.4 incorporates rspec-its 1.3.1.
 
   The MIT License
   ===============
@@ -4990,7 +4990,7 @@ Progress Chef fauxhai 9.4 incorporates rspec-its 1.3.1.
 
 (61) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates wisper 2.0.1.
+Progress Chef Fauxhai 9.4 incorporates wisper 2.0.1.
 
   The MIT License
   ===============
@@ -5016,7 +5016,7 @@ Progress Chef fauxhai 9.4 incorporates wisper 2.0.1.
 
 (62) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates faraday-follow_redirects 0.5.0.
+Progress Chef Fauxhai 9.4 incorporates faraday-follow_redirects 0.5.0.
 
   The MIT License
   ===============
@@ -5042,7 +5042,7 @@ Progress Chef fauxhai 9.4 incorporates faraday-follow_redirects 0.5.0.
 
 (63) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates http-cookie 1.1.0.
+Progress Chef Fauxhai 9.4 incorporates http-cookie 1.1.0.
 
   The MIT License
   ===============
@@ -5068,7 +5068,7 @@ Progress Chef fauxhai 9.4 incorporates http-cookie 1.1.0.
 
 (64) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates rackup 2.3.1.
+Progress Chef Fauxhai 9.4 incorporates rackup 2.3.1.
 
   The MIT License
   ===============
@@ -5106,7 +5106,7 @@ Progress Chef fauxhai 9.4 incorporates rackup 2.3.1.
 
 (65) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates multi_json 1.19.1.
+Progress Chef Fauxhai 9.4 incorporates multi_json 1.19.1.
 
   The MIT License
   ===============
@@ -5132,7 +5132,7 @@ Progress Chef fauxhai 9.4 incorporates multi_json 1.19.1.
 
 (66) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates RSpec 3.13.6.
+Progress Chef Fauxhai 9.4 incorporates RSpec 3.13.6.
 
   The MIT License
   ===============
@@ -5158,7 +5158,7 @@ Progress Chef fauxhai 9.4 incorporates RSpec 3.13.6.
 
 (67) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates technoweenie's faraday 2.14.1.
+Progress Chef Fauxhai 9.4 incorporates technoweenie's faraday 2.14.1.
 
   The MIT License
   ===============
@@ -5184,7 +5184,7 @@ Progress Chef fauxhai 9.4 incorporates technoweenie's faraday 2.14.1.
 
 (68) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates ffi-yajl 2.7.7.
+Progress Chef Fauxhai 9.4 incorporates ffi-yajl 2.7.7.
 
   The MIT License
   ===============
@@ -5210,7 +5210,7 @@ Progress Chef fauxhai 9.4 incorporates ffi-yajl 2.7.7.
 
 (69) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates Thor 1.4.0.
+Progress Chef Fauxhai 9.4 incorporates Thor 1.4.0.
 
   The MIT License
   ===============
@@ -5236,7 +5236,7 @@ Progress Chef fauxhai 9.4 incorporates Thor 1.4.0.
 
 (70) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates fuzzyurl 0.9.0.
+Progress Chef Fauxhai 9.4 incorporates fuzzyurl 0.9.0.
 
   The MIT License
   ===============
@@ -5262,7 +5262,7 @@ Progress Chef fauxhai 9.4 incorporates fuzzyurl 0.9.0.
 
 (71) MIT License:
 
-Progress Chef fauxhai 9.4 incorporates rubocop 1.84.2 and rubocop-ast 1.49.0.
+Progress Chef Fauxhai 9.4 incorporates rubocop 1.84.2 and rubocop-ast 1.49.0.
 
   The MIT License
   ===============
@@ -5288,7 +5288,7 @@ Progress Chef fauxhai 9.4 incorporates rubocop 1.84.2 and rubocop-ast 1.49.0.
 
 (72) Mozilla Public License 2.0:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_cacerts 2025-05-20,
+Progress Chef Fauxhai 9.4 incorporates Habitat core_cacerts 2025-05-20,
 sslshake 1.3.1, and vault 0.18.2.
 
   Mozilla Public License Version 2.0
@@ -5707,7 +5707,7 @@ sslshake 1.3.1, and vault 0.18.2.
 
 (73) OpenSSL Combined License:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_openssl 3.5.5.
+Progress Chef Fauxhai 9.4 incorporates Habitat core_openssl 3.5.5.
 
   LICENSE ISSUES
   ==============
@@ -5850,7 +5850,7 @@ Progress Chef fauxhai 9.4 incorporates Habitat core_openssl 3.5.5.
 
 (74) zlib License:
 
-Progress Chef fauxhai 9.4 incorporates Habitat core_zlib 1.3.1.
+Progress Chef Fauxhai 9.4 incorporates Habitat core_zlib 1.3.1.
 
   The zlib/libpng License
   =======================
@@ -5880,7 +5880,7 @@ Product:
 
 (1) Internal Progress Product License:
 
-Progress Chef fauxhai 9.4 incorporates appbundler 0.13.4, chef-telemetry 1.1.1,
+Progress Chef Fauxhai 9.4 incorporates appbundler 0.13.4, chef-telemetry 1.1.1,
 inspec-ruby 7.0.107, mixlib-authentication 3.0.10, mixlib-cli 2.1.8,
 mixlib-config 3.0.27, mixlib-log 3.2.3, and train-rest 0.5.0.
 
