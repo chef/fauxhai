@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.19 -->
-## [v9.4.19](https://github.com/chef/fauxhai/tree/v9.4.19) (2026-03-17)
+<!-- latest_release 9.4.20 -->
+## [v9.4.20](https://github.com/chef/fauxhai/tree/v9.4.20) (2026-03-18)
 
 #### Merged Pull Requests
-- For build using hab version 1.6 [#96](https://github.com/chef/fauxhai/pull/96) ([sanghinitin](https://github.com/sanghinitin))
+- Adding and building NOTICE file with hab package [#94](https://github.com/chef/fauxhai/pull/94) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.3.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Adding and building NOTICE file with hab package [#94](https://github.com/chef/fauxhai/pull/94) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.20 -->
 - For build using hab version 1.6 [#96](https://github.com/chef/fauxhai/pull/96) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.19 -->
 - Expeditor Configuration for promote workflow [#92](https://github.com/chef/fauxhai/pull/92) ([poorndm](https://github.com/poorndm)) <!-- 9.4.18 -->
 - Remove git from run time deps to build deps [#93](https://github.com/chef/fauxhai/pull/93) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.17 -->
