@@ -1,38 +1,36 @@
-<!-- latest_release 9.4.20 -->
-## [v9.4.20](https://github.com/chef/fauxhai/tree/v9.4.20) (2026-03-18)
-
-#### Merged Pull Requests
-- Adding and building NOTICE file with hab package [#94](https://github.com/chef/fauxhai/pull/94) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=9.3.26 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Adding and building NOTICE file with hab package [#94](https://github.com/chef/fauxhai/pull/94) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.20 -->
-- For build using hab version 1.6 [#96](https://github.com/chef/fauxhai/pull/96) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.19 -->
-- Expeditor Configuration for promote workflow [#92](https://github.com/chef/fauxhai/pull/92) ([poorndm](https://github.com/poorndm)) <!-- 9.4.18 -->
-- Remove git from run time deps to build deps [#93](https://github.com/chef/fauxhai/pull/93) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.17 -->
-- Fixed lint roller grype issue [#90](https://github.com/chef/fauxhai/pull/90) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.16 -->
-- Adding platform information for Oracle Linux 10 [#85](https://github.com/chef/fauxhai/pull/85) ([justintsteele](https://github.com/justintsteele)) <!-- 9.4.15 -->
-- Update actions/checkout to v6 [#87](https://github.com/chef/fauxhai/pull/87) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 9.4.14 -->
-- Add OpenSUSE Leap 16.0 data [#84](https://github.com/chef/fauxhai/pull/84) ([beckcl](https://github.com/beckcl)) <!-- 9.4.13 -->
-- Update codeowners [#89](https://github.com/chef/fauxhai/pull/89) ([jaymzh](https://github.com/jaymzh)) <!-- 9.4.12 -->
-- Add Debian 13 [#83](https://github.com/chef/fauxhai/pull/83) ([ramereth](https://github.com/ramereth)) <!-- 9.4.11 -->
-- fix GitHub fetching [#69](https://github.com/chef/fauxhai/pull/69) ([beckcl](https://github.com/beckcl)) <!-- 9.4.10 -->
-- disabling sonar until we can figure out the auth keys [#82](https://github.com/chef/fauxhai/pull/82) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.4.9 -->
-- adding new github checks [#79](https://github.com/chef/fauxhai/pull/79) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.4.8 -->
-- Add OpenSUSE Leap 15.6 data [#71](https://github.com/chef/fauxhai/pull/71) ([beckcl](https://github.com/beckcl)) <!-- 9.4.7 -->
-- update windows hab plans to build on hab base-2025 [#74](https://github.com/chef/fauxhai/pull/74) ([muthuja](https://github.com/muthuja)) <!-- 9.4.6 -->
-- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#73](https://github.com/chef/fauxhai/pull/73) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.5 -->
-- CHEF-21185 - Ruby 3.4 update in Fauxhai Hab package [#72](https://github.com/chef/fauxhai/pull/72) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.4 -->
-- Add AlmaLinux 10 [#70](https://github.com/chef/fauxhai/pull/70) ([ramereth](https://github.com/ramereth)) <!-- 9.4.3 -->
-- Habitat authentication token [#68](https://github.com/chef/fauxhai/pull/68) ([borisicbs](https://github.com/borisicbs)) <!-- 9.4.2 -->
-- Adding myself to CODEOWNERS [#67](https://github.com/chef/fauxhai/pull/67) ([jaymzh](https://github.com/jaymzh)) <!-- 9.4.1 -->
-- CHEF-19102 - support for ruby 3.4 [#63](https://github.com/chef/fauxhai/pull/63) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.4.0 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v9.4.20](https://github.com/chef/fauxhai/tree/v9.4.20) (2026-03-23)
+
+#### Merged Pull Requests
+- CHEF-19102 - support for ruby 3.4 [#63](https://github.com/chef/fauxhai/pull/63) ([sanjain-progress](https://github.com/sanjain-progress))
+- Adding myself to CODEOWNERS [#67](https://github.com/chef/fauxhai/pull/67) ([jaymzh](https://github.com/jaymzh))
+- Habitat authentication token [#68](https://github.com/chef/fauxhai/pull/68) ([borisicbs](https://github.com/borisicbs))
+- Add AlmaLinux 10 [#70](https://github.com/chef/fauxhai/pull/70) ([ramereth](https://github.com/ramereth))
+- CHEF-21185 - Ruby 3.4 update in Fauxhai Hab package [#72](https://github.com/chef/fauxhai/pull/72) ([nikhil2611](https://github.com/nikhil2611))
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#73](https://github.com/chef/fauxhai/pull/73) ([nikhil2611](https://github.com/nikhil2611))
+- update windows hab plans to build on hab base-2025 [#74](https://github.com/chef/fauxhai/pull/74) ([muthuja](https://github.com/muthuja))
+- Add OpenSUSE Leap 15.6 data [#71](https://github.com/chef/fauxhai/pull/71) ([beckcl](https://github.com/beckcl))
+- adding new github checks [#79](https://github.com/chef/fauxhai/pull/79) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
+- disabling sonar until we can figure out the auth keys [#82](https://github.com/chef/fauxhai/pull/82) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
+- fix GitHub fetching [#69](https://github.com/chef/fauxhai/pull/69) ([beckcl](https://github.com/beckcl))
+- Add Debian 13 [#83](https://github.com/chef/fauxhai/pull/83) ([ramereth](https://github.com/ramereth))
+- Update codeowners [#89](https://github.com/chef/fauxhai/pull/89) ([jaymzh](https://github.com/jaymzh))
+- Add OpenSUSE Leap 16.0 data [#84](https://github.com/chef/fauxhai/pull/84) ([beckcl](https://github.com/beckcl))
+- Update actions/checkout to v6 [#87](https://github.com/chef/fauxhai/pull/87) ([dafyddcrosby](https://github.com/dafyddcrosby))
+- Adding platform information for Oracle Linux 10 [#85](https://github.com/chef/fauxhai/pull/85) ([justintsteele](https://github.com/justintsteele))
+- Fixed lint roller grype issue [#90](https://github.com/chef/fauxhai/pull/90) ([sanghinitin](https://github.com/sanghinitin))
+- Remove git from run time deps to build deps [#93](https://github.com/chef/fauxhai/pull/93) ([sanghinitin](https://github.com/sanghinitin))
+- Expeditor Configuration for promote workflow [#92](https://github.com/chef/fauxhai/pull/92) ([poorndm](https://github.com/poorndm))
+- For build using hab version 1.6 [#96](https://github.com/chef/fauxhai/pull/96) ([sanghinitin](https://github.com/sanghinitin))
+- Adding and building NOTICE file with hab package [#94](https://github.com/chef/fauxhai/pull/94) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_stable_release -->
+
 ## [v9.3.26](https://github.com/chef/fauxhai/tree/v9.3.26) (2025-05-14)
 
 #### Merged Pull Requests
@@ -44,7 +42,6 @@
 - Potential fix for code scanning alert no. 1: Use of `Kernel.open` or `IO.read` or similar sinks with a non-constant value [#64](https://github.com/chef/fauxhai/pull/64) ([ashiqueps](https://github.com/ashiqueps))
 - Updated the codeowners and fixed the security issue with the workflows [#65](https://github.com/chef/fauxhai/pull/65) ([ashiqueps](https://github.com/ashiqueps))
 - Commenting out Habitat package promotion to publish fauxhai gem first [#66](https://github.com/chef/fauxhai/pull/66) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
 
 ## [v9.3.16](https://github.com/chef/fauxhai/tree/v9.3.16) (2024-03-27)
 
