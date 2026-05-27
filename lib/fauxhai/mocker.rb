@@ -74,47 +74,7 @@ module Fauxhai
     end
 
     def data
-      @fauxhai_data ||= lambda do
-        # If a path option was specified, use it
-        if @options[:path]
-          filepath = File.expand_path(@options[:path])
-
-          unless File.exist?(filepath)
-            raise Fauxhai::Exception::InvalidPlatform.new("You specified a path to a JSON file on the local system that does not exist: '#{filepath}'")
-          end
-        else
-          filepath = File.join(platform_path, "#{version}.json")
-        end
-
-        if File.exist?(filepath)
-          parse_and_validate(File.read(filepath))
-        elsif @options[:github_fetching]
-          # Try loading from github (in case someone submitted a PR with a new file, but we haven't
-          # yet updated the gem version). Cache the response locally so it's faster next time.
-          require "net/http" unless defined?(Net::HTTP)
-          begin
-            uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
-            response = Net::HTTP.get_response(uri)
-          rescue StandardError
-            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
-          end
-
-          if response.code.to_i == 200
-            response_body = response.body
-
-            begin
-              Fauxhai::CacheManager.write_json_file(filepath, response_body)
-            rescue Errno::EACCES # a pretty common problem in CI systems
-              puts "Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run."
-            end
-            return parse_and_validate(response_body)
-          else
-            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an Github fetching returned http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}")
-          end
-        else
-          raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and Github fetching is disabled! #{PLATFORM_LIST_MESSAGE}")
-        end
-      end.call
+      @fauxhai_data ||= load_platform_data
     end
 
     private
@@ -138,7 +98,49 @@ module Fauxhai
     end
 
     def platform_path
-      File.join(Fauxhai.root, "lib", "fauxhai", "platforms", platform)
+      @platform_path ||= File.join(Fauxhai.root, "lib", "fauxhai", "platforms", platform)
+    end
+
+    def load_platform_data
+      # If a path option was specified, use it
+      if @options[:path]
+        filepath = File.expand_path(@options[:path])
+
+        unless File.exist?(filepath)
+          raise Fauxhai::Exception::InvalidPlatform.new("You specified a path to a JSON file on the local system that does not exist: '#{filepath}'")
+        end
+      else
+        filepath = File.join(platform_path, "#{version}.json")
+      end
+
+      if File.exist?(filepath)
+        parse_and_validate(File.read(filepath))
+      elsif @options[:github_fetching]
+        # Try loading from github (in case someone submitted a PR with a new file, but we haven't
+        # yet updated the gem version). Cache the response locally so it's faster next time.
+        require "net/http" unless defined?(Net::HTTP)
+        begin
+          uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
+          response = Net::HTTP.get_response(uri)
+        rescue StandardError
+          raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
+        end
+
+        if response.code.to_i == 200
+          response_body = response.body
+
+          begin
+            Fauxhai::CacheManager.write_json_file(filepath, response_body)
+          rescue Errno::EACCES # a pretty common problem in CI systems
+            puts "Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run."
+          end
+          parse_and_validate(response_body)
+        else
+          raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an Github fetching returned http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}")
+        end
+      else
+        raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and Github fetching is disabled! #{PLATFORM_LIST_MESSAGE}")
+      end
     end
 
     def version

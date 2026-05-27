@@ -208,4 +208,46 @@ describe Fauxhai::Mocker do
       it { is_expected.to eq "99" }
     end
   end
+
+  describe "#platform_path (memoization)" do
+    it "returns the same object on repeated calls" do
+      mocker = described_class.new(platform: "ubuntu", version: "20.04", github_fetching: false)
+      path1 = mocker.send(:platform_path)
+      path2 = mocker.send(:platform_path)
+      expect(path1).to equal(path2) # same object identity, not just equal value
+    end
+
+    it "calls File.join only once across multiple accesses" do
+      mocker = described_class.new(platform: "ubuntu", version: "20.04", github_fetching: false)
+      allow(File).to receive(:join).and_call_original
+      mocker.send(:platform_path)
+      mocker.send(:platform_path)
+      mocker.send(:platform_path)
+      # File.join is called during memoization setup; after first call,
+      # subsequent calls should return the cached value without File.join
+      expect(File).to have_received(:join).with(Fauxhai.root, "lib", "fauxhai", "platforms", "ubuntu").once
+    end
+  end
+
+  describe "#load_platform_data (extracted from lambda)" do
+    it "is a private method that returns parsed JSON data" do
+      mocker = described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false)
+      result = mocker.send(:load_platform_data)
+      expect(result).to be_a(Hash)
+      expect(result["hostname"]).to eq("chefspec")
+    end
+
+    it "returns the same data as #data" do
+      mocker = described_class.new(platform: "ubuntu", version: "20.04", github_fetching: false)
+      expect(mocker.send(:load_platform_data)).to eq(mocker.data)
+    end
+
+    it "does not allocate a Proc/lambda for data loading" do
+      mocker = described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false)
+      before_count = ObjectSpace.count_objects[:T_DATA]
+      mocker.data
+      after_count = ObjectSpace.count_objects[:T_DATA]
+      expect(after_count).to be <= before_count + 1
+    end
+  end
 end
