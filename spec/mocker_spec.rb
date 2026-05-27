@@ -1,5 +1,7 @@
 require "spec_helper"
 require "net/http"
+require "tmpdir"
+require "fileutils"
 
 describe Fauxhai::Mocker do
   describe "#data" do
@@ -33,6 +35,121 @@ describe Fauxhai::Mocker do
 
       it 'yields a InvalidPlatform exception' do
         expect { subject }.to raise_error(Fauxhai::Exception::InvalidPlatform, /http error code 404/)
+      end
+    end
+
+    context "with a :path option pointing to a valid JSON file" do
+      let(:tmpdir) { Dir.mktmpdir }
+      let(:json_path) { File.join(tmpdir, "custom.json") }
+
+      before do
+        File.write(json_path, { "platform" => "custom", "hostname" => "pathhost" }.to_json)
+      end
+
+      after { FileUtils.remove_entry(tmpdir) }
+
+      it "loads data from the specified path" do
+        mocker = described_class.new(path: json_path, github_fetching: false)
+        expect(mocker.data["hostname"]).to eq("pathhost")
+      end
+    end
+
+    context "with a :path option pointing to a nonexistent file" do
+      it "raises InvalidPlatform" do
+        expect {
+          described_class.new(path: "/nonexistent/fake.json", github_fetching: false).data
+        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /does not exist/)
+      end
+    end
+
+    context "GitHub fetching succeeds with 200" do
+      let(:tmpdir) { Dir.mktmpdir }
+      let(:response_body) { { "platform" => "newplat", "hostname" => "ghhost" }.to_json }
+      let(:response) { instance_double(Net::HTTPOK, code: "200", body: response_body) }
+
+      before do
+        allow(Fauxhai).to receive(:root).and_return(tmpdir)
+        allow(Net::HTTP).to receive(:get_response).and_return(response)
+      end
+
+      after { FileUtils.remove_entry(tmpdir) }
+
+      it "fetches from GitHub and caches locally" do
+        mocker = described_class.new(platform: "newplat", version: "1.0", github_fetching: true)
+        expect(mocker.data["hostname"]).to eq("ghhost")
+
+        cached_path = File.join(tmpdir, "lib", "fauxhai", "platforms", "newplat", "1.0.json")
+        expect(File.exist?(cached_path)).to be true
+      end
+    end
+
+    context "GitHub fetching succeeds but write fails with EACCES" do
+      let(:tmpdir) { Dir.mktmpdir }
+      let(:response_body) { { "platform" => "noperm", "hostname" => "nopermhost" }.to_json }
+      let(:response) { instance_double(Net::HTTPOK, code: "200", body: response_body) }
+
+      before do
+        allow(Fauxhai).to receive(:root).and_return(tmpdir)
+        allow(Net::HTTP).to receive(:get_response).and_return(response)
+        allow(File).to receive(:open).and_call_original
+        allow(File).to receive(:open).with(anything, "w").and_raise(Errno::EACCES)
+      end
+
+      after { FileUtils.remove_entry(tmpdir) }
+
+      it "still returns data despite write failure" do
+        expect {
+          mocker = described_class.new(platform: "noperm", version: "1.0", github_fetching: true)
+          expect(mocker.data["hostname"]).to eq("nopermhost")
+        }.to output(/could not write/).to_stdout
+      end
+    end
+
+    context "GitHub fetching raises a network error" do
+      before do
+        allow(Net::HTTP).to receive(:get_response).and_raise(SocketError, "getaddrinfo failure")
+      end
+
+      it "raises InvalidPlatform with HTTP error message" do
+        expect {
+          described_class.new(platform: "neterr", version: "1.0", github_fetching: true).data
+        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /HTTP error/)
+      end
+    end
+
+    context "with github_fetching disabled and unknown platform" do
+      it "raises InvalidPlatform" do
+        expect {
+          described_class.new(platform: "doesntexist", version: "1", github_fetching: false).data
+        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Github fetching is disabled/)
+      end
+    end
+
+    context "with deprecated platform data" do
+      let(:tmpdir) { Dir.mktmpdir }
+      let(:json_path) { File.join(tmpdir, "deprecated.json") }
+
+      before do
+        File.write(json_path, { "platform" => "oldos", "platform_version" => "1.0", "deprecated" => true }.to_json)
+      end
+
+      after { FileUtils.remove_entry(tmpdir) }
+
+      it "prints a deprecation warning to STDERR" do
+        expect(STDERR).to receive(:puts).with(/WARNING.*deprecated/)
+        described_class.new(path: json_path, github_fetching: false).data
+      end
+    end
+
+    context "with a block" do
+      it "yields data for override" do
+        yielded = nil
+        described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false) do |data|
+          yielded = data
+          data["custom_key"] = "custom_value"
+        end
+        expect(yielded).to be_a(Hash)
+        expect(yielded["custom_key"]).to eq("custom_value")
       end
     end
   end
