@@ -68,5 +68,13 @@ task :update_json_list do
   File.write("platforms.json", JSON.pretty_generate(plats))
 end
 
+namespace :architecture do
+  desc "Generate or update ARCHITECTURE.md from the current codebase"
+  task :generate do
+    require_relative "scripts/generate_architecture_diagram"
+    Fauxhai::ArchitectureGenerator.generate
+  end
+end
+
 require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
