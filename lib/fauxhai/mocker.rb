@@ -124,7 +124,7 @@ module Fauxhai
       # If a path option was specified, use it
       if @options[:path]
         filepath = File.expand_path(@options[:path])
-        Fauxhai.logger.debug("Loading platform data from custom path: #{filepath}")
+        Fauxhai.logger.debug { "Loading platform data from custom path: #{filepath}" }
 
         unless File.exist?(filepath)
           raise Fauxhai::Exception::InvalidPlatform.new("You specified a path to a JSON file on the local system that does not exist: '#{filepath}'")
@@ -134,7 +134,7 @@ module Fauxhai
       end
 
       if File.exist?(filepath)
-        Fauxhai.logger.debug("Loading platform data from local file: #{filepath}")
+        Fauxhai.logger.debug { "Loading platform data from local file: #{filepath}" }
         parse_and_validate(File.read(filepath))
       elsif @options[:github_fetching]
         # Try loading from github (in case someone submitted a PR with a new file, but we haven't
