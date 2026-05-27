@@ -3,6 +3,7 @@ module Fauxhai
   autoload :Fetcher, "fauxhai/fetcher"
   autoload :Mocker, "fauxhai/mocker"
   autoload :VERSION, "fauxhai/version"
+  autoload :VersionResolver, "fauxhai/version_resolver"
 
   def self.root
     @@root ||= File.expand_path("../../", __FILE__)
