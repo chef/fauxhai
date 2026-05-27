@@ -35,14 +35,17 @@ module Fauxhai
       @options = options
 
       if !force_cache_miss? && cached?
+        Fauxhai.logger.debug("Cache hit for #{cache_key}, loading from #{cache_file}")
         @data = cache
       else
+        Fauxhai.logger.info("Cache miss for #{user}@#{host}, connecting via SSH")
         require "net/ssh" unless defined?(Net::SSH)
         Net::SSH.start(host, user, @options) do |ssh|
           @data = JSON.parse(ssh.exec!("ohai"))
         end
 
         # cache this data so we do not have to SSH again
+        Fauxhai.logger.debug("Caching fetched data to #{cache_file}")
         Fauxhai::CacheManager.write_json_file(cache_file, @data)
       end
 

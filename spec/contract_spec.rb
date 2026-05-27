@@ -92,8 +92,8 @@ RSpec.describe "API contract tests" do
     # Note: the chefspec pseudo-platform JSON uses "hostname" => "chefspec"
     # as its identifier rather than a "platform" key.
     context "no-platform fallback contract" do
-      it "falls back to 'chefspec' platform and warns on STDERR" do
-        expect(STDERR).to receive(:puts).with(/WARNING.*platform/)
+      it "falls back to 'chefspec' platform and warns via logger" do
+        expect(Fauxhai.logger).to receive(:warn).with(/platform/)
         mocker = Fauxhai::Mocker.new(github_fetching: false)
         expect(mocker.data["hostname"]).to eq("chefspec")
       end

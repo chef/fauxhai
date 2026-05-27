@@ -37,6 +37,7 @@ module Fauxhai
     # @raise [Errno::ENOENT]       if the file does not exist
     # @raise [JSON::ParserError]   if the file is not valid JSON
     def self.read_json_file(path)
+      Fauxhai.logger.debug("CacheManager reading: #{path}")
       JSON.parse(File.read(path))
     end
 
@@ -48,6 +49,7 @@ module Fauxhai
     # @return [void]
     # @raise [Errno::EACCES] if the directory or file is not writable
     def self.write_json_file(path, data)
+      Fauxhai.logger.debug("CacheManager writing: #{path}")
       FileUtils.mkdir_p(File.dirname(path))
       content = data.is_a?(String) ? data : data.to_json
       File.open(path, "w") { |f| f.write(content) }

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "json" unless defined?(JSON)
+
 module Fauxhai
   # Loads mock Ohai data from bundled JSON fixtures or, as a fallback,
   # from the GitHub repository's `main` branch.
@@ -93,7 +95,7 @@ module Fauxhai
     def parse_and_validate(unparsed_data)
       parsed_data = JSON.parse(unparsed_data)
       if parsed_data["deprecated"]
-        STDERR.puts "WARNING: Fauxhai platform data for #{parsed_data["platform"]} #{parsed_data["platform_version"]} is deprecated and will be removed in the 10.0 release 3/2022. #{PLATFORM_LIST_MESSAGE}"
+        Fauxhai.logger.warn("Fauxhai platform data for #{parsed_data["platform"]} #{parsed_data["platform_version"]} is deprecated and will be removed in the 10.0 release 3/2022. #{PLATFORM_LIST_MESSAGE}")
       end
       parsed_data
     end
@@ -107,7 +109,7 @@ module Fauxhai
 
     def platform
       @options[:platform] ||= begin
-                                STDERR.puts "WARNING: you must specify a 'platform' and optionally a 'version' for your ChefSpec Runner and/or Fauxhai constructor, in the future omitting the platform will become a hard error. #{PLATFORM_LIST_MESSAGE}"
+                                Fauxhai.logger.warn("you must specify a 'platform' and optionally a 'version' for your ChefSpec Runner and/or Fauxhai constructor, in the future omitting the platform will become a hard error. #{PLATFORM_LIST_MESSAGE}")
                                 "chefspec"
                               end
       validate_identifier!(@options[:platform], "platform")
@@ -122,6 +124,7 @@ module Fauxhai
       # If a path option was specified, use it
       if @options[:path]
         filepath = File.expand_path(@options[:path])
+        Fauxhai.logger.debug("Loading platform data from custom path: #{filepath}")
 
         unless File.exist?(filepath)
           raise Fauxhai::Exception::InvalidPlatform.new("You specified a path to a JSON file on the local system that does not exist: '#{filepath}'")
@@ -131,6 +134,7 @@ module Fauxhai
       end
 
       if File.exist?(filepath)
+        Fauxhai.logger.debug("Loading platform data from local file: #{filepath}")
         parse_and_validate(File.read(filepath))
       elsif @options[:github_fetching]
         # Try loading from github (in case someone submitted a PR with a new file, but we haven't
@@ -138,6 +142,7 @@ module Fauxhai
         require "net/http" unless defined?(Net::HTTP)
         begin
           uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
+          Fauxhai.logger.info("Fetching platform data from GitHub: #{uri}")
           response = Net::HTTP.get_response(uri)
         rescue StandardError
           raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
@@ -149,7 +154,7 @@ module Fauxhai
           begin
             Fauxhai::CacheManager.write_json_file(filepath, response_body)
           rescue Errno::EACCES # a pretty common problem in CI systems
-            puts "Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run."
+            Fauxhai.logger.warn("Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run.")
           end
           parse_and_validate(response_body)
         else

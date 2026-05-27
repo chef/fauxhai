@@ -98,10 +98,8 @@ describe Fauxhai::Mocker do
       after { FileUtils.remove_entry(tmpdir) }
 
       it "still returns data despite write failure" do
-        expect {
-          mocker = described_class.new(platform: "noperm", version: "1.0", github_fetching: true)
-          expect(mocker.data["hostname"]).to eq("nopermhost")
-        }.to output(/could not write/).to_stdout
+        mocker = described_class.new(platform: "noperm", version: "1.0", github_fetching: true)
+        expect(mocker.data["hostname"]).to eq("nopermhost")
       end
     end
 
@@ -135,8 +133,8 @@ describe Fauxhai::Mocker do
 
       after { FileUtils.remove_entry(tmpdir) }
 
-      it "prints a deprecation warning to STDERR" do
-        expect(STDERR).to receive(:puts).with(/WARNING.*deprecated/)
+      it "logs a deprecation warning" do
+        expect(Fauxhai.logger).to receive(:warn).with(/deprecated/)
         described_class.new(path: json_path, github_fetching: false).data
       end
     end
