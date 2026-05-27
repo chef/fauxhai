@@ -1,4 +1,4 @@
-require "digest/sha1"
+# frozen_string_literal: true
 
 module Fauxhai
   # Connects to a remote host via SSH, runs `ohai`, and returns the parsed

@@ -250,4 +250,64 @@ describe Fauxhai::Mocker do
       expect(after_count).to be <= before_count + 1
     end
   end
+
+  describe "input validation (security)" do
+    context "with path traversal in platform" do
+      it "raises InvalidPlatform for '../etc'" do
+        expect {
+          described_class.new(platform: "../etc", version: "1", github_fetching: false).data
+        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid platform/)
+      end
+    end
+
+    context "with URL injection in platform" do
+      it "raises InvalidPlatform for 'foo%2F..%2Fbar'" do
+        expect {
+          described_class.new(platform: "foo%2F..%2Fbar", version: "1", github_fetching: false).data
+        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid platform/)
+      end
+    end
+
+    context "with path traversal in version" do
+      it "raises InvalidPlatform for '../../etc/passwd'" do
+        expect {
+          described_class.new(platform: "ubuntu", version: "../../etc/passwd", github_fetching: false).data
+        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid version/)
+      end
+    end
+
+    context "with slash in version" do
+      it "raises InvalidPlatform for versions containing '/'" do
+        expect {
+          described_class.new(platform: "ubuntu", version: "20/04", github_fetching: false).data
+        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid version/)
+      end
+    end
+
+    context "with valid platform and version" do
+      it "allows alphanumeric with dots (e.g. ubuntu 20.04)" do
+        expect {
+          described_class.new(platform: "ubuntu", version: "20.04", github_fetching: false).data
+        }.not_to raise_error
+      end
+
+      it "allows dashes (e.g. centos-stream)" do
+        expect {
+          described_class.new(platform: "centos-stream", version: "8", github_fetching: false).data
+        }.not_to raise_error
+      end
+
+      it "allows underscores (e.g. mac_os_x)" do
+        expect {
+          described_class.new(platform: "mac_os_x", version: "10.15", github_fetching: false).data
+        }.not_to raise_error
+      end
+
+      it "allows ARCH-style versions (e.g. 4.10.13-1-ARCH)" do
+        expect {
+          described_class.new(platform: "arch", version: "4.10.13-1-ARCH", github_fetching: false).data
+        }.not_to raise_error
+      end
+    end
+  end
 end

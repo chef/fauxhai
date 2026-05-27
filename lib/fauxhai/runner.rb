@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "ohai" unless defined?(Ohai::System)
 require "ohai/plugins/chef"
 

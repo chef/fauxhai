@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "json" unless defined?(JSON)
 require "fileutils" unless defined?(FileUtils)
 

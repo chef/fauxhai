@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Fauxhai
   # Loads mock Ohai data from bundled JSON fixtures or, as a fallback,
   # from the GitHub repository's `main` branch.
@@ -79,6 +81,12 @@ module Fauxhai
 
     private
 
+    # Pattern for valid platform and version identifiers.
+    # Allows alphanumeric characters, dots, dashes, and underscores only.
+    # Prevents path traversal (../) and URI injection (%2F, ?, #) in
+    # filesystem paths and GitHub raw URLs.
+    SAFE_IDENTIFIER = /\A[a-zA-Z0-9][a-zA-Z0-9._-]*\z/
+
     # As major releases of Ohai ship it's difficult and sometimes impossible
     # to regenerate all fauxhai data. This allows us to deprecate old releases
     # and eventually remove them while giving end users ample warning.
@@ -90,11 +98,20 @@ module Fauxhai
       parsed_data
     end
 
+    def validate_identifier!(value, label)
+      return if value.nil? || value.to_s.empty?
+      unless value.to_s.match?(SAFE_IDENTIFIER)
+        raise Fauxhai::Exception::InvalidPlatform.new("Invalid #{label}: '#{value}'. Only alphanumeric characters, dots, dashes, and underscores are allowed. #{PLATFORM_LIST_MESSAGE}")
+      end
+    end
+
     def platform
       @options[:platform] ||= begin
                                 STDERR.puts "WARNING: you must specify a 'platform' and optionally a 'version' for your ChefSpec Runner and/or Fauxhai constructor, in the future omitting the platform will become a hard error. #{PLATFORM_LIST_MESSAGE}"
                                 "chefspec"
                               end
+      validate_identifier!(@options[:platform], "platform")
+      @options[:platform]
     end
 
     def platform_path
@@ -145,6 +162,7 @@ module Fauxhai
 
     def version
       @version ||= begin
+        validate_identifier!(@options[:version], "version")
         if File.exist?("#{platform_path}/#{@options[:version]}.json")
           # Whole version, use it as-is.
           @options[:version]

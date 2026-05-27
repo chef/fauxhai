@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Fauxhai
   autoload :CacheManager, "fauxhai/cache_manager"
   autoload :Exception, "fauxhai/exception"

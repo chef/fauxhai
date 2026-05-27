@@ -30,7 +30,7 @@ RSpec.describe Fauxhai::ArchitectureGenerator do
 
     it "extracts require statements" do
       fetcher = files.find { |f| f.basename == "fetcher" }
-      expect(fetcher.requires).to include("digest/sha1")
+      expect(fetcher.requires).to include("net/ssh")
     end
   end
 
