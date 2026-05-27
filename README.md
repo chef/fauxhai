@@ -256,7 +256,9 @@ Fauxhai is community-maintained and updated. Aside from the initial files, all o
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide, including the **Walk workflow** (plan → implement → test → PR) and code coverage requirements.
+
+New to the project? See [docs/onboarding-walk.md](./docs/onboarding-walk.md) for a ready-to-paste Copilot Chat prompt that walks you through your first task.
 
 # Copyright
 
