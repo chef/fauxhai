@@ -36,3 +36,16 @@ jobs:
         run: npm install @mermaid-js/mermaid-cli
       - name: Validate architecture diagrams
         run: ./scripts/validate-mermaid.sh
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    name: Secret scanning (gitleaks)
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        with:
+          args: detect --config .gitleaks.toml --verbose
+        env:
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}

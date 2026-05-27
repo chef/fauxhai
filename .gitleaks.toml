@@ -1,0 +1,18 @@
+# Gitleaks configuration for fauxhai
+# https://github.com/gitleaks/gitleaks
+
+title = "fauxhai gitleaks config"
+
+[allowlist]
+  description = "Known test fixtures and non-secret files"
+  paths = [
+    # SSH key fixtures used by Runner to populate mock Ohai data.
+    # These are deliberately committed test keys, not real credentials.
+    # Only the .pub files are read by code; private keys exist as fixtures only.
+    '''lib/fauxhai/keys/id_rsa''',
+    '''lib/fauxhai/keys/id_dsa''',
+    '''lib/fauxhai/keys/id_rsa\.pub''',
+    '''lib/fauxhai/keys/id_dsa\.pub''',
+    # Platform JSON files may contain sanitized mock SSH keys in Ohai data
+    '''lib/fauxhai/platforms/.*\.json''',
+  ]
