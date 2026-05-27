@@ -95,7 +95,14 @@ module Fauxhai
     def parse_and_validate(unparsed_data)
       parsed_data = JSON.parse(unparsed_data)
       if parsed_data["deprecated"]
-        Fauxhai.logger.warn("Fauxhai platform data for #{parsed_data["platform"]} #{parsed_data["platform_version"]} is deprecated and will be removed in the 10.0 release 3/2022. #{PLATFORM_LIST_MESSAGE}")
+        msg = "Fauxhai platform data for #{parsed_data["platform"]} #{parsed_data["platform_version"]} is deprecated and will be removed in the 10.0 release 3/2022. #{PLATFORM_LIST_MESSAGE}"
+        if Fauxhai.strict_mode
+          Fauxhai.logger.info { "strict_mode=true — raising on deprecated platform data" }
+          raise Fauxhai::Exception::InvalidPlatform.new(msg)
+        else
+          Fauxhai.logger.info { "strict_mode=false — warning on deprecated platform data" }
+          Fauxhai.logger.warn(msg)
+        end
       end
       parsed_data
     end
@@ -109,8 +116,15 @@ module Fauxhai
 
     def platform
       @options[:platform] ||= begin
-                                Fauxhai.logger.warn("you must specify a 'platform' and optionally a 'version' for your ChefSpec Runner and/or Fauxhai constructor, in the future omitting the platform will become a hard error. #{PLATFORM_LIST_MESSAGE}")
-                                "chefspec"
+                                msg = "you must specify a 'platform' and optionally a 'version' for your ChefSpec Runner and/or Fauxhai constructor. #{PLATFORM_LIST_MESSAGE}"
+                                if Fauxhai.strict_mode
+                                  Fauxhai.logger.info { "strict_mode=true — raising on missing platform" }
+                                  raise Fauxhai::Exception::InvalidPlatform.new(msg)
+                                else
+                                  Fauxhai.logger.info { "strict_mode=false — falling back to 'chefspec' platform" }
+                                  Fauxhai.logger.warn("#{msg} In the future omitting the platform will become a hard error.")
+                                  "chefspec"
+                                end
                               end
       validate_identifier!(@options[:platform], "platform")
       @options[:platform]

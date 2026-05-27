@@ -33,6 +33,29 @@ module Fauxhai
     @logger = new_logger
   end
 
+  # Returns whether strict mode is enabled.
+  #
+  # Strict mode changes two higher-risk behaviors:
+  #   1. Missing platform: raises InvalidPlatform instead of falling back
+  #      to "chefspec" with a warning.
+  #   2. Deprecated platform data: raises InvalidPlatform instead of
+  #      logging a warning and returning the data.
+  #
+  # Toggle via:
+  #   Fauxhai.strict_mode = true
+  #   ENV["FAUXHAI_STRICT_MODE"] = "1"  (or "true", "yes", "on")
+  #
+  # Default: false (backward-compatible).
+  def self.strict_mode
+    return @strict_mode unless @strict_mode.nil?
+    %w[1 true yes on].include?(ENV["FAUXHAI_STRICT_MODE"].to_s.downcase)
+  end
+
+  # Enable or disable strict mode.
+  def self.strict_mode=(value)
+    @strict_mode = value
+  end
+
   def self.root
     @@root ||= File.expand_path("../../", __FILE__)
   end
