@@ -1,6 +1,35 @@
 require "digest/sha1"
 
 module Fauxhai
+  # Connects to a remote host via SSH, runs `ohai`, and returns the parsed
+  # JSON output as a Ruby Hash.
+  #
+  # == File paths
+  # - Source: `lib/fauxhai/fetcher.rb`
+  # - SSH keys: `lib/fauxhai/keys/id_rsa`, `lib/fauxhai/keys/id_dsa`
+  # - Cache dir: `<Fauxhai.root>/tmp/`
+  #
+  # == Data flow
+  #   Fauxhai.fetch(host: "node1") →
+  #     1. Check local cache (`tmp/<SHA2 of user@host>`)
+  #     2. On miss → `Net::SSH.start` → `ssh.exec!("ohai")` → JSON.parse
+  #     3. Write result to cache via {CacheManager.write_json_file}
+  #     4. If ChefSpec is loaded, monkey-patch `ChefSpec::Runner#fake_ohai`
+  #
+  # == Risks
+  # - *SSH credential exposure*: options hash may contain `:password` or
+  #   `:key_data` — these are passed directly to `Net::SSH.start`. Never
+  #   log or persist the raw `@options` hash.
+  # - *Stale cache*: cached data is never invalidated automatically. Use
+  #   `force_cache_miss: true` to bypass the cache.
+  # - *ChefSpec monkey-patch*: if ChefSpec is defined, `#fake_ohai` is
+  #   injected into `ChefSpec::Runner` at runtime — this is global state
+  #   and can leak between test examples.
+  #
+  # == Extension guidance
+  # - To add new SSH-based collectors, subclass Fetcher or compose a new
+  #   class that delegates `cache`/`cache_file` to {CacheManager}.
+  # - Do NOT add direct `File.open`/`JSON.parse` calls — use CacheManager.
   class Fetcher
     def initialize(options = {}, &override_attributes)
       @options = options

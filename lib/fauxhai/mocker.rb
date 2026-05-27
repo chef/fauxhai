@@ -1,4 +1,53 @@
 module Fauxhai
+  # Loads mock Ohai data from bundled JSON fixtures or, as a fallback,
+  # from the GitHub repository's `main` branch.
+  #
+  # == File paths
+  # - Source: `lib/fauxhai/mocker.rb`
+  # - Platform data: `lib/fauxhai/platforms/<platform>/<version>.json`
+  # - Platform list: `PLATFORMS.md` (auto-generated — do not edit)
+  #
+  # == Data resolution order
+  #   1. If `:path` option given → load that exact file
+  #   2. Else → resolve `<platform>/<version>.json` under `lib/fauxhai/platforms/`
+  #   3. If file not found locally and `github_fetching: true` (default) →
+  #      HTTP GET from `https://raw.githubusercontent.com/chef/fauxhai/main/…`
+  #      and cache the response locally via {CacheManager.write_json_file}
+  #   4. If HTTP also fails → raise {Exception::InvalidPlatform}
+  #
+  # == Version prefix matching
+  # When an exact `<version>.json` file is not found, Mocker searches for
+  # files whose name starts with the supplied version string followed by a
+  # non-digit character (`/^<version>\D/`). Among matches it picks the
+  # highest version using a flexible comparator that handles dotted
+  # versions, dash-suffixed releases (`4.8-RELEASE`), and Windows
+  # identifiers (`2012R2`).
+  #
+  # Examples:
+  #   version: "20"   → matches 20.04 (Ubuntu)
+  #   version: "7"    → matches 7.8.2003, not 7.10 (prefix + \D guard)
+  #   version: nil    → picks the highest available version
+  #
+  # == Risks
+  # - *Network dependency*: GitHub fetching makes an outbound HTTP call.
+  #   Set `github_fetching: false` in CI or air-gapped environments.
+  # - *Write failures*: `Errno::EACCES` on the local cache write is
+  #   rescued and logged to stdout — the data is still returned, but
+  #   every subsequent run will re-fetch from GitHub.
+  # - *Deprecated data*: JSON files may contain `"deprecated": true`.
+  #   A warning is printed to STDERR but data is still returned.
+  #   Deprecated platforms will be removed in a future major release.
+  # - *Stale gem data*: platform JSON ships with the gem. New platforms
+  #   merged to `main` are only available via GitHub fetching until the
+  #   next gem release.
+  #
+  # == Extension guidance
+  # - To add a new platform: create `lib/fauxhai/platforms/<name>/<ver>.json`
+  #   using `bin/fauxhai`, then run `rake update_json_list` and
+  #   `rake documentation:update_platforms`.
+  # - To change resolution logic: modify `#version` (private). Add tests
+  #   in `spec/mocker_spec.rb` covering prefix matching edge cases.
+  # - Do NOT add direct File I/O for caching — use {CacheManager}.
   class Mocker
     # The base URL for the GitHub project (raw)
     RAW_BASE = "https://raw.githubusercontent.com/chef/fauxhai/main".freeze

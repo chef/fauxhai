@@ -137,7 +137,7 @@ module Fauxhai
         # Edges — autoload / require relationships
         lines << ""
         lines << "  %% Core autoloads"
-        %w[Mocker Fetcher Exception].each do |name|
+        %w[Mocker Fetcher Exception CacheManager].each do |name|
           lines << "  Fauxhai --> #{name}"
         end
 
@@ -155,6 +155,8 @@ module Fauxhai
         lines << "  Mocker --> Platforms"
         lines << "  Mocker --> Exception"
         lines << "  Fetcher --> Exception"
+        lines << "  Mocker --> CacheManager"
+        lines << "  Fetcher --> CacheManager"
 
         # External deps
         lines << ""
@@ -179,6 +181,7 @@ module Fauxhai
         lines << ""
 
         descriptions = {
+          "cache_manager" => "`Fauxhai::CacheManager` — Centralised JSON file I/O (read/write with mkdir). Used by Fetcher and Mocker for all disk caching.",
           "mocker" => "`Fauxhai::Mocker` — Loads platform mock data from local JSON or GitHub. Supports version prefix matching and deprecation warnings.",
           "fetcher" => "`Fauxhai::Fetcher` — SSHes into a remote host via `net/ssh`, runs `ohai`, and caches the result locally.",
           "runner" => "`Fauxhai::Runner` — Runs Ohai on the current machine, sanitises the output, and prints JSON. Delegates to platform-specific mixins (`Runner::Default`, `Runner::Windows`).",

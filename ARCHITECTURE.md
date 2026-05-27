@@ -20,6 +20,7 @@ current machine and print sanitised JSON.
 ```mermaid
 graph TD
   Fauxhai["Fauxhai (lib/fauxhai.rb)"]
+  CacheManager["method"]
   Exception["InvalidPlatform"]
   Fetcher["Fetcher"]
   Mocker["Mocker"]
@@ -32,6 +33,7 @@ graph TD
   Fauxhai --> Mocker
   Fauxhai --> Fetcher
   Fauxhai --> Exception
+  Fauxhai --> CacheManager
   Fauxhai --> Runner
   Runner --> Default
   Runner --> Windows
@@ -41,6 +43,8 @@ graph TD
   Mocker --> Platforms
   Mocker --> Exception
   Fetcher --> Exception
+  Mocker --> CacheManager
+  Fetcher --> CacheManager
 
   %% External dependencies
   NetSSH["net/ssh"]
@@ -55,6 +59,7 @@ graph TD
 
 ## Module Descriptions
 
+- `Fauxhai::CacheManager` — Centralised JSON file I/O (read/write with mkdir). Used by Fetcher and Mocker for all disk caching.
 - `Fauxhai::Exception` — Custom error classes (`InvalidPlatform`, `InvalidVersion`).
 - `Fauxhai::Fetcher` — SSHes into a remote host via `net/ssh`, runs `ohai`, and caches the result locally.
 - `Fauxhai::Mocker` — Loads platform mock data from local JSON or GitHub. Supports version prefix matching and deprecation warnings.
@@ -127,6 +132,6 @@ sequenceDiagram
 
 ## Generation Info
 
-- **Generated at:** 2026-05-27 07:05:15 UTC
+- **Generated at:** 2026-05-27 07:53:02 UTC
 - **Script:** `scripts/generate_architecture_diagram.rb`
 - **Refresh:** `rake architecture:generate`
