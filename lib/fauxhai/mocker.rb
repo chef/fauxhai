@@ -9,6 +9,20 @@ module Fauxhai
     # A message about where to find a list of platforms
     PLATFORM_LIST_MESSAGE = "A list of available platforms is available at https://github.com/chef/fauxhai/blob/main/PLATFORMS.md".freeze
 
+    # Class-level cache for parsed platform JSON. Avoids re-reading and
+    # re-parsing the same file when the same platform/version is mocked
+    # repeatedly (the common case in ChefSpec suites).
+    @json_cache = {}
+
+    class << self
+      attr_reader :json_cache
+
+      # Clear the cache (useful in tests or when platform files change).
+      def clear_cache!
+        @json_cache = {}
+      end
+    end
+
     # Create a new Ohai Mock with fauxhai.
     #
     # @param [Hash] options
@@ -41,7 +55,7 @@ module Fauxhai
         end
 
         if File.exist?(filepath)
-          parse_and_validate(File.read(filepath))
+          cached_read(filepath)
         elsif @options[:github_fetching]
           # Try loading from github (in case someone submitted a PR with a new file, but we haven't
           # yet updated the gem version). Cache the response locally so it's faster next time.
@@ -74,6 +88,15 @@ module Fauxhai
     end
 
     private
+
+    # Read and parse a platform JSON file, using the class-level cache to
+    # avoid redundant File.read calls for the same path. JSON.parse is
+    # still called each time to produce an independent Hash that callers
+    # (e.g. ChefSpec override blocks) can mutate freely.
+    def cached_read(filepath)
+      raw = self.class.json_cache[filepath] ||= File.read(filepath)
+      parse_and_validate(raw)
+    end
 
     # As major releases of Ohai ship it's difficult and sometimes impossible
     # to regenerate all fauxhai data. This allows us to deprecate old releases

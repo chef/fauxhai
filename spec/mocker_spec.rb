@@ -91,4 +91,28 @@ describe Fauxhai::Mocker do
       it { is_expected.to eq "99" }
     end
   end
+
+  describe ".json_cache" do
+    before { described_class.clear_cache! }
+
+    it "caches the raw JSON string after first read" do
+      described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      expect(described_class.json_cache.size).to eq 1
+      expect(described_class.json_cache.values.first).to be_a(String)
+    end
+
+    it "returns independent data hashes from the same cache entry" do
+      a = described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      b = described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      a["hostname"] = "mutated"
+      expect(b["hostname"]).to eq "chefspec"
+    end
+
+    it "is clearable" do
+      described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      expect(described_class.json_cache).not_to be_empty
+      described_class.clear_cache!
+      expect(described_class.json_cache).to be_empty
+    end
+  end
 end
