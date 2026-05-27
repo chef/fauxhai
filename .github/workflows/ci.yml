@@ -49,3 +49,56 @@ jobs:
           args: detect --config .gitleaks.toml --verbose
         env:
           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+  coverage-summary:
+    runs-on: ubuntu-latest
+    name: Coverage summary (advisory)
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - name: Run tests with coverage
+        id: coverage
+        run: |
+          bundle exec rspec 2>&1 | tee rspec_output.txt
+          echo "rspec_exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+      - name: Parse coverage and post summary
+        if: always()
+        run: |
+          LINE_COV=$(grep -oP 'Line Coverage: \K[0-9.]+' rspec_output.txt || echo "N/A")
+          BRANCH_COV=$(grep -oP 'Branch Coverage: \K[0-9.]+' rspec_output.txt || echo "N/A")
+          EXAMPLES=$(grep -oP '\d+ examples' rspec_output.txt || echo "N/A")
+          FAILURES=$(grep -oP '\d+ failures' rspec_output.txt || echo "N/A")
+
+          # Determine status emoji
+          if [[ "$LINE_COV" != "N/A" ]] && (( $(echo "$LINE_COV >= 80" | bc -l) )); then
+            STATUS="✅"
+          else
+            STATUS="⚠️"
+          fi
+
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          ## ${STATUS} Coverage Report
+
+          | Metric | Value |
+          |--------|-------|
+          | **Line Coverage** | ${LINE_COV}% |
+          | **Branch Coverage** | ${BRANCH_COV}% |
+          | **Test Results** | ${EXAMPLES}, ${FAILURES} |
+          | **Target** | >80% line coverage |
+
+          <details>
+          <summary>Full test output</summary>
+
+          \`\`\`
+          $(tail -20 rspec_output.txt)
+          \`\`\`
+
+          </details>
+
+          > ℹ️ This job is **advisory only** and does not block merges.
+          > See [CONTRIBUTING.md](../CONTRIBUTING.md) for coverage requirements.
+          EOF

@@ -115,6 +115,25 @@ xdg-open coverage/index.html # Linux
 - Include the total coverage percentage in your PR description (see the PR template below).
 - If your changes lower coverage, add tests to bring it back above the threshold.
 
+### Coverage in CI
+
+The CI pipeline includes a **"Coverage summary (advisory)"** job that:
+
+1. Runs `bundle exec rspec` with SimpleCov on Ruby 3.4.
+2. Parses line and branch coverage percentages from the output.
+3. Posts a formatted summary table to the **GitHub Actions Job Summary**
+   (visible on the PR's "Checks" tab → click the job → "Summary").
+
+**This job is advisory only** — it uses `continue-on-error: true` and will
+never block a merge, even if coverage is below the 80% target. Its purpose is
+to give reviewers quick visibility into coverage without requiring local runs.
+
+To view the coverage summary:
+1. Open the PR on GitHub.
+2. Click the "Checks" tab (or the status check details).
+3. Click the **"Coverage summary (advisory)"** job.
+4. The summary table appears at the top of the job page.
+
 ## Instrumentation / Logging
 
 Fauxhai includes optional structured logging for `Mocker#data` — the primary
