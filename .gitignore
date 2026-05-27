@@ -23,3 +23,4 @@ vendor
 
 # output directory
 _out
+node_modules
