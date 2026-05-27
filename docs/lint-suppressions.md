@@ -75,6 +75,28 @@ is tracked in [backlog Issue 2](../docs/backlog-epic.md) (branch coverage).
 
 ---
 
+### 4. `Metrics/MethodLength` — `lib/fauxhai/mocker.rb` `fetch_from_github`
+
+**Location:** [`lib/fauxhai/mocker.rb` line 94](../lib/fauxhai/mocker.rb)
+
+```ruby
+# rubocop:disable Metrics/MethodLength
+def fetch_from_github(filepath)
+  # ...26 lines (limit: 25)...
+end
+# rubocop:enable Metrics/MethodLength
+```
+
+**Justification:** `fetch_from_github` wraps an HTTP call with
+`Fauxhai::Retrier`, validates the response, writes to cache, and calls
+`parse_and_validate`. The extra line comes from the resilience wrapping.
+Splitting the method would obscure the fetch→validate→cache flow.
+
+**Removal condition:** If the method is refactored to extract the cache-write
+step or the Metrics/MethodLength max is raised to 26.
+
+---
+
 ## Resolved Findings (auto-corrected)
 
 The following high-signal findings were **fixed** by RuboCop auto-correction:

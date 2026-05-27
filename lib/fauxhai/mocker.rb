@@ -90,11 +90,17 @@ module Fauxhai
     end
 
     # Fetch platform data from GitHub when not available locally.
+    # rubocop:disable Metrics/MethodLength -- Network call with resilience wrapping and file caching; splitting would obscure the fetch→validate→cache flow.
     def fetch_from_github(filepath)
       require "net/http" unless defined?(Net::HTTP)
       begin
         uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
-        response = Net::HTTP.get_response(uri)
+        response = Fauxhai::Retrier.call(
+          max_retries: Integer(ENV.fetch("FAUXHAI_HTTP_RETRIES", "2")),
+          timeout: Integer(ENV.fetch("FAUXHAI_HTTP_TIMEOUT", "10"))
+        ) do
+          Net::HTTP.get_response(uri)
+        end
       rescue StandardError
         raise Fauxhai::Exception::InvalidPlatform,
               "Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}"
@@ -116,6 +122,7 @@ module Fauxhai
       end
       parse_and_validate(response_body)
     end
+    # rubocop:enable Metrics/MethodLength
 
     # Read and parse a platform JSON file, using the class-level cache to
     # avoid redundant File.read calls for the same path. JSON.parse is

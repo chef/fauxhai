@@ -6,6 +6,7 @@ module Fauxhai
   autoload :Exception, "fauxhai/exception"
   autoload :Fetcher, "fauxhai/fetcher"
   autoload :Mocker, "fauxhai/mocker"
+  autoload :Retrier, "fauxhai/retrier"
   autoload :VERSION, "fauxhai/version"
   autoload :VersionResolver, "fauxhai/version_resolver"
 

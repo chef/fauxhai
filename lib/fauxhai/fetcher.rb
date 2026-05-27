@@ -12,8 +12,14 @@ module Fauxhai
         @data = cache
       else
         require "net/ssh" unless defined?(Net::SSH)
-        Net::SSH.start(host, user, @options) do |ssh|
-          @data = JSON.parse(ssh.exec!("ohai"))
+        Fauxhai::Retrier.call(
+          max_retries: Integer(ENV.fetch("FAUXHAI_SSH_RETRIES", "2")),
+          timeout: Integer(ENV.fetch("FAUXHAI_SSH_TIMEOUT", "30")),
+          on: Fauxhai::Retrier::NETWORK_ERRORS + [Net::SSH::ConnectionTimeout, Net::SSH::Disconnect]
+        ) do
+          Net::SSH.start(host, user, @options) do |ssh|
+            @data = JSON.parse(ssh.exec!("ohai"))
+          end
         end
 
         # cache this data so we do not have to SSH again
