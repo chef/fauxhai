@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "digest/sha1"
 require "json" unless defined?(JSON)
 
 module Fauxhai
   class Fetcher
-    def initialize(options = {}, &override_attributes)
+    def initialize(options = {})
       @options = options
 
       if !force_cache_miss? && cached?
@@ -15,21 +17,19 @@ module Fauxhai
         end
 
         # cache this data so we do not have to SSH again
-        File.open(cache_file, "w+") { |f| f.write(@data.to_json) }
+        File.write(cache_file, @data.to_json)
       end
 
       yield(@data) if block_given?
 
-      if defined?(ChefSpec)
-        data = @data
-        ::ChefSpec::Runner.send :define_method, :fake_ohai do |ohai|
-          data.each_pair do |attribute, value|
-            ohai[attribute] = value
-          end
+      return unless defined?(ChefSpec)
+
+      data = @data
+      ::ChefSpec::Runner.send :define_method, :fake_ohai do |ohai|
+        data.each_pair do |attribute, value|
+          ohai[attribute] = value
         end
       end
-
-      @data
     end
 
     def cache
@@ -74,7 +74,7 @@ module Fauxhai
     end
 
     def user
-      @user ||= (@options.delete(:user) || ENV["USER"] || ENV["USERNAME"]).chomp
+      @user ||= (@options.delete(:user) || ENV["USER"] || ENV.fetch("USERNAME", nil)).chomp
     end
   end
 end

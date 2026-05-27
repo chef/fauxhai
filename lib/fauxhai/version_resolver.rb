@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Fauxhai
   # Resolves the best-matching version for a given platform directory.
   #
@@ -43,7 +45,7 @@ module Fauxhai
       return available_versions if @requested_version.to_s == ""
 
       prefix_re = /^#{Regexp.escape(@requested_version)}\D/
-      available_versions.select { |ver| ver =~ prefix_re }
+      available_versions.grep(prefix_re)
     end
 
     # Pick the highest version using a heuristic that handles mixed

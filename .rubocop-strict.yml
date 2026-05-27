@@ -1,0 +1,68 @@
+# Strict RuboCop configuration for lib/fauxhai/ core module only.
+# This config is enforced in CI via: bundle exec rubocop -c .rubocop-strict.yml
+#
+# Scope: lib/fauxhai/*.rb and lib/fauxhai/version_resolver.rb
+# Excluded: platforms/ (JSON data), keys/ (binary fixtures), runner/ (Ohai coupling)
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  Include:
+    - 'lib/fauxhai.rb'
+    - 'lib/fauxhai/*.rb'
+  Exclude:
+    - 'lib/fauxhai/platforms/**/*'
+    - 'lib/fauxhai/keys/**/*'
+    - 'lib/fauxhai/runner/**/*'
+    - 'bin/**/*'
+    - 'spec/**/*'
+    - 'Rakefile'
+    - 'Gemfile'
+    - '*.gemspec'
+
+# --- Style ---
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false            # Module/class docs not enforced globally
+
+# --- Layout ---
+Layout/LineLength:
+  Max: 200                  # Relaxed — long error messages are common
+
+# --- Lint ---
+Lint/UnusedMethodArgument:
+  Enabled: true
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enabled: true
+
+# --- Metrics ---
+Metrics/MethodLength:
+  Max: 25                   # Slightly above default (10) for data-heavy methods
+
+Metrics/AbcSize:
+  Max: 30                   # Slightly above default (17) for data-heavy methods
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# --- Naming ---
+Naming/MethodParameterName:
+  Enabled: true
+  MinNameLength: 1          # Allow single-char args like 'f' in blocks

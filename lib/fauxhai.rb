@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "logger"
 
 module Fauxhai
@@ -17,28 +19,26 @@ module Fauxhai
   # @example Enable via environment variable
   #   FAUXHAI_LOG=1 bundle exec rspec
   class << self
-    attr_writer :logger
-
-    def logger
-      @logger
-    end
+    attr_accessor :logger
   end
 
   # Auto-enable logger if FAUXHAI_LOG environment variable is set.
   if ENV["FAUXHAI_LOG"]
     self.logger = Logger.new($stderr, progname: "fauxhai")
-    self.logger.level = ENV.fetch("FAUXHAI_LOG_LEVEL", "DEBUG")
+    logger.level = ENV.fetch("FAUXHAI_LOG_LEVEL", "DEBUG")
   end
 
   def self.root
-    @@root ||= File.expand_path("../../", __FILE__)
+    # rubocop:disable Style/ClassVars -- @@root is the public API used by Mocker, Fetcher, and downstream consumers. Changing to a class instance var would break subclass inheritance semantics.
+    @@root ||= File.expand_path("..", __dir__)
+    # rubocop:enable Style/ClassVars
   end
 
-  def self.mock(*args, &block)
-    Fauxhai::Mocker.new(*args, &block)
+  def self.mock(...)
+    Fauxhai::Mocker.new(...)
   end
 
-  def self.fetch(*args, &block)
-    Fauxhai::Fetcher.new(*args, &block)
+  def self.fetch(...)
+    Fauxhai::Fetcher.new(...)
   end
 end

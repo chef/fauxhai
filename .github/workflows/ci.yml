@@ -105,3 +105,15 @@ jobs:
           > ℹ️ This job is **advisory only** and does not block merges.
           > See [CONTRIBUTING.md](../CONTRIBUTING.md) for coverage requirements.
           EOF
+
+  lint-strict:
+    runs-on: ubuntu-latest
+    name: RuboCop strict (lib/fauxhai/)
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - name: Run RuboCop with strict config
+        run: bundle exec rubocop -c .rubocop-strict.yml --force-exclusion
