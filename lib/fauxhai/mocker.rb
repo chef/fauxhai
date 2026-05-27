@@ -1,6 +1,3 @@
-require "json" unless defined?(JSON)
-require "pathname" unless defined?(Pathname)
-
 module Fauxhai
   class Mocker
     # The base URL for the GitHub project (raw)
@@ -55,11 +52,9 @@ module Fauxhai
 
           if response.code.to_i == 200
             response_body = response.body
-            path = Pathname.new(filepath)
-            FileUtils.mkdir_p(path.dirname)
 
             begin
-              File.open(filepath, "w") { |f| f.write(response_body) }
+              Fauxhai::CacheManager.write_json_file(filepath, response_body)
             rescue Errno::EACCES # a pretty common problem in CI systems
               puts "Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run."
             end

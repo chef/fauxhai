@@ -1,4 +1,5 @@
 module Fauxhai
+  autoload :CacheManager, "fauxhai/cache_manager"
   autoload :Exception, "fauxhai/exception"
   autoload :Fetcher, "fauxhai/fetcher"
   autoload :Mocker, "fauxhai/mocker"

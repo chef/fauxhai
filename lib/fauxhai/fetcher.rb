@@ -1,5 +1,4 @@
 require "digest/sha1"
-require "json" unless defined?(JSON)
 
 module Fauxhai
   class Fetcher
@@ -15,7 +14,7 @@ module Fauxhai
         end
 
         # cache this data so we do not have to SSH again
-        File.open(cache_file, "w+") { |f| f.write(@data.to_json) }
+        Fauxhai::CacheManager.write_json_file(cache_file, @data)
       end
 
       yield(@data) if block_given?
@@ -33,7 +32,7 @@ module Fauxhai
     end
 
     def cache
-      @cache ||= JSON.parse(File.read(cache_file))
+      @cache ||= Fauxhai::CacheManager.read_json_file(cache_file)
     end
 
     def cached?
