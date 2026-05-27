@@ -115,6 +115,27 @@ xdg-open coverage/index.html # Linux
 - Include the total coverage percentage in your PR description (see the PR template below).
 - If your changes lower coverage, add tests to bring it back above the threshold.
 
+## Platform JSON Contract Tests
+
+Every non-deprecated platform JSON file is validated against a golden schema
+at `spec/fixtures/platform_schema.json`. The contract test
+(`spec/platform_contract_spec.rb`) checks that each file contains the required
+top-level keys with the correct types (string, numeric, or hash).
+
+These tests run automatically as part of `bundle exec rspec` and in CI.
+
+### Updating the contract
+
+If a platform legitimately adds or removes a required top-level key:
+
+1. Edit `spec/fixtures/platform_schema.json` — add/remove the key from the
+   appropriate array (`required_string_keys`, `required_numeric_keys`, or
+   `required_hash_keys`).
+2. Run `bundle exec rspec spec/platform_contract_spec.rb` to verify all
+   non-deprecated platforms still pass.
+3. Note the schema change in your PR description explaining **why** the
+   contract changed.
+
 ## Expeditor Labels
 
 | Scenario | Labels |

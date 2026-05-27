@@ -1,0 +1,38 @@
+{
+  "description": "Required shape for non-deprecated Fauxhai platform JSON files. ChefSpec consumers depend on these keys being present with the documented types.",
+  "required_string_keys": [
+    "current_user",
+    "domain",
+    "fqdn",
+    "hostname",
+    "ipaddress",
+    "macaddress",
+    "machinename",
+    "os",
+    "os_version",
+    "platform",
+    "platform_family",
+    "platform_version",
+    "root_group",
+    "uptime"
+  ],
+  "required_numeric_keys": [
+    "ohai_time",
+    "uptime_seconds"
+  ],
+  "required_hash_keys": [
+    "chef_packages",
+    "command",
+    "counters",
+    "cpu",
+    "dmi",
+    "filesystem",
+    "kernel",
+    "keys",
+    "languages",
+    "memory",
+    "network",
+    "time",
+    "virtualization"
+  ]
+}
