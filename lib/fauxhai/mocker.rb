@@ -43,6 +43,9 @@ module Fauxhai
 
     def data
       @fauxhai_data ||= lambda do
+        start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+        source = nil
+
         # If a path option was specified, use it
         if @options[:path]
           filepath = File.expand_path(@options[:path])
@@ -50,44 +53,66 @@ module Fauxhai
           unless File.exist?(filepath)
             raise Fauxhai::Exception::InvalidPlatform.new("You specified a path to a JSON file on the local system that does not exist: '#{filepath}'")
           end
+          source = :path
         else
           filepath = File.join(platform_path, "#{version}.json")
         end
 
-        if File.exist?(filepath)
+        result = if File.exist?(filepath)
+          source ||= self.class.json_cache.key?(filepath) ? :cache : :disk
           cached_read(filepath)
         elsif @options[:github_fetching]
-          # Try loading from github (in case someone submitted a PR with a new file, but we haven't
-          # yet updated the gem version). Cache the response locally so it's faster next time.
-          require "net/http" unless defined?(Net::HTTP)
-          begin
-            uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
-            response = Net::HTTP.get_response(uri)
-          rescue StandardError
-            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
-          end
-
-          if response.code.to_i == 200
-            response_body = response.body
-            path = Pathname.new(filepath)
-            FileUtils.mkdir_p(path.dirname)
-
-            begin
-              File.open(filepath, "w") { |f| f.write(response_body) }
-            rescue Errno::EACCES # a pretty common problem in CI systems
-              puts "Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run."
-            end
-            return parse_and_validate(response_body)
-          else
-            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an Github fetching returned http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}")
-          end
+          source = :github
+          fetch_from_github(filepath)
         else
           raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and Github fetching is disabled! #{PLATFORM_LIST_MESSAGE}")
         end
+
+        elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - start_time) * 1000).round(2)
+        log_data_load(source, elapsed_ms, result)
+        result
       end.call
     end
 
     private
+
+    # Log structured data about a platform load event.
+    def log_data_load(source, elapsed_ms, data)
+      return unless Fauxhai.logger
+
+      Fauxhai.logger.info do
+        plat = data["platform"] || platform
+        ver = data["platform_version"] || version
+        deprecated = data["deprecated"] ? " [DEPRECATED]" : ""
+        "platform_load: platform=#{plat} version=#{ver} source=#{source} elapsed_ms=#{elapsed_ms}#{deprecated}"
+      end
+    end
+
+    # Fetch platform data from GitHub when not available locally.
+    def fetch_from_github(filepath)
+      require "net/http" unless defined?(Net::HTTP)
+      begin
+        uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
+        response = Net::HTTP.get_response(uri)
+      rescue StandardError
+        raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
+      end
+
+      if response.code.to_i == 200
+        response_body = response.body
+        path = Pathname.new(filepath)
+        FileUtils.mkdir_p(path.dirname)
+
+        begin
+          File.open(filepath, "w") { |f| f.write(response_body) }
+        rescue Errno::EACCES
+          puts "Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run."
+        end
+        parse_and_validate(response_body)
+      else
+        raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an Github fetching returned http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}")
+      end
+    end
 
     # Read and parse a platform JSON file, using the class-level cache to
     # avoid redundant File.read calls for the same path. JSON.parse is

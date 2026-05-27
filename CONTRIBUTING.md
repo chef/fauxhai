@@ -115,6 +115,47 @@ xdg-open coverage/index.html # Linux
 - Include the total coverage percentage in your PR description (see the PR template below).
 - If your changes lower coverage, add tests to bring it back above the threshold.
 
+## Instrumentation / Logging
+
+Fauxhai includes optional structured logging for `Mocker#data` — the primary
+data-loading path. When enabled, each platform load emits:
+
+- `platform` / `version` — which platform was loaded
+- `source` — `disk` (first file read), `cache` (in-memory raw string hit),
+  `github` (HTTP fetch), or `path` (user-specified file)
+- `elapsed_ms` — wall-clock time for the load
+- `[DEPRECATED]` — flag if the platform data is marked deprecated
+
+### Enabling logging
+
+**Via environment variable** (recommended for CI/debugging):
+
+```bash
+FAUXHAI_LOG=1 bundle exec rspec
+```
+
+**Programmatically:**
+
+```ruby
+require "logger"
+Fauxhai.logger = Logger.new($stdout)
+```
+
+### Example output
+
+```
+I, [2026-05-27T13:40:57]  INFO -- fauxhai: platform_load: platform=ubuntu version=24.04 source=disk elapsed_ms=0.69
+I, [2026-05-27T13:40:57]  INFO -- fauxhai: platform_load: platform=ubuntu version=24.04 source=cache elapsed_ms=0.27
+I, [2026-05-27T13:40:57]  INFO -- fauxhai: platform_load: platform=centos version=7.7.1908 source=disk elapsed_ms=0.48 [DEPRECATED]
+```
+
+### Viewing in production/staging
+
+In CI, set `FAUXHAI_LOG=1` as an environment variable in your workflow to see
+platform load logs in the job output. In staging/production Chef environments,
+set `Fauxhai.logger` to your application logger to route platform load events
+into your existing log aggregation (ELK, Datadog, Splunk, etc.).
+
 ## Platform JSON Contract Tests
 
 Every non-deprecated platform JSON file is validated against a golden schema

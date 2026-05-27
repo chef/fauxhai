@@ -115,4 +115,42 @@ describe Fauxhai::Mocker do
       expect(described_class.json_cache).to be_empty
     end
   end
+
+  describe "instrumentation logging" do
+    let(:log_output) { StringIO.new }
+    let(:logger) { Logger.new(log_output, progname: "fauxhai") }
+
+    before do
+      Fauxhai.logger = logger
+      described_class.clear_cache!
+    end
+
+    after do
+      Fauxhai.logger = nil
+    end
+
+    it "logs platform_load with source and elapsed_ms on data access" do
+      described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      output = log_output.string
+      expect(output).to include("platform_load:")
+      expect(output).to include("platform=chefspec")
+      expect(output).to include("source=disk")
+      expect(output).to include("elapsed_ms=")
+    end
+
+    it "logs source=cache on repeated access" do
+      described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      log_output.truncate(0)
+      log_output.rewind
+      described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      expect(log_output.string).to include("source=cache")
+    end
+
+    it "does not log when logger is nil" do
+      Fauxhai.logger = nil
+      expect {
+        described_class.new(platform: "chefspec", version: "0.6.1", github_fetching: false).data
+      }.not_to raise_error
+    end
+  end
 end
