@@ -38,7 +38,14 @@ module Fauxhai
     # @raise [JSON::ParserError]   if the file is not valid JSON
     def self.read_json_file(path)
       Fauxhai.logger.debug { "CacheManager reading: #{path}" }
-      JSON.parse(File.read(path))
+      Fauxhai::Resilience.with_retry(
+        max_retries: 1,
+        base_delay: 0.1,
+        timeout: 5,
+        retryable: [Errno::EINTR, Errno::EIO, IOError]
+      ) do
+        JSON.parse(File.read(path))
+      end
     end
 
     # Write data as JSON to disk, creating parent directories as needed.

@@ -165,7 +165,12 @@ module Fauxhai
         begin
           uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
           Fauxhai.logger.info("Fetching platform data from GitHub: #{uri}")
-          response = Net::HTTP.get_response(uri)
+          http_errors = Fauxhai::Resilience::RETRYABLE_ERRORS.dup
+          http_errors << Net::OpenTimeout if defined?(Net::OpenTimeout)
+          http_errors << Net::ReadTimeout if defined?(Net::ReadTimeout)
+          response = Fauxhai::Resilience.with_retry(retryable: http_errors) do
+            Net::HTTP.get_response(uri)
+          end
         rescue StandardError
           raise Fauxhai::Exception::InvalidPlatform,
                 "Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was " \

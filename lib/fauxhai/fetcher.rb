@@ -40,8 +40,13 @@ module Fauxhai
       else
         Fauxhai.logger.info("Cache miss for #{user}@#{host}, connecting via SSH")
         require "net/ssh" unless defined?(Net::SSH)
-        Net::SSH.start(host, user, @options) do |ssh|
-          @data = JSON.parse(ssh.exec!("ohai"))
+        ssh_errors = Fauxhai::Resilience::RETRYABLE_ERRORS.dup
+        ssh_errors << Net::SSH::ConnectionTimeout if defined?(Net::SSH::ConnectionTimeout)
+        ssh_errors << Net::SSH::Disconnect if defined?(Net::SSH::Disconnect)
+        Fauxhai::Resilience.with_retry(retryable: ssh_errors) do
+          Net::SSH.start(host, user, @options) do |ssh|
+            @data = JSON.parse(ssh.exec!("ohai"))
+          end
         end
 
         # cache this data so we do not have to SSH again

@@ -68,17 +68,20 @@ Style/GuardClause:
 Metrics/PerceivedComplexity:
   Exclude:
     - 'lib/fauxhai/mocker.rb'
+    - 'lib/fauxhai/fetcher.rb'
     - 'scripts/**/*'
 
 Metrics/CyclomaticComplexity:
   Exclude:
     - 'lib/fauxhai/mocker.rb'
+    - 'lib/fauxhai/fetcher.rb'
     - 'scripts/**/*'
 
 Metrics/MethodLength:
   Max: 25
   Exclude:
     - 'lib/fauxhai/mocker.rb'
+    - 'lib/fauxhai/fetcher.rb'
     - 'lib/fauxhai/runner.rb'
     - 'lib/fauxhai/runner/**/*'
     - 'scripts/**/*'

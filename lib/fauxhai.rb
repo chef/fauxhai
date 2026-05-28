@@ -8,6 +8,7 @@ module Fauxhai
   autoload :Exception, "fauxhai/exception"
   autoload :Fetcher, "fauxhai/fetcher"
   autoload :Mocker, "fauxhai/mocker"
+  autoload :Resilience, "fauxhai/resilience"
   autoload :VERSION, "fauxhai/version"
 
   # Returns the shared Logger instance for Fauxhai.
