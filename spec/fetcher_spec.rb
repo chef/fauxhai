@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "tmpdir"
 require "fileutils"
@@ -164,9 +166,9 @@ RSpec.describe Fauxhai::Fetcher do
 
   describe "user fallback" do
     it "falls back to ENV['USER'] when :user not provided" do
-      write_cache_for(host: "envhost", user: ENV["USER"])
+      write_cache_for(host: "envhost", user: ENV.fetch("USER", nil))
       fetcher = described_class.new(host: "envhost")
-      expected_key = Digest::SHA2.hexdigest("#{ENV["USER"]}@envhost")
+      expected_key = Digest::SHA2.hexdigest("#{ENV.fetch('USER', nil)}@envhost")
       expect(fetcher.cache_key).to eq(expected_key)
     end
   end

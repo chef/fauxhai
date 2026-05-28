@@ -13,11 +13,11 @@ module Fauxhai
       def network
         {
           "interfaces" => {
-            "#{default_interface}" => {
+            default_interface.to_s => {
               "configuration" => {
                 "caption" => "[00000012] Ethernet Adapter",
                 "database_path" => '%SystemRoot%\\System32\\drivers\\etc',
-                "default_ip_gateway" => %w{default_gateway},
+                "default_ip_gateway" => %w[default_gateway],
                 "description" => "Ethernet Adapter",
                 "dhcp_enabled" => false,
                 "dns_domain_suffix_search_order" => [],
@@ -35,14 +35,14 @@ module Fauxhai
                 "ip_sec_permit_ip_protocols" => [],
                 "ip_sec_permit_tcp_ports" => [],
                 "ip_sec_permit_udp_ports" => [],
-                "ip_subnet" => %w{255.255.255.0 64},
+                "ip_subnet" => %w[255.255.255.0 64],
                 "mac_address" => macaddress,
                 "service_name" => "netkvm",
                 "setting_id" => "{00000000-0000-0000-0000-000000000000}",
                 "tcpip_netbios_options" => 0,
-                "tcp_window_size" => 64240,
+                "tcp_window_size" => 64_240,
                 "wins_enable_lm_hosts_lookup" => true,
-                "wins_scope_id" => "",
+                "wins_scope_id" => ""
               },
               "instance" => {
                 "adapter_type" => "Ethernet 802.3",
@@ -73,29 +73,29 @@ module Fauxhai
                 "speed" => "10000000000",
                 "system_creation_class_name" => "Win32_ComputerSystem",
                 "system_name" => hostname,
-                "time_of_last_reset" => "20000101000001.000000+000",
+                "time_of_last_reset" => "20000101000001.000000+000"
               },
               "counters" => {},
               "addresses" => {
-                "#{ipaddress}" => {
+                ipaddress.to_s => {
                   "prefixlen" => "24",
                   "netmask" => "255.255.255.0",
                   "broadcast" => "10.0.0.255",
-                  "family" => "inet",
+                  "family" => "inet"
                 },
-                "#{macaddress}" => {
-                  "family" => "lladdr",
-                },
+                macaddress.to_s => {
+                  "family" => "lladdr"
+                }
               },
               "type" => "Ethernet 802.3",
               "arp" => {
-                "10.0.0.1" => "fe:ff:ff:ff:ff:ff",
+                "10.0.0.1" => "fe:ff:ff:ff:ff:ff"
               },
-              "encapsulation" => "Ethernet",
-            },
+              "encapsulation" => "Ethernet"
+            }
           },
           "default_gateway" => default_gateway,
-          "default_interface" => default_interface,
+          "default_interface" => default_interface
         }
       end
     end

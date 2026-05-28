@@ -5,7 +5,7 @@ require "ohai/plugins/chef"
 
 module Fauxhai
   class Runner
-    def initialize(args)
+    def initialize(_args)
       @system = Ohai::System.new
       @system.all_plugins
 
@@ -18,7 +18,7 @@ module Fauxhai
         singleton_class.send :include, ::Fauxhai::Runner::Default
       end
 
-      result = @system.data.dup.delete_if { |k, v| !whitelist_attributes.include?(k) }.merge(
+      result = @system.data.dup.delete_if { |k, _v| !whitelist_attributes.include?(k) }.merge(
         "languages" => languages,
         "counters" => counters,
         "current_user" => current_user,

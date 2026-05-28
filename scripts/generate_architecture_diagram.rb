@@ -13,8 +13,8 @@ require "json"
 
 module Fauxhai
   module ArchitectureGenerator
-    LIB_ROOT = File.expand_path("../../lib/fauxhai", __FILE__)
-    DEFAULT_OUTPUT = File.expand_path("../../ARCHITECTURE.md", __FILE__)
+    LIB_ROOT = File.expand_path("../lib/fauxhai", __dir__)
+    DEFAULT_OUTPUT = File.expand_path("../ARCHITECTURE.md", __dir__)
 
     # Describes one Ruby source file discovered under lib/fauxhai/.
     SourceFile = Struct.new(:relative_path, :basename, :requires, :classes, :modules, keyword_init: true)
@@ -119,8 +119,7 @@ module Fauxhai
         lines << '  Fauxhai["Fauxhai (lib/fauxhai.rb)"]'
 
         # Discovered components
-        core_files = source_files.reject { |sf| sf.relative_path.start_with?("runner/") }
-        runner_files = source_files.select { |sf| sf.relative_path.start_with?("runner/") }
+        runner_files, core_files = source_files.partition { |sf| sf.relative_path.start_with?("runner/") }
 
         core_files.each do |sf|
           id = node_id(sf)
@@ -188,7 +187,7 @@ module Fauxhai
           "default" => "`Fauxhai::Runner::Default` — Mixin providing sanitised defaults for Linux/macOS/BSD platforms.",
           "windows" => "`Fauxhai::Runner::Windows` — Mixin providing sanitised defaults for Windows platforms.",
           "exception" => "`Fauxhai::Exception` — Custom error classes (`InvalidPlatform`, `InvalidVersion`).",
-          "version" => "`Fauxhai::VERSION` — Gem version constant.",
+          "version" => "`Fauxhai::VERSION` — Gem version constant."
         }
 
         source_files.each do |sf|
@@ -256,7 +255,7 @@ module Fauxhai
         <<~MD
           ## Generation Info
 
-          - **Generated at:** #{Time.now.utc.strftime("%Y-%m-%d %H:%M:%S UTC")}
+          - **Generated at:** #{Time.now.utc.strftime('%Y-%m-%d %H:%M:%S UTC')}
           - **Script:** `scripts/generate_architecture_diagram.rb`
           - **Refresh:** `rake architecture:generate`
         MD

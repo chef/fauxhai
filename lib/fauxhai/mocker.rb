@@ -54,10 +54,10 @@ module Fauxhai
   # - Do NOT add direct File I/O for caching — use {CacheManager}.
   class Mocker
     # The base URL for the GitHub project (raw)
-    RAW_BASE = "https://raw.githubusercontent.com/chef/fauxhai/main".freeze
+    RAW_BASE = "https://raw.githubusercontent.com/chef/fauxhai/main"
 
     # A message about where to find a list of platforms
-    PLATFORM_LIST_MESSAGE = "A list of available platforms is available at https://github.com/chef/fauxhai/blob/main/PLATFORMS.md".freeze
+    PLATFORM_LIST_MESSAGE = "A list of available platforms is available at https://github.com/chef/fauxhai/blob/main/PLATFORMS.md"
 
     # Create a new Ohai Mock with fauxhai.
     #
@@ -71,17 +71,15 @@ module Fauxhai
     #   the path to a local JSON file
     # @option options [Bool] :github_fetching
     #   whether to try loading from Github
-    def initialize(options = {}, &override_attributes)
+    def initialize(options = {}, &)
       @options = { github_fetching: true }.merge(options)
 
       yield(data) if block_given?
     end
 
     def data
-      @fauxhai_data ||= load_platform_data
+      @data ||= load_platform_data
     end
-
-    private
 
     # Pattern for valid platform and version identifiers.
     # Allows alphanumeric characters, dots, dashes, and underscores only.
@@ -89,16 +87,20 @@ module Fauxhai
     # filesystem paths and GitHub raw URLs.
     SAFE_IDENTIFIER = /\A[a-zA-Z0-9][a-zA-Z0-9._-]*\z/
 
+    private
+
     # As major releases of Ohai ship it's difficult and sometimes impossible
     # to regenerate all fauxhai data. This allows us to deprecate old releases
     # and eventually remove them while giving end users ample warning.
     def parse_and_validate(unparsed_data)
       parsed_data = JSON.parse(unparsed_data)
       if parsed_data["deprecated"]
-        msg = "Fauxhai platform data for #{parsed_data["platform"]} #{parsed_data["platform_version"]} is deprecated and will be removed in the 10.0 release 3/2022. #{PLATFORM_LIST_MESSAGE}"
+        msg = "Fauxhai platform data for #{parsed_data['platform']} " \
+              "#{parsed_data['platform_version']} is deprecated and will be removed " \
+              "in the 10.0 release 3/2022. #{PLATFORM_LIST_MESSAGE}"
         if Fauxhai.strict_mode
           Fauxhai.logger.info { "strict_mode=true — raising on deprecated platform data" }
-          raise Fauxhai::Exception::InvalidPlatform.new(msg)
+          raise Fauxhai::Exception::InvalidPlatform, msg
         else
           Fauxhai.logger.info { "strict_mode=false — warning on deprecated platform data" }
           Fauxhai.logger.warn(msg)
@@ -109,23 +111,28 @@ module Fauxhai
 
     def validate_identifier!(value, label)
       return if value.nil? || value.to_s.empty?
-      unless value.to_s.match?(SAFE_IDENTIFIER)
-        raise Fauxhai::Exception::InvalidPlatform.new("Invalid #{label}: '#{value}'. Only alphanumeric characters, dots, dashes, and underscores are allowed. #{PLATFORM_LIST_MESSAGE}")
-      end
+      return if value.to_s.match?(SAFE_IDENTIFIER)
+
+      raise Fauxhai::Exception::InvalidPlatform,
+            "Invalid #{label}: '#{value}'. Only alphanumeric characters, " \
+            "dots, dashes, and underscores are allowed. #{PLATFORM_LIST_MESSAGE}"
     end
 
     def platform
       @options[:platform] ||= begin
-                                msg = "you must specify a 'platform' and optionally a 'version' for your ChefSpec Runner and/or Fauxhai constructor. #{PLATFORM_LIST_MESSAGE}"
-                                if Fauxhai.strict_mode
-                                  Fauxhai.logger.info { "strict_mode=true — raising on missing platform" }
-                                  raise Fauxhai::Exception::InvalidPlatform.new(msg)
-                                else
-                                  Fauxhai.logger.info { "strict_mode=false — falling back to 'chefspec' platform" }
-                                  Fauxhai.logger.warn("#{msg} In the future omitting the platform will become a hard error.")
-                                  "chefspec"
-                                end
-                              end
+        msg = "you must specify a 'platform' and optionally a 'version' for your " \
+              "ChefSpec Runner and/or Fauxhai constructor. #{PLATFORM_LIST_MESSAGE}"
+        if Fauxhai.strict_mode
+          Fauxhai.logger.info { "strict_mode=true — raising on missing platform" }
+          raise Fauxhai::Exception::InvalidPlatform, msg
+        else
+          Fauxhai.logger.info { "strict_mode=false — falling back to 'chefspec' platform" }
+          Fauxhai.logger.warn(
+            "#{msg} In the future omitting the platform will become a hard error."
+          )
+          "chefspec"
+        end
+      end
       validate_identifier!(@options[:platform], "platform")
       @options[:platform]
     end
@@ -141,7 +148,8 @@ module Fauxhai
         Fauxhai.logger.debug { "Loading platform data from custom path: #{filepath}" }
 
         unless File.exist?(filepath)
-          raise Fauxhai::Exception::InvalidPlatform.new("You specified a path to a JSON file on the local system that does not exist: '#{filepath}'")
+          raise Fauxhai::Exception::InvalidPlatform,
+                "You specified a path to a JSON file on the local system that does not exist: '#{filepath}'"
         end
       else
         filepath = File.join(platform_path, "#{version}.json")
@@ -159,7 +167,9 @@ module Fauxhai
           Fauxhai.logger.info("Fetching platform data from GitHub: #{uri}")
           response = Net::HTTP.get_response(uri)
         rescue StandardError
-          raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
+          raise Fauxhai::Exception::InvalidPlatform,
+                "Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was " \
+                "encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}"
         end
 
         if response.code.to_i == 200
@@ -168,14 +178,21 @@ module Fauxhai
           begin
             Fauxhai::CacheManager.write_json_file(filepath, response_body)
           rescue Errno::EACCES # a pretty common problem in CI systems
-            Fauxhai.logger.warn("Fetched '#{platform}/#{version}' from GitHub, but could not write to the local path: #{filepath}. Fix the local file permissions to avoid downloading this file every run.")
+            Fauxhai.logger.warn(
+              "Fetched '#{platform}/#{version}' from GitHub, but could not write to the local " \
+              "path: #{filepath}. Fix the local file permissions to avoid downloading this file every run."
+            )
           end
           parse_and_validate(response_body)
         else
-          raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an Github fetching returned http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}")
+          raise Fauxhai::Exception::InvalidPlatform,
+                "Could not find platform '#{platform}/#{version}' on the local disk and an Github fetching " \
+                "returned http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}"
         end
       else
-        raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and Github fetching is disabled! #{PLATFORM_LIST_MESSAGE}")
+        raise Fauxhai::Exception::InvalidPlatform,
+              "Could not find platform '#{platform}/#{version}' on the local disk and Github fetching " \
+              "is disabled! #{PLATFORM_LIST_MESSAGE}"
       end
     end
 
@@ -222,6 +239,5 @@ module Fauxhai
         end
       end
     end
-
   end
 end

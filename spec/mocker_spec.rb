@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "net/http"
 require "tmpdir"
@@ -19,21 +21,21 @@ describe Fauxhai::Mocker do
     end
 
     context "GitHub fetching fails" do
-      let(:options) {
+      let(:options) do
         {
           github_fetching: true,
           platform: "doesntexist",
           version: "1"
         }
-      }
+      end
 
       before do
         allow(Net::HTTP)
           .to receive(:get_response)
-          .and_return(Net::HTTPNotFound.new('1.1', '404', 'Not Found'))
+          .and_return(Net::HTTPNotFound.new("1.1", "404", "Not Found"))
       end
 
-      it 'yields a InvalidPlatform exception' do
+      it "yields a InvalidPlatform exception" do
         expect { subject }.to raise_error(Fauxhai::Exception::InvalidPlatform, /http error code 404/)
       end
     end
@@ -56,9 +58,9 @@ describe Fauxhai::Mocker do
 
     context "with a :path option pointing to a nonexistent file" do
       it "raises InvalidPlatform" do
-        expect {
+        expect do
           described_class.new(path: "/nonexistent/fake.json", github_fetching: false).data
-        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /does not exist/)
+        end.to raise_error(Fauxhai::Exception::InvalidPlatform, /does not exist/)
       end
     end
 
@@ -109,17 +111,17 @@ describe Fauxhai::Mocker do
       end
 
       it "raises InvalidPlatform with HTTP error message" do
-        expect {
+        expect do
           described_class.new(platform: "neterr", version: "1.0", github_fetching: true).data
-        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /HTTP error/)
+        end.to raise_error(Fauxhai::Exception::InvalidPlatform, /HTTP error/)
       end
     end
 
     context "with github_fetching disabled and unknown platform" do
       it "raises InvalidPlatform" do
-        expect {
+        expect do
           described_class.new(platform: "doesntexist", version: "1", github_fetching: false).data
-        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Github fetching is disabled/)
+        end.to raise_error(Fauxhai::Exception::InvalidPlatform, /Github fetching is disabled/)
       end
     end
 
@@ -252,59 +254,59 @@ describe Fauxhai::Mocker do
   describe "input validation (security)" do
     context "with path traversal in platform" do
       it "raises InvalidPlatform for '../etc'" do
-        expect {
+        expect do
           described_class.new(platform: "../etc", version: "1", github_fetching: false).data
-        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid platform/)
+        end.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid platform/)
       end
     end
 
     context "with URL injection in platform" do
       it "raises InvalidPlatform for 'foo%2F..%2Fbar'" do
-        expect {
+        expect do
           described_class.new(platform: "foo%2F..%2Fbar", version: "1", github_fetching: false).data
-        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid platform/)
+        end.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid platform/)
       end
     end
 
     context "with path traversal in version" do
       it "raises InvalidPlatform for '../../etc/passwd'" do
-        expect {
+        expect do
           described_class.new(platform: "ubuntu", version: "../../etc/passwd", github_fetching: false).data
-        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid version/)
+        end.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid version/)
       end
     end
 
     context "with slash in version" do
       it "raises InvalidPlatform for versions containing '/'" do
-        expect {
+        expect do
           described_class.new(platform: "ubuntu", version: "20/04", github_fetching: false).data
-        }.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid version/)
+        end.to raise_error(Fauxhai::Exception::InvalidPlatform, /Invalid version/)
       end
     end
 
     context "with valid platform and version" do
       it "allows alphanumeric with dots (e.g. ubuntu 20.04)" do
-        expect {
+        expect do
           described_class.new(platform: "ubuntu", version: "20.04", github_fetching: false).data
-        }.not_to raise_error
+        end.not_to raise_error
       end
 
       it "allows dashes (e.g. centos-stream)" do
-        expect {
+        expect do
           described_class.new(platform: "centos-stream", version: "8", github_fetching: false).data
-        }.not_to raise_error
+        end.not_to raise_error
       end
 
       it "allows underscores (e.g. mac_os_x)" do
-        expect {
+        expect do
           described_class.new(platform: "mac_os_x", version: "10.15", github_fetching: false).data
-        }.not_to raise_error
+        end.not_to raise_error
       end
 
       it "allows ARCH-style versions (e.g. 4.10.13-1-ARCH)" do
-        expect {
+        expect do
           described_class.new(platform: "arch", version: "4.10.13-1-ARCH", github_fetching: false).data
-        }.not_to raise_error
+        end.not_to raise_error
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "stringio"
 
@@ -154,17 +156,17 @@ describe "strict_mode behavior in Mocker" do
   describe "deprecated platform data" do
     let(:deprecated_json) do
       JSON.generate({
-        "platform" => "testplatform",
-        "platform_version" => "1.0",
-        "deprecated" => true,
-      })
+                      "platform" => "testplatform",
+                      "platform_version" => "1.0",
+                      "deprecated" => true
+                    })
     end
 
     let(:non_deprecated_json) do
       JSON.generate({
-        "platform" => "testplatform",
-        "platform_version" => "2.0",
-      })
+                      "platform" => "testplatform",
+                      "platform_version" => "2.0"
+                    })
     end
 
     context "when strict_mode is OFF" do
@@ -192,9 +194,9 @@ describe "strict_mode behavior in Mocker" do
 
       it "raises InvalidPlatform for deprecated platforms" do
         mocker = Fauxhai::Mocker.new(platform: "ubuntu", version: "22.04")
-        expect {
+        expect do
           mocker.send(:parse_and_validate, deprecated_json)
-        }.to raise_error(
+        end.to raise_error(
           Fauxhai::Exception::InvalidPlatform,
           /deprecated/
         )

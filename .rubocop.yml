@@ -1,0 +1,130 @@
+# RuboCop configuration for chef/fauxhai
+# Scope: lib/ and spec/ (excludes generated platform JSONs and vendor)
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  Include:
+    - 'lib/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'scripts/**/*.rb'
+    - 'bin/*'
+    - 'Rakefile'
+    - 'Gemfile'
+  Exclude:
+    - 'lib/fauxhai/platforms/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'habitat/**/*'
+
+# ── Enabled cops (high-signal) ──────────────────────────────────────────
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+  # Project already uses double quotes everywhere; enforce consistently.
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyle: no_comma
+  # Project convention: no trailing commas in hash literals.
+
+Style/RaiseArgs:
+  Enabled: true
+  EnforcedStyle: exploded
+  # raise ExceptionClass, "message" instead of raise ExceptionClass.new("message")
+
+Style/RedundantFreeze:
+  Enabled: true
+
+Style/RedundantInterpolation:
+  Enabled: true
+
+Style/ExpandPathArguments:
+  Enabled: true
+
+Style/ClassVars:
+  Enabled: true
+
+Lint/UnusedMethodArgument:
+  Enabled: true
+
+Lint/UnusedBlockArgument:
+  Enabled: true
+
+Layout/LineLength:
+  Exclude:
+    - 'scripts/**/*'
+
+Style/GuardClause:
+  Enabled: true
+
+# ── Relaxed cops (with documented justification) ────────────────────────
+
+# Mocker#version and #load_platform_data are inherently complex due to
+# multi-strategy resolution (prefix match, GitHub fetch, cache). Breaking
+# them further would scatter the resolution logic across too many methods
+# with no readability gain.
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'lib/fauxhai/mocker.rb'
+    - 'scripts/**/*'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'lib/fauxhai/mocker.rb'
+    - 'scripts/**/*'
+
+Metrics/MethodLength:
+  Max: 25
+  Exclude:
+    - 'lib/fauxhai/mocker.rb'
+    - 'lib/fauxhai/runner.rb'
+    - 'lib/fauxhai/runner/**/*'
+    - 'scripts/**/*'
+    - 'spec/**/*'
+
+# The Fauxhai module is the single public API surface; splitting it would
+# break the gem's interface contract.
+Metrics/ModuleLength:
+  Exclude:
+    - 'lib/fauxhai/mocker.rb'
+    - 'lib/fauxhai/runner/**/*'
+    - 'scripts/**/*'
+
+# Spec files routinely have long blocks (describe/context).
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'Rakefile'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/fauxhai/mocker.rb'
+    - 'lib/fauxhai/fetcher.rb'
+    - 'lib/fauxhai/runner.rb'
+    - 'scripts/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'lib/fauxhai/mocker.rb'
+    - 'scripts/**/*'
+
+# Numeric literals in platform version logic are version numbers, not
+# magic numbers needing underscores.
+Style/NumericLiterals:
+  Exclude:
+    - 'lib/fauxhai/mocker.rb'
+
+# Runner files are CLI scaffolding; documenting them adds no value.
+Style/Documentation:
+  Exclude:
+    - 'lib/fauxhai/runner.rb'
+    - 'lib/fauxhai/runner/**/*'
+    - 'scripts/**/*'
+
+# Short parameter names (e.g. `l` for logger) are acceptable in lambdas
+# and small blocks where the meaning is clear from context.
+Naming/MethodParameterName:
+  Exclude:
+    - 'scripts/**/*'

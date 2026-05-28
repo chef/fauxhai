@@ -2,6 +2,7 @@
 
 require "logger"
 
+# Fauxhai provides mock Ohai data for ChefSpec and other Chef testing tools.
 module Fauxhai
   autoload :CacheManager, "fauxhai/cache_manager"
   autoload :Exception, "fauxhai/exception"
@@ -48,6 +49,7 @@ module Fauxhai
   # Default: false (backward-compatible).
   def self.strict_mode
     return @strict_mode unless @strict_mode.nil?
+
     %w[1 true yes on].include?(ENV["FAUXHAI_STRICT_MODE"].to_s.downcase)
   end
 
@@ -57,15 +59,15 @@ module Fauxhai
   end
 
   def self.root
-    @@root ||= File.expand_path("../../", __FILE__)
+    @root ||= File.expand_path("..", __dir__)
   end
 
-  def self.mock(*args, &block)
-    Fauxhai::Mocker.new(*args, &block)
+  def self.mock(...)
+    Fauxhai::Mocker.new(...)
   end
 
-  def self.fetch(*args, &block)
-    Fauxhai::Fetcher.new(*args, &block)
+  def self.fetch(...)
+    Fauxhai::Fetcher.new(...)
   end
 
   # Map FAUXHAI_LOG_LEVEL env var to Logger constant.

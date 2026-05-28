@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require_relative "../scripts/generate_architecture_diagram"
 require "tmpdir"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "tmpdir"
 require "fileutils"
@@ -17,18 +19,18 @@ RSpec.describe Fauxhai::CacheManager do
     end
 
     it "raises Errno::ENOENT for a nonexistent file" do
-      expect {
+      expect do
         described_class.read_json_file(File.join(tmpdir, "nope.json"))
-      }.to raise_error(Errno::ENOENT)
+      end.to raise_error(Errno::ENOENT)
     end
 
     it "raises JSON::ParserError for invalid JSON" do
       path = File.join(tmpdir, "bad.json")
       File.write(path, "not json {{{")
 
-      expect {
+      expect do
         described_class.read_json_file(path)
-      }.to raise_error(JSON::ParserError)
+      end.to raise_error(JSON::ParserError)
     end
   end
 

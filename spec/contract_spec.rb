@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "net/http"
 require "tmpdir"
@@ -30,12 +32,10 @@ require "fileutils"
 # ==========================================================================
 
 RSpec.describe "API contract tests" do
-
   # --------------------------------------------------------------------------
   # Boundary 1: Fauxhai::Mocker — the primary public interface
   # --------------------------------------------------------------------------
   describe "Fauxhai::Mocker data contract" do
-
     # Rationale: Mocker#data is the most-used public method. Downstream
     # consumers (ChefSpec, custom test helpers) always expect a Hash with
     # at least "platform" and "platform_version" keys. If either is missing
@@ -79,9 +79,9 @@ RSpec.describe "API contract tests" do
           next if relative.start_with?("chefspec/")
 
           expect(data).to have_key("platform"),
-            "#{relative} is missing 'platform' key"
+                          "#{relative} is missing 'platform' key"
           expect(data).to have_key("platform_version"),
-            "#{relative} is missing 'platform_version' key"
+                          "#{relative} is missing 'platform_version' key"
         end
       end
     end
@@ -200,7 +200,7 @@ RSpec.describe "API contract tests" do
         "nested" => { "deep" => [1, 2, 3] },
         "unicode" => "café ☕",
         "null_value" => nil,
-        "bool" => true,
+        "bool" => true
       }
 
       Fauxhai::CacheManager.write_json_file(path, original)

@@ -52,7 +52,7 @@ module Fauxhai
       Fauxhai.logger.debug { "CacheManager writing: #{path}" }
       FileUtils.mkdir_p(File.dirname(path))
       content = data.is_a?(String) ? data : data.to_json
-      File.open(path, "w") { |f| f.write(content) }
+      File.write(path, content)
     end
   end
 end
