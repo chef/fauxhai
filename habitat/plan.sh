@@ -14,11 +14,17 @@ pkg_build_deps=(
 pkg_bin_dirs=(bin)
 
 do_setup_environment() {
-  build_line 'Setting GEM_HOME="$pkg_prefix/vendor"'
-  export GEM_HOME="$pkg_prefix/vendor"
+  push_runtime_env GEM_PATH "${pkg_prefix}/vendor"
 
-  build_line "Setting GEM_PATH=$GEM_HOME"
-  export GEM_PATH="$GEM_HOME"
+  set_runtime_env APPBUNDLER_ALLOW_RVM "true"
+  set_runtime_env LANG "en_US.UTF-8"
+  set_runtime_env LC_CTYPE "en_US.UTF-8"
+}
+
+do_prepare() {
+  if [[ ! -f /usr/bin/env ]]; then
+    ln -s "$(pkg_interpreter_for core/coreutils bin/env)" /usr/bin/env
+  fi
 }
 
 pkg_version() {
@@ -61,24 +67,33 @@ do_install() {
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
   gem install fauxhai-*.gem --no-document
-  set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor"
-  wrap_ruby_bin
+
+  build_line "** generating binstubs for fauxhai-chef with precise version pins"
+  "$(pkg_path_for $ruby_pkg)/bin/ruby" "${pkg_prefix}/vendor/bin/appbundler" . "$pkg_prefix/bin" fauxhai-chef
+
+  build_line "** patching binstubs to allow running directly"
+  for binstub in ${pkg_prefix}/bin/*; do
+    sed -i "/require \"rubygems\"/r ${PLAN_CONTEXT}/../binstub_patch.rb" "$binstub"
+  done
+
+  fix_interpreter "${pkg_prefix}/bin/*" "$ruby_pkg" bin/ruby
+
+  rm -rf $GEM_PATH/cache/
+  rm -rf $GEM_PATH/bundler
+  rm -rf $GEM_PATH/doc
 }
-wrap_ruby_bin() {
-  local bin="$pkg_prefix/bin/$pkg_name"
-  local real_bin="$GEM_HOME/gems/fauxhai-chef-${pkg_version}/bin/fauxhai"
-  build_line "Adding wrapper $bin to $real_bin"
-  cat <<EOF > "$bin"
-#!$(pkg_path_for core/bash)/bin/bash
-set -e
-# Set binary path that allows InSpec to use non-Hab pkg binaries
-export PATH="/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:\$PATH"
-# Set Ruby paths defined from 'do_setup_environment()'
-  export GEM_HOME="$pkg_prefix/vendor"
-  export GEM_PATH="$GEM_PATH"
-exec $(pkg_path_for ${ruby_pkg})/bin/ruby $real_bin \$@
-EOF
-  chmod -v 755 "$bin"
+
+do_after() {
+  build_line "Removing .github directories from vendored gems..."
+  find "$pkg_prefix/vendor/gems" -type d -name ".github" \
+    | while read github_dir; do rm -rf "$github_dir"; done
+}
+
+do_end() {
+  if [[ "$(readlink /usr/bin/env)" = "$(pkg_interpreter_for core/coreutils bin/env)" ]]; then
+    build_line "Removing the symlink we created for '/usr/bin/env'"
+    rm /usr/bin/env
+  fi
 }
 
 
