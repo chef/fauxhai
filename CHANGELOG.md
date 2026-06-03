@@ -1,7 +1,15 @@
-<!-- latest_release -->
+<!-- latest_release 9.4.21 -->
+## [v9.4.21](https://github.com/chef/fauxhai/tree/v9.4.21) (2026-06-03)
+
+#### Merged Pull Requests
+- CHEF-35087: Use appbundler in in hab packaging and install latest Habitat in Windows test [#102](https://github.com/chef/fauxhai/pull/102) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=9.4.20 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- CHEF-35087: Use appbundler in in hab packaging and install latest Habitat in Windows test [#102](https://github.com/chef/fauxhai/pull/102) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.21 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
