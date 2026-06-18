@@ -1,19 +1,17 @@
-<!-- latest_release 9.4.22 -->
-## [v9.4.22](https://github.com/chef/fauxhai/tree/v9.4.22) (2026-06-17)
-
-#### Merged Pull Requests
-- CHEF-34832: update NOTICE [#104](https://github.com/chef/fauxhai/pull/104) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=9.4.20 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- CHEF-34832: update NOTICE [#104](https://github.com/chef/fauxhai/pull/104) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.22 -->
-- CHEF-35087: Use appbundler in in hab packaging and install latest Habitat in Windows test [#102](https://github.com/chef/fauxhai/pull/102) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.21 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v9.4.22](https://github.com/chef/fauxhai/tree/v9.4.22) (2026-06-18)
+
+#### Merged Pull Requests
+- CHEF-35087: Use appbundler in in hab packaging and install latest Habitat in Windows test [#102](https://github.com/chef/fauxhai/pull/102) ([nikhil2611](https://github.com/nikhil2611))
+- CHEF-34832: update NOTICE [#104](https://github.com/chef/fauxhai/pull/104) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_stable_release -->
+
 ## [v9.4.20](https://github.com/chef/fauxhai/tree/v9.4.20) (2026-03-23)
 
 #### Merged Pull Requests
@@ -38,7 +36,6 @@
 - Expeditor Configuration for promote workflow [#92](https://github.com/chef/fauxhai/pull/92) ([poorndm](https://github.com/poorndm))
 - For build using hab version 1.6 [#96](https://github.com/chef/fauxhai/pull/96) ([sanghinitin](https://github.com/sanghinitin))
 - Adding and building NOTICE file with hab package [#94](https://github.com/chef/fauxhai/pull/94) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
 
 ## [v9.3.26](https://github.com/chef/fauxhai/tree/v9.3.26) (2025-05-14)
 
