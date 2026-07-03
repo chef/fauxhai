@@ -29,7 +29,7 @@ do_prepare() {
 }
 
 pkg_version() {
-  cat "$SRC_PATH/VERSION"
+  cat "$PLAN_CONTEXT/../../VERSION"
 }
 
 do_before() {
