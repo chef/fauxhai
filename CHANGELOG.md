@@ -1,7 +1,15 @@
-<!-- latest_release -->
+<!-- latest_release 9.4.23 -->
+## [v9.4.23](https://github.com/chef/fauxhai/tree/v9.4.23) (2026-07-21)
+
+#### Merged Pull Requests
+- CHEF-34737: Add Habitat plan for aarch64-darwin (macOS Apple Silicon) [#105](https://github.com/chef/fauxhai/pull/105) ([sanghinitin](https://github.com/sanghinitin))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=9.4.22 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- CHEF-34737: Add Habitat plan for aarch64-darwin (macOS Apple Silicon) [#105](https://github.com/chef/fauxhai/pull/105) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.23 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
