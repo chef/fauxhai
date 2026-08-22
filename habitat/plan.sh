@@ -65,7 +65,7 @@ do_build() {
 }
 do_install() {
 
-  # Copy NOTICE.TXT to the package directory
+  # Copy NOTICE to the package directory
   if [[ -f "${FAUXHAI_REPO_ROOT}/NOTICE" ]]; then
     build_line "Copying NOTICE to package directory"
     cp "${FAUXHAI_REPO_ROOT}/NOTICE" "$pkg_prefix/"

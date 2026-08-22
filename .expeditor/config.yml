@@ -18,7 +18,7 @@ pipelines:
       description: Pull Request validation tests
       public: true
   - habitat/build:
-      description: Build the Habitat packages for faixhai
+      description: Build the Habitat packages for fauxhai
       env:
         - HAB_NONINTERACTIVE: "true"
         - HAB_NOCOLORING: "true"

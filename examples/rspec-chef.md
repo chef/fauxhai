@@ -45,7 +45,7 @@ Fetching a Remote Box
 ---------------------
 ```ruby
 describe 'foo::bar' do
-  let(:json_attributes) { Fauxhai.fetch(host:'server01.example.com' }
+  let(:json_attributes) { Fauxhai.fetch(host:'server01.example.com') }
 end
 ```
 

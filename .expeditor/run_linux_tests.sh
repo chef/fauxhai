@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# setups up the bundler to caching, then run the script
+# sets up bundler for caching, then runs the script
 
 set -ue
 
