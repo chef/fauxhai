@@ -1,0 +1,6 @@
+--markup markdown
+--readme README.md
+lib/**/*.rb
+-
+PLATFORMS.md
+LICENSE

@@ -70,3 +70,23 @@ end
 
 require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
+
+# YARD is a development dependency. Guard the require so that a bare `rake`
+# run outside of Bundler still loads this file when yard is not installed --
+# the docs tasks just do not register.
+begin
+  require "yard"
+
+  namespace :docs do
+    YARD::Rake::YardocTask.new(:generate) do |t|
+      t.stats_options = ["--list-undoc"]
+    end
+
+    desc "Report YARD documentation coverage without generating docs"
+    task :coverage do
+      sh "yard stats --list-undoc"
+    end
+  end
+rescue LoadError
+  puts "yard is not available, skipping the docs tasks" if Rake.application.options.trace
+end

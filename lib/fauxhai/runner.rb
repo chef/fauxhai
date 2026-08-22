@@ -2,7 +2,22 @@ require "ohai" unless defined?(Ohai::System)
 require "ohai/plugins/chef"
 
 module Fauxhai
+  # Powers the `fauxhai` command line tool.
+  #
+  # Runs every Ohai plugin on the local machine, then keeps only the
+  # attributes in {Fauxhai::Runner::Default#whitelist_attributes} and replaces
+  # the rest with sanitized stand-ins, so the result carries no usernames,
+  # hostnames, IP addresses, or real SSH keys. The sanitized JSON is printed to
+  # STDOUT, ready to be contributed as a new platform file.
+  #
+  # The sanitizing methods come from {Fauxhai::Runner::Windows} on Windows and
+  # {Fauxhai::Runner::Default} everywhere else.
   class Runner
+    # Collect, sanitize, and print the local Ohai data.
+    #
+    # @param args [Array<String>] command line arguments, currently unused;
+    #   `bin/fauxhai` handles `-v` and `-h` before constructing the runner
+    # @return [void]
     def initialize(args)
       @system = Ohai::System.new
       @system.all_plugins

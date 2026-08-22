@@ -2,11 +2,21 @@ require "json" unless defined?(JSON)
 require "pathname" unless defined?(Pathname)
 
 module Fauxhai
+  # Loads mock Ohai data for a platform and version.
+  #
+  # Data is looked up on disk first, under `lib/fauxhai/platforms`. If it is not
+  # there and `:github_fetching` is enabled, it is downloaded from the project's
+  # main branch and cached locally, so platforms contributed after the installed
+  # gem was released still resolve.
+  #
+  # @see Fauxhai.mock
   class Mocker
     # The base URL for the GitHub project (raw)
+    # @return [String]
     RAW_BASE = "https://raw.githubusercontent.com/chef/fauxhai/main".freeze
 
     # A message about where to find a list of platforms
+    # @return [String]
     PLATFORM_LIST_MESSAGE = "A list of available platforms is available at https://github.com/chef/fauxhai/blob/main/PLATFORMS.md".freeze
 
     # Create a new Ohai Mock with fauxhai.
@@ -21,12 +31,25 @@ module Fauxhai
     #   the path to a local JSON file
     # @option options [Bool] :github_fetching
     #   whether to try loading from Github
+    # @yieldparam data [Hash] the loaded platform data, for overriding
+    #   attributes in place
+    # @return [Fauxhai::Mocker]
+    # @raise [Fauxhai::Exception::InvalidPlatform] if a block is given and the
+    #   platform data cannot be resolved
     def initialize(options = {}, &override_attributes)
       @options = { github_fetching: true }.merge(options)
 
       yield(data) if block_given?
     end
 
+    # The mock Ohai data, loaded on first call and memoized after that.
+    #
+    # Resolution order is `:path` if given, then the on-disk platform file,
+    # then GitHub when `:github_fetching` is enabled.
+    #
+    # @return [Hash] the parsed Ohai data
+    # @raise [Fauxhai::Exception::InvalidPlatform] if the data cannot be found
+    #   on disk, or the GitHub fetch is disabled or fails
     def data
       @fauxhai_data ||= lambda do
         # If a path option was specified, use it
@@ -78,6 +101,12 @@ module Fauxhai
     # As major releases of Ohai ship it's difficult and sometimes impossible
     # to regenerate all fauxhai data. This allows us to deprecate old releases
     # and eventually remove them while giving end users ample warning.
+    #
+    # Data marked `deprecated` still loads; it only warns on STDERR.
+    #
+    # @param unparsed_data [String] the raw JSON read from disk or GitHub
+    # @return [Hash] the parsed data
+    # @raise [JSON::ParserError] if the data is not valid JSON
     def parse_and_validate(unparsed_data)
       parsed_data = JSON.parse(unparsed_data)
       if parsed_data["deprecated"]
@@ -86,6 +115,10 @@ module Fauxhai
       parsed_data
     end
 
+    # The platform being mocked, defaulting to the synthetic "chefspec"
+    # platform with a warning when the caller omitted one.
+    #
+    # @return [String] the platform name
     def platform
       @options[:platform] ||= begin
                                 STDERR.puts "WARNING: you must specify a 'platform' and optionally a 'version' for your ChefSpec Runner and/or Fauxhai constructor, in the future omitting the platform will become a hard error. #{PLATFORM_LIST_MESSAGE}"
@@ -93,10 +126,26 @@ module Fauxhai
                               end
     end
 
+    # The directory holding the JSON files for the current platform.
+    #
+    # @return [String] an absolute path, which may not exist yet
     def platform_path
       File.join(Fauxhai.root, "lib", "fauxhai", "platforms", platform)
     end
 
+    # The platform version to load.
+    #
+    # An exact filename match wins. Otherwise the option is treated as a
+    # prefix, so `"6"` resolves to CentOS `6.10`; a trailing `\D` in the
+    # prefix match keeps `"7.1"` from matching `"7.10.0"`. A nil or empty
+    # version matches anything. When several candidates remain, the highest
+    # wins under a version comparison loose enough to cope with the range of
+    # formats in use (`4.8-RELEASE`, `2012R2`, `10.15`).
+    #
+    # If nothing matches, the caller's option is passed through unchanged so
+    # that GitHub fetching still gets a chance.
+    #
+    # @return [String, nil] the resolved version
     def version
       @version ||= begin
         if File.exist?("#{platform_path}/#{@options[:version]}.json")
