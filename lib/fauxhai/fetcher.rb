@@ -100,6 +100,14 @@ module Fauxhai
       @data.to_hash(*args)
     end
 
+    # A readable representation of the fetcher.
+    #
+    # @note This interpolates the remaining `@options`, which are whatever was
+    #   left after `:host`, `:user` and `:force_cache_miss` were consumed --
+    #   in other words the options forwarded to `Net::SSH.start`. Those can
+    #   include credentials such as `:password`, `:passphrase` or key paths,
+    #   so do not log or otherwise emit this string.
+    #
     # @return [String] a readable representation of the fetcher
     def to_s
       "#<Fauxhai::Fetcher @host=#{host}, @options=#{@options}>"
