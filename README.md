@@ -156,7 +156,7 @@ describe 'awesome_cookbook::default' do
 end
 ```
 
-### Disabling Fetching from Github
+### Disabling Fetching from GitHub
 
 In environments that do not have access to the internet, you can disable fetching Fauxhai data from GitHub as follows:
 

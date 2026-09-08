@@ -20,7 +20,7 @@ module Fauxhai
     # @option options [String] :path
     #   the path to a local JSON file
     # @option options [Bool] :github_fetching
-    #   whether to try loading from Github
+    #   whether to try loading from GitHub
     def initialize(options = {}, &override_attributes)
       @options = { github_fetching: true }.merge(options)
 
@@ -50,7 +50,7 @@ module Fauxhai
             uri = URI("#{RAW_BASE}/lib/fauxhai/platforms/#{platform}/#{version}.json")
             response = Net::HTTP.get_response(uri)
           rescue StandardError
-            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from Github. #{PLATFORM_LIST_MESSAGE}")
+            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and an HTTP error was encountered when fetching from GitHub. #{PLATFORM_LIST_MESSAGE}")
           end
 
           if response.code.to_i == 200
@@ -65,10 +65,10 @@ module Fauxhai
             end
             return parse_and_validate(response_body)
           else
-            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and Github fetching returned an http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}")
+            raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and GitHub fetching returned an http error code #{response.code}! #{PLATFORM_LIST_MESSAGE}")
           end
         else
-          raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and Github fetching is disabled! #{PLATFORM_LIST_MESSAGE}")
+          raise Fauxhai::Exception::InvalidPlatform.new("Could not find platform '#{platform}/#{version}' on the local disk and GitHub fetching is disabled! #{PLATFORM_LIST_MESSAGE}")
         end
       end.call
     end
