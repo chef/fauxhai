@@ -1,14 +1,15 @@
-<!-- latest_release 9.4.25 -->
-## [v9.4.25](https://github.com/chef/fauxhai/tree/v9.4.25) (2026-08-26)
+<!-- latest_release 9.4.26 -->
+## [v9.4.26](https://github.com/chef/fauxhai/tree/v9.4.26) (2026-09-08)
 
 #### Merged Pull Requests
-- Fix binstub_patch.rb/NOTICE path resolution on aarch64-linux builds [#112](https://github.com/chef/fauxhai/pull/112) ([sanjain-progress](https://github.com/sanjain-progress))
+- Modernize Ruby support, CI matrix, and Actions pinning [#107](https://github.com/chef/fauxhai/pull/107) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 <!-- release_rollup since=9.4.22 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Modernize Ruby support, CI matrix, and Actions pinning [#107](https://github.com/chef/fauxhai/pull/107) ([tas50](https://github.com/tas50)) <!-- 9.4.26 -->
 - Fix binstub_patch.rb/NOTICE path resolution on aarch64-linux builds [#112](https://github.com/chef/fauxhai/pull/112) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.4.25 -->
 - CHEF-37335: add Linux ARM Habitat validation in Expeditor pipeline [#106](https://github.com/chef/fauxhai/pull/106) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.4.24 -->
 - CHEF-34737: Add Habitat plan for aarch64-darwin (macOS Apple Silicon) [#105](https://github.com/chef/fauxhai/pull/105) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.23 -->
