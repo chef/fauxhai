@@ -51,7 +51,7 @@ Fauxhai ships with a command line tool - `fauxhai`. This is **not** the same as 
 
 ## Platform and Versions
 
-For a complete list of platforms and versions available for mocking via Fauxhai see [PLATFORMS.MD](https://github.com/chef/fauxhai/blob/master/PLATFORMS.md) in this repository.
+For a complete list of platforms and versions available for mocking via Fauxhai see [PLATFORMS.md](https://github.com/chef/fauxhai/blob/master/PLATFORMS.md) in this repository.
 
 ## Usage
 
@@ -156,9 +156,9 @@ describe 'awesome_cookbook::default' do
 end
 ```
 
-### Disabling Fetching from Github
+### Disabling Fetching from GitHub
 
-On environments that does not have access to the internet, you can disable fetching Fauxhai data from GitHub as follow:
+In environments that do not have access to the internet, you can disable fetching Fauxhai data from GitHub as follows:
 
 ```ruby
 require 'chefspec'
@@ -172,7 +172,7 @@ end
 
 ## Testing Multiple Versions
 
-It's a common use case to test multiple version of the same operating system. Here's a simple example to get your started. This is more rspec-related that Fauxhai related, but here ya go:
+It's a common use case to test multiple versions of the same operating system. Here's a simple example to get you started. This is more rspec-related than Fauxhai related, but here ya go:
 
 ```ruby
 require 'chefspec'
@@ -244,7 +244,7 @@ Fauxhai is community-maintained and updated. Aside from the initial files, all o
 
   ```
   bundle console
-  requiure "fauxhai"
+  require "fauxhai"
   Fauxhai.mock(platform: '[os]', version: '[version]') # e.g. Fauxhai.mock(platform: 'ubuntu', version: '12.04').data
   ```
 

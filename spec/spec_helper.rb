@@ -3,7 +3,7 @@ require "rspec/its"
 require "fauxhai"
 
 RSpec.configure do |config|
-  # Basic configuraiton
+  # Basic configuration
   config.run_all_when_everything_filtered = true
   config.filter_run(:focus)
   config.add_formatter("documentation")
