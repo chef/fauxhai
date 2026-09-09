@@ -1,8 +1,8 @@
-# Fauxhai-ng
+# Fauxhai
 
-![CI](https://github.com/chef/fauxhai/workflows/CI/badge.svg) [![Gem Version](https://badge.fury.io/rb/fauxhai-ng.svg)](https://badge.fury.io/rb/fauxhai-ng)
+[![CI](https://github.com/chef/fauxhai/actions/workflows/ci.yml/badge.svg)](https://github.com/chef/fauxhai/actions/workflows/ci.yml) [![Gem Version](https://badge.fury.io/rb/fauxhai-chef.svg)](https://badge.fury.io/rb/fauxhai-chef)
 
-Note: fauxhai-ng is an updated version of the original fauxhai gem. The CLI and library namespaces have not changed, but you will want to update to use the new gem.
+Note: fauxhai-chef is the Chef-maintained continuation of the original fauxhai gem. The CLI and library namespaces have not changed, but you will want to update to use the new gem.
 
 Fauxhai is a gem for mocking out [ohai](https://github.com/chef/ohai) data in your chef testing. Fauxhai is community supported, so we need **your help** to populate our dataset. Here's an example for testing my "awesome_cookbook" on Ubuntu 20.04:
 
