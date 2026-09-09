@@ -5,5 +5,5 @@ module Fauxhai
   # should be edited by hand in a pull request.
   #
   # @return [String]
-  VERSION = "9.4.26".freeze
+  VERSION = "9.4.27".freeze
 end
