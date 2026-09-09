@@ -1,13 +1,23 @@
 module Fauxhai
   class Runner
+    # Windows overrides for the sanitized values in
+    # {Fauxhai::Runner::Default}. Windows reports network interfaces in a
+    # different shape than the Unix platforms, so only the interface naming and
+    # the network structure need replacing; everything else is inherited.
     module Windows
       require_relative "default"
       include ::Fauxhai::Runner::Default
 
+      # @return [String] the fake Windows interface index
       def default_interface
         "0xe"
       end
 
+      # The sanitized network data, shaped the way Ohai reports it on Windows:
+      # a WMI `configuration` and `instance` pair per interface rather than the
+      # flat address list used on Unix.
+      #
+      # @return [Hash] the fake network topology
       def network
         {
           "interfaces" => {
