@@ -1,30 +1,27 @@
-<!-- latest_release 9.4.29 -->
-## [v9.4.29](https://github.com/chef/fauxhai/tree/v9.4.29) (2026-11-11)
-
-#### Merged Pull Requests
-- Updated the Notice file [#116](https://github.com/chef/fauxhai/pull/116) ([ashiqueps](https://github.com/ashiqueps))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=9.4.22 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Updated the Notice file [#116](https://github.com/chef/fauxhai/pull/116) ([ashiqueps](https://github.com/ashiqueps)) <!-- 9.4.29 -->
-- Fix Windows habitat test pipeline: install hab from stable channel [#114](https://github.com/chef/fauxhai/pull/114) ([nikhil2611](https://github.com/nikhil2611)) <!-- 9.4.28 -->
-- Document the public API with YARD and add yard tooling [#109](https://github.com/chef/fauxhai/pull/109) ([tas50](https://github.com/tas50)) <!-- 9.4.27 -->
-- Modernize Ruby support, CI matrix, and Actions pinning [#107](https://github.com/chef/fauxhai/pull/107) ([tas50](https://github.com/tas50)) <!-- 9.4.26 -->
-- Fix binstub_patch.rb/NOTICE path resolution on aarch64-linux builds [#112](https://github.com/chef/fauxhai/pull/112) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.4.25 -->
-- CHEF-37335: add Linux ARM Habitat validation in Expeditor pipeline [#106](https://github.com/chef/fauxhai/pull/106) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 9.4.24 -->
-- CHEF-34737: Add Habitat plan for aarch64-darwin (macOS Apple Silicon) [#105](https://github.com/chef/fauxhai/pull/105) ([sanghinitin](https://github.com/sanghinitin)) <!-- 9.4.23 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v9.4.29](https://github.com/chef/fauxhai/tree/v9.4.29) (2026-11-16)
+
+#### Merged Pull Requests
+- CHEF-34737: Add Habitat plan for aarch64-darwin (macOS Apple Silicon) [#105](https://github.com/chef/fauxhai/pull/105) ([sanghinitin](https://github.com/sanghinitin))
+- CHEF-37335: add Linux ARM Habitat validation in Expeditor pipeline [#106](https://github.com/chef/fauxhai/pull/106) ([sanjain-progress](https://github.com/sanjain-progress))
+- Fix binstub_patch.rb/NOTICE path resolution on aarch64-linux builds [#112](https://github.com/chef/fauxhai/pull/112) ([sanjain-progress](https://github.com/sanjain-progress))
+- Modernize Ruby support, CI matrix, and Actions pinning [#107](https://github.com/chef/fauxhai/pull/107) ([tas50](https://github.com/tas50))
+- Document the public API with YARD and add yard tooling [#109](https://github.com/chef/fauxhai/pull/109) ([tas50](https://github.com/tas50))
+- Fix Windows habitat test pipeline: install hab from stable channel [#114](https://github.com/chef/fauxhai/pull/114) ([nikhil2611](https://github.com/nikhil2611))
+- Updated the Notice file [#116](https://github.com/chef/fauxhai/pull/116) ([ashiqueps](https://github.com/ashiqueps))
+<!-- latest_stable_release -->
+
 ## [v9.4.22](https://github.com/chef/fauxhai/tree/v9.4.22) (2026-06-18)
 
 #### Merged Pull Requests
 - CHEF-35087: Use appbundler in in hab packaging and install latest Habitat in Windows test [#102](https://github.com/chef/fauxhai/pull/102) ([nikhil2611](https://github.com/nikhil2611))
 - CHEF-34832: update NOTICE [#104](https://github.com/chef/fauxhai/pull/104) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
 
 ## [v9.4.20](https://github.com/chef/fauxhai/tree/v9.4.20) (2026-03-23)
 
